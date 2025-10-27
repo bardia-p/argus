@@ -1,7 +1,7 @@
 !start.
 
 +!start <-
-  !followplayer("Curtis").
+  !followplayer("bardibloo").
 
 +!loop <-
   .print("Hi from Jason!");

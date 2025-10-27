@@ -5,7 +5,6 @@ import ca.carleton.sce.argus.jason.JasonService;
 import ca.carleton.sce.argus.trait.JasonAgentTrait;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
-import net.citizensnpcs.trait.SkinTrait;
 import org.bukkit.ChatColor;
 import org.bukkit.FluidCollisionMode;
 import org.bukkit.Location;
@@ -71,7 +70,6 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
         NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, agentName);
         npc.spawn(spawnAt);
 
-        // npc.getOrAddTrait(SkinTrait.class).setSkinName("MHF_Alex");
         npc.data().setPersistent("argus_agent", true);
 
         // Attach trait with Jason wiring
@@ -103,7 +101,7 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
                 // List known ASL files from the plugin's JAR resources (best effort)
                 // NOTE: Java doesn't easily list resources in a JAR; maintain an index txt or hardcode.
                 // For convenience, we support a fixed shortlist here; replace with your own index.
-                return List.of("woodcutter.asl", "miner.asl", "builder.asl").stream().filter(f -> f.startsWith(args[1].toLowerCase())).collect(Collectors.toList());
+                return List.of("hello.asl").stream().filter(f -> f.startsWith(args[1].toLowerCase())).collect(Collectors.toList());
             } catch (Exception ignored) {
             }
         }

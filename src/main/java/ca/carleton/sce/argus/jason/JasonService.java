@@ -1,19 +1,13 @@
 package ca.carleton.sce.argus.jason;
 
 import ca.carleton.sce.argus.Argus;
-import jason.JasonException;
 import jason.RevisionFailedException;
 import jason.asSemantics.Agent;
 import jason.asSemantics.TransitionSystem;
-import jason.asSyntax.parser.ParseException;
-import jason.asSyntax.parser.as2j;
 import net.citizensnpcs.api.npc.NPC;
-import net.citizensnpcs.util.NMS;
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -37,12 +31,6 @@ public class JasonService {
 
         plugin.getLogger().info("Starting agent " + agentName);
         agent.initAg();
-
-        try {
-            // agent.loadInitialAS(null);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
         // Load AgentSpeak into agent
         try {
@@ -80,7 +68,6 @@ public class JasonService {
             handle.architecture().shutdown();
         }
     }
-
 
     public record RuntimeHandle(String name, Agent agent,
                                 ArgusAgArch architecture) {

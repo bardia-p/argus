@@ -7,39 +7,83 @@ import jason.asSyntax.Literal;
 import net.citizensnpcs.api.ai.event.NavigationCancelEvent;
 import net.citizensnpcs.api.ai.event.NavigationCompleteEvent;
 import net.citizensnpcs.api.npc.NPC;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.Bisected;
+import org.bukkit.block.data.type.Door;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Wood;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class ArgusAgArch extends AgArch {
     private final Argus plugin;
     private final NPC npc;
+    private final Inventory inv;
+    private final Semaphore locationSemaphore;
+
+    private boolean hasHouse;
+
+    public static int WOOD_NEEDED_FOR_HOUSE = 30;
+    public static int CHOP_WOOD_RADIUS = 10;
+    public static int TREE_BROWSE_RADIUS = 100;
+    public static int HOUSE_SIZE_IN_BLOCKS = 5;
+    public static int INVENTORY_SIZE = 27;
+    public static double REACHED_DESTINATION_THRESHOLD = 0;
 
     public ArgusAgArch(Argus plugin, NPC npc) {
         this.plugin = plugin;
         this.npc = npc;
+        this.locationSemaphore = new Semaphore(1);
+        this.inv = Bukkit.createInventory(null, INVENTORY_SIZE, this.getAgName() + " Inventory");
+        this.hasHouse = false;
+    }
+
+    @Override
+    public String getAgName() {
+        return npc.getName();
     }
 
     @Override
     public List<Literal> perceive() {
-        // TODO: Add perceptions
-        npc.getEntity().getWorld().spawnParticle(Particle.GLOW, npc.getEntity().getLocation().add(0, 2, 0), 1, 0.2, 0.2, 0.2, 0.1);
-        return new ArrayList<>();
+        Entity ent = npc.getEntity();
+        ArrayList<Literal> result = new ArrayList<>();
+        ent.getWorld().spawnParticle(Particle.GLOW, ent.getLocation().add(0, 2, 0), 1, 0.2,
+                0.2, 0.2, 0.1);
+        result.add(Literal.parseLiteral("woodsChopped(" + getNumLogs() + ")"));
+
+        if (findNearbyTree(CHOP_WOOD_RADIUS) != null) {
+            result.add(Literal.parseLiteral("canSeeTree"));
+        }
+
+        if (hasHouse) {
+            result.add(Literal.parseLiteral("hasHouse"));
+        }
+        return result;
     }
 
     @Override
     public void act(ActionExec action) {
-        // TODO: Implement action handling
         String actionName = action.getActionTerm().getFunctor();
-        plugin.getLogger().info("NPC " + npc.getName() + " performing action: " + actionName);
+        System.out.println("NPC " + npc.getName() + " performing action: " + actionName);
         switch (actionName) {
             case "say" -> {
                 if (action.getActionTerm().getArity() == 1) {
@@ -47,112 +91,10 @@ public class ArgusAgArch extends AgArch {
                     action.setResult(say(message));
                 }
             }
-            case "jump" -> action.setResult(jump());
-            case "follow_nearest" -> {
-                // follow_nearest(Radius, StopDist)
-                double radius = Double.parseDouble(action.getActionTerm().getTerm(0).toString());
-                double stop = Double.parseDouble(action.getActionTerm().getTerm(1).toString());
-
-
-                if (!npc.isSpawned() || npc.getEntity() == null) {
-                    action.setResult(false);
-                    break;
-                }
-                var ent = npc.getEntity();
-                var loc = ent.getLocation();
-
-                var candidates = loc.getWorld().getNearbyEntities(loc, radius, radius, radius, e -> e instanceof Player);
-                // If you're targeting plain Spigot, use loc.getWorld().getNearbyPlayers(loc, radius) instead.
-
-                var target = candidates.stream().filter(p -> p.isValid() && !p.isDead() && p.getWorld().equals(loc.getWorld())).min(Comparator.comparingDouble(p -> p.getLocation().distanceSquared(loc))).orElse(null);
-
-                if (target == null) {
-                    action.setResult(false);
-                    break;
-                }
-
-                // Pathfind towards the player entity (will repath as they move)
-                npc.getNavigator().setTarget(target, false); // pathfinding on
-
-                // Poll distance until within stop range, then finish the action
-                final double stopSq = stop * stop;
-                final var task = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (!npc.isSpawned() || target.isDead() || !target.getWorld().equals(npc.getEntity().getWorld())) {
-                            cancel();
-                            return;
-                        }
-                        double d2 = npc.getEntity().getLocation().distanceSquared(target.getLocation());
-                        if (d2 <= stopSq) {
-                            npc.getNavigator().cancelNavigation();
-                            cancel();
-                            action.setResult(true);
-                            actionExecuted(action);
-                        }
-                    }
-                };
-                task.runTaskTimer(plugin, 1L, 5L); // check every 5 ticks
-
-            }
-
-            case "goto_player" -> {
-                // goto_player(Name, StopDist/)
-                String name = action.getActionTerm().getTerm(0).toString().replaceAll("^\"|\"$", "");
-                say("Following " + name);
-                double stop = Double.parseDouble(action.getActionTerm().getTerm(1).toString());
-                var target = plugin.getServer().getPlayerExact(name);
-                if (target == null || !target.isOnline()) {
-                    action.setResult(false);
-                    return;
-                }
-                if (!npc.isSpawned()) {
-                    action.setResult(false);
-                    break;
-                }
-
-                npc.getNavigator().setTarget(target, false); // pathfind to moving target
-
-                // Finish when navigation completes...
-                plugin.getServer().getPluginManager().registerEvents(new Listener() {
-                    @EventHandler
-                    public void onComplete(NavigationCompleteEvent e) {
-                        if (e.getNPC().equals(npc)) {
-                            plugin.getLogger().info("Reached " + name);
-                            HandlerList.unregisterAll(this);
-                        }
-                    }
-
-                    @EventHandler
-                    public void onCancel(NavigationCancelEvent e) {
-                        if (e.getNPC().equals(npc)) {
-                            plugin.getLogger().info("Navigation to " + name + " was cancelled.");
-                            HandlerList.unregisterAll(this);
-                        }
-                    }
-                }, plugin);
-
-                // ...or finish when within 'stop' distance (whichever happens first)
-                final double stopSq = stop * stop;
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (!npc.isSpawned() || target.isDead() || !target.getWorld().equals(npc.getEntity().getWorld())) {
-                            cancel();
-                            return;
-                        }
-                        if (npc.getEntity().getLocation().distanceSquared(target.getLocation()) <= stopSq) {
-                            npc.getNavigator().cancelNavigation();
-                            cancel();
-                        }
-                    }
-                }.runTaskTimer(plugin, 1L, 5L);
-
-                action.setResult(true);
-                actionExecuted(action);
-            }
-            default ->
-                    plugin.getLogger().warning("Unknown action: " + actionName);
+            case "find_tree" -> action.setResult(findTree());
+            case "chop_wood" -> action.setResult(chopWood());
+            case "build_house" -> action.setResult(buildHouse());
+            default -> System.out.println("Unknown action: " + actionName);
         }
         actionExecuted(action);
     }
@@ -163,13 +105,182 @@ public class ArgusAgArch extends AgArch {
     }
 
     public boolean say(String message) {
-        plugin.getServer().broadcastMessage("<" + npc.getName() + "> " + message);
+        plugin.getServer().broadcastMessage("<" + getAgName() + "> " + message);
         return true;
     }
 
-    public boolean jump() {
-        if (!npc.getEntity().isOnGround()) return false;
-        npc.getEntity().setVelocity(new Vector(0, 0.5, 0));
+    public boolean findTree() {
+        if (!npc.isSpawned() || npc.getEntity() == null) {
+            return false;
+        }
+
+        Block log = findNearbyTree(TREE_BROWSE_RADIUS);
+        // Could not find wood!
+        if (log == null) {
+            return true;
+        }
+
+        // Pathfind towards the player entity (will repath as they move)
+        goToLocation(log.getLocation());
         return true;
+    }
+
+    public boolean chopWood() {
+        if (!npc.isSpawned() || npc.getEntity() == null) {
+            return false;
+        }
+
+        var ent = npc.getEntity();
+
+        Block log = findNearbyTree(CHOP_WOOD_RADIUS);
+        // Could not find wood!
+        if (log == null) {
+            return true;
+        }
+
+        // Pathfind towards the player entity (will repath as they move)
+        goToLocation(log.getLocation());
+
+        log.breakNaturally();
+        for (Entity e : ent.getWorld().getNearbyEntities(ent.getLocation(), CHOP_WOOD_RADIUS,
+                CHOP_WOOD_RADIUS, CHOP_WOOD_RADIUS)) {
+            if (e instanceof Item item && item.getItemStack().getType() == Material.OAK_LOG) {
+                inv.addItem(item.getItemStack());
+                item.remove();
+                System.out.println("🪵 Picked up a log! Total log count is " + getNumLogs());
+            }
+        }
+        return true;
+    }
+
+    public boolean buildHouse() {
+        if (!npc.isSpawned() || npc.getEntity() == null) {
+            return false;
+        }
+
+        Entity ent = npc.getEntity();
+        Location base = ent.getLocation().clone().add(2, 0, 0);
+        World world = base.getWorld();
+
+        // Floor
+        for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
+            for (int z = 0; z < HOUSE_SIZE_IN_BLOCKS; z++) {
+                world.getBlockAt(base.clone().add(x, 0, z)).setType(Material.OAK_PLANKS);
+            }
+        }
+
+        // Walls + roof
+        for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
+            for (int y = 1; y < HOUSE_SIZE_IN_BLOCKS - 1; y++) {
+                for (int z = 0; z < HOUSE_SIZE_IN_BLOCKS; z++) {
+                    boolean wall = (x == 0 || x == HOUSE_SIZE_IN_BLOCKS - 1 || z == 0 || z == HOUSE_SIZE_IN_BLOCKS - 1);
+                    if (wall) {
+                        world.getBlockAt(base.clone().add(x, y, z)).setType(Material.OAK_PLANKS);
+                    } else {
+                        // Clear inside space
+                        world.getBlockAt(base.clone().add(x, y, z)).setType(Material.AIR);
+                    }
+                }
+            }
+        }
+
+        // Roof
+        for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
+            for (int z = 0; z < HOUSE_SIZE_IN_BLOCKS; z++) {
+                world.getBlockAt(base.clone().add(x, HOUSE_SIZE_IN_BLOCKS - 1, z)).setType(Material.OAK_PLANKS);
+            }
+        }
+
+        // Door (2 blocks high)
+        Location doorBase = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 0);
+        Door door = (Door) Bukkit.createBlockData(Material.OAK_DOOR);
+        door.setHalf(Door.Half.BOTTOM); door.setFacing(BlockFace.SOUTH);
+        door.setOpen(false);
+        doorBase.getBlock().setBlockData(door);
+        Door doorTop = (Door) Bukkit.createBlockData(Material.OAK_DOOR);
+        doorTop.setHalf(Door.Half.TOP); doorTop.setFacing(BlockFace.SOUTH);
+        doorTop.setOpen(false);
+        doorBase.getBlock().getRelative(BlockFace.UP).setBlockData(doorTop);
+
+        // Torch inside
+        world.getBlockAt(base.clone().add(1, HOUSE_SIZE_IN_BLOCKS / 2, 1)).setType(Material.TORCH);
+
+        inv.removeItem(new ItemStack(Material.OAK_LOG, WOOD_NEEDED_FOR_HOUSE));
+        this.hasHouse = true;
+
+        // Move to a solid block *inside*
+        Location inside = base.clone().add(1, 1, 1);
+        npc.teleport(inside, PlayerTeleportEvent.TeleportCause.PLUGIN);
+
+        return true;
+    }
+
+    private int getNumLogs() {
+        return inv.all(Material.OAK_LOG).values().stream().mapToInt(ItemStack::getAmount).sum();
+    }
+
+    private Block findNearbyTree(int radius) {
+        Location loc = npc.getEntity().getLocation();
+        Block log = null;
+        double bestDist = Double.MAX_VALUE;
+        for (int x = -radius; x <= radius; x++) {
+            for (int y = -2; y <= 10; y++) { // check ground level ± some
+                for (int z = -radius; z <= radius; z++) {
+                    Block b = loc.clone().add(x, y, z).getBlock();
+                    Material mat = b.getType();
+                    if (mat == Material.OAK_LOG && npc.getNavigator().canNavigateTo(b.getLocation().add(1, 0, 0))) {
+                        double dist = b.getLocation().distanceSquared(loc);
+                        if (dist < bestDist) {
+                            bestDist = dist;
+                            log = b;
+                        }
+                    }
+                }
+            }
+        }
+        return log;
+    }
+
+    private void goToLocation(Location destination){
+
+        Location safeDest = destination.clone().add(1, 0, 0);
+        // Try to acquire the lock (non-blocking)
+        if (!locationSemaphore.tryAcquire()) {
+            System.out.println("Already on a trip!");
+            return;
+        }
+
+        plugin.getServer().getPluginManager().registerEvents(new Listener() {
+            @EventHandler
+            public void onComplete(NavigationCompleteEvent e) {
+                if (e.getNPC().equals(npc)) {
+                    locationSemaphore.release();
+                    HandlerList.unregisterAll(this);
+                }
+            }
+
+            @EventHandler
+            public void onCancel(NavigationCancelEvent e) {
+                if (e.getNPC().equals(npc)) {
+                    System.out.println("NAVIGATION CANCELLED");
+                    locationSemaphore.release();
+                    HandlerList.unregisterAll(this);
+                }
+            }
+        }, plugin);
+
+        npc.getNavigator().setTarget(safeDest);
+
+        final double stopSq = REACHED_DESTINATION_THRESHOLD * REACHED_DESTINATION_THRESHOLD;
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (npc.getEntity().getLocation().distanceSquared(safeDest) <= stopSq) {
+                    System.out.println("Reached destination.");
+                    npc.getNavigator().cancelNavigation();
+                    this.cancel();
+                }
+            }
+        }.runTaskTimer(plugin, 1L, 5L);
     }
 }
