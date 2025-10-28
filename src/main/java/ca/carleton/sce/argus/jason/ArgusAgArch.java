@@ -43,7 +43,7 @@ public class ArgusAgArch extends AgArch {
     private boolean hasHouse;
 
     public static int WOOD_NEEDED_FOR_HOUSE = 30;
-    public static int CHOP_WOOD_RADIUS = 10;
+    public static int CHOP_WOOD_RADIUS = 5;
     public static int TREE_BROWSE_RADIUS = 100;
     public static int HOUSE_SIZE_IN_BLOCKS = 5;
     public static int INVENTORY_SIZE = 27;
@@ -70,7 +70,7 @@ public class ArgusAgArch extends AgArch {
                 0.2, 0.2, 0.1);
         result.add(Literal.parseLiteral("woodsChopped(" + getNumLogs() + ")"));
 
-        if (findNearbyTree(CHOP_WOOD_RADIUS) != null) {
+        if (findNearbyTree(CHOP_WOOD_RADIUS, true) != null) {
             result.add(Literal.parseLiteral("canSeeTree"));
         }
 
@@ -114,7 +114,7 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        Block log = findNearbyTree(TREE_BROWSE_RADIUS);
+        Block log = findNearbyTree(TREE_BROWSE_RADIUS, false);
         // Could not find wood!
         if (log == null) {
             return true;
@@ -132,14 +132,11 @@ public class ArgusAgArch extends AgArch {
 
         var ent = npc.getEntity();
 
-        Block log = findNearbyTree(CHOP_WOOD_RADIUS);
+        Block log = findNearbyTree(CHOP_WOOD_RADIUS, true);
         // Could not find wood!
         if (log == null) {
             return true;
         }
-
-        // Pathfind towards the player entity (will repath as they move)
-        goToLocation(log.getLocation());
 
         log.breakNaturally();
         for (Entity e : ent.getWorld().getNearbyEntities(ent.getLocation(), CHOP_WOOD_RADIUS,
@@ -203,13 +200,13 @@ public class ArgusAgArch extends AgArch {
         doorBase.getBlock().getRelative(BlockFace.UP).setBlockData(doorTop);
 
         // Torch inside
-        world.getBlockAt(base.clone().add(1, HOUSE_SIZE_IN_BLOCKS / 2, 1)).setType(Material.TORCH);
+        world.getBlockAt(base.clone().add(1, HOUSE_SIZE_IN_BLOCKS - 2, 1)).setType(Material.TORCH);
 
         inv.removeItem(new ItemStack(Material.OAK_LOG, WOOD_NEEDED_FOR_HOUSE));
         this.hasHouse = true;
 
         // Move to a solid block *inside*
-        Location inside = base.clone().add(1, 1, 1);
+        Location inside = base.clone().add(2, 1, 2);
         npc.teleport(inside, PlayerTeleportEvent.TeleportCause.PLUGIN);
 
         return true;
@@ -219,7 +216,7 @@ public class ArgusAgArch extends AgArch {
         return inv.all(Material.OAK_LOG).values().stream().mapToInt(ItemStack::getAmount).sum();
     }
 
-    private Block findNearbyTree(int radius) {
+    private Block findNearbyTree(int radius, boolean toBreak) {
         Location loc = npc.getEntity().getLocation();
         Block log = null;
         double bestDist = Double.MAX_VALUE;
@@ -228,11 +225,27 @@ public class ArgusAgArch extends AgArch {
                 for (int z = -radius; z <= radius; z++) {
                     Block b = loc.clone().add(x, y, z).getBlock();
                     Material mat = b.getType();
-                    if (mat == Material.OAK_LOG && npc.getNavigator().canNavigateTo(b.getLocation().add(1, 0, 0))) {
-                        double dist = b.getLocation().distanceSquared(loc);
+                    if (mat == Material.OAK_LOG) {
+                        Block reachableTreeBlock = null;
+                        if (toBreak) {
+                            reachableTreeBlock = b;
+                        } else {
+                            for (int browseX = -CHOP_WOOD_RADIUS/2; browseX < CHOP_WOOD_RADIUS/2; browseX++) {
+                                for (int browseZ = -CHOP_WOOD_RADIUS/2; browseZ < CHOP_WOOD_RADIUS/2; browseZ++) {
+                                    if (npc.getNavigator().canNavigateTo(loc.clone().add(x + browseX, y, z + browseZ))) {
+                                        reachableTreeBlock = loc.clone().add(x + browseX, y, z + browseZ).getBlock();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (reachableTreeBlock == null){
+                            continue;
+                        }
+                        double dist = reachableTreeBlock.getLocation().distanceSquared(loc);
                         if (dist < bestDist) {
                             bestDist = dist;
-                            log = b;
+                            log = reachableTreeBlock;
                         }
                     }
                 }
@@ -242,14 +255,21 @@ public class ArgusAgArch extends AgArch {
     }
 
     private void goToLocation(Location destination){
-
-        Location safeDest = destination.clone().add(1, 0, 0);
         // Try to acquire the lock (non-blocking)
         if (!locationSemaphore.tryAcquire()) {
-            System.out.println("Already on a trip!");
-            return;
-        }
+            if (npc.getNavigator().getTargetAsLocation().distance(destination) <= CHOP_WOOD_RADIUS*CHOP_WOOD_RADIUS) {
+                System.out.println("Already navigating to this location!");
+                return;
+            } else {
+                System.out.println("Already on a trip! Cancelling this one");
+                npc.getNavigator().cancelNavigation();
 
+                if (!locationSemaphore.tryAcquire()) {
+                    System.out.println("STILL CANT GET A TRIP");
+                    return;
+                }
+            }
+        }
         plugin.getServer().getPluginManager().registerEvents(new Listener() {
             @EventHandler
             public void onComplete(NavigationCompleteEvent e) {
@@ -269,13 +289,13 @@ public class ArgusAgArch extends AgArch {
             }
         }, plugin);
 
-        npc.getNavigator().setTarget(safeDest);
+        npc.getNavigator().setTarget(destination);
 
         final double stopSq = REACHED_DESTINATION_THRESHOLD * REACHED_DESTINATION_THRESHOLD;
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (npc.getEntity().getLocation().distanceSquared(safeDest) <= stopSq) {
+                if (npc.getEntity().getLocation().distanceSquared(destination) <= stopSq) {
                     System.out.println("Reached destination.");
                     npc.getNavigator().cancelNavigation();
                     this.cancel();
