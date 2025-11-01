@@ -1,9 +1,6 @@
 buildHouseWoodRequirement(30).
 
-!start.
-
-+!start <-
-  !loop.
+!loop.
 
 hasEnoughWood :-
     woodsChopped(Woods) &
@@ -14,6 +11,11 @@ hasEnoughWood :-
     say("I HAVE A HOUSE!!");
     .my_name(AgName);
     .broadcast(tell, hasHouse(AgName));
+    !loop.
+
++!loop: nearbyZombies(NumZombies) <-
+    say("Fighting Zombies");
+    attack_zombies;
     !loop.
 
 +!loop: hasEnoughWood <-
@@ -30,3 +32,5 @@ hasEnoughWood :-
     say("Looking for trees..");
     find_tree;
     !loop.
+
+-!loop <- !loop.
