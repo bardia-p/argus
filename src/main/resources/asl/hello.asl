@@ -31,6 +31,7 @@ hasEnoughWood :-
 +!loop <-
     say("Looking for trees..");
     find_tree;
+    .wait({+canSeeTree}, 2000, EventTime);
     !loop.
 
 -!loop <- !loop.

@@ -36,6 +36,10 @@ tasks {
             delete("run/world","run/world_nether", "run/world_the_end",
                     "run/plugins/Citizens/saves.yml")
         }
+        jvmArgs(
+                "-Xms2G",    // Minimum RAM
+                "-Xmx4G"     // Maximum RAM
+        )
         // Configure the Minecraft version for our task.
         // This is the only required configuration besides applying the plugin.
         // Your plugin's jar (or shadowJar if present) will be used automatically.

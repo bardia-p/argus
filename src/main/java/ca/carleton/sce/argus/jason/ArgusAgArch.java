@@ -17,46 +17,43 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 import java.util.Random;
 
 public class ArgusAgArch extends AgArch {
     private final Argus plugin;
     private final NPC npc;
     private final Inventory inv;
-    private final Semaphore locationSemaphore;
+    private BukkitRunnable navigationTask;
+    private boolean navigationListenersRegistered = false;
 
     private boolean hasHouse;
 
     public static int WOOD_NEEDED_FOR_HOUSE = 30;
-    public static int NAVIGATION_ERROR = 5;
-    public static int CHOP_WOOD_RADIUS = 10;
+    public static int NAVIGATION_ERROR = 2;
+    public static int CHOP_WOOD_RADIUS = 5;
     public static int ZOMBIE_KILL_RADIUS = 2;
-    public static int TREE_BROWSE_RADIUS = 100;
+    public static int TREE_BROWSE_RADIUS = 25;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
     public static int INVENTORY_SIZE = 27;
-    public static int ACTION_DELAY = 250;
+    public static int HOUSE_DISTANCE_OFFSET = 25;
 
     public ArgusAgArch(Argus plugin, NPC npc) {
         this.plugin = plugin;
         this.npc = npc;
-        this.locationSemaphore = new Semaphore(1);
         this.inv = Bukkit.createInventory(null, INVENTORY_SIZE, this.getAgName() + " Inventory");
         this.hasHouse = false;
+        this.navigationListenersRegistered = false;
+        this.navigationTask = null;
     }
 
     @Override
@@ -110,7 +107,7 @@ public class ArgusAgArch extends AgArch {
 
     public void shutdown() {
         // Any cleanup if necessary
-        System.out.println("I DIED");
+        System.out.println(getAgName() + " DIED");
     }
 
     public boolean say(String message) {
@@ -148,26 +145,8 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                log.breakNaturally();
-                for (Entity e : ent.getWorld().getNearbyEntities(ent.getLocation(), CHOP_WOOD_RADIUS,
-                        CHOP_WOOD_RADIUS, CHOP_WOOD_RADIUS)) {
-                    if (e instanceof Item item && item.getItemStack().getType() == Material.OAK_LOG) {
-                        inv.addItem(item.getItemStack());
-                        item.remove();
-                        System.out.println("🪵 Picked up a log! Total log count is " + getNumLogs());
-                    }
-                }
-
-                try {
-                    Thread.sleep(ACTION_DELAY);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }.runTask(plugin);
+        log.breakNaturally();
+        inv.addItem(new ItemStack(Material.OAK_LOG, 1));
 
         return true;
     }
@@ -183,7 +162,12 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        Location base = ent.getLocation();
+        cancelNavigation();
+
+        int x_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET/2 * (new Random().nextBoolean() ? 1 : -1));
+        int z_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET/2 * (new Random().nextBoolean() ? 1 : -1));
+
+        Location base = ent.getLocation().clone().add(x_offset, 0, z_offset);
         World world = base.getWorld();
 
         // Walls + roof
@@ -244,20 +228,9 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
-                double damage = 1.0;
-                zombie.damage(damage, ent);
-
-                try {
-                    Thread.sleep(ACTION_DELAY);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }.runTask(plugin);
+        Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
+        double damage = 1.0;
+        zombie.damage(damage, ent);
 
         return true;
     }
@@ -272,10 +245,8 @@ public class ArgusAgArch extends AgArch {
             return null;
         }
         Location loc = ent.getLocation();
-        Block log = null;
-        double bestDist = Double.MAX_VALUE;
         for (int x = -radius; x <= radius; x++) {
-            for (int y = -2; y <= 10; y++) { // check ground level ± some
+            for (int y = 0; y <= 10; y++) { // check ground level ± some
                 for (int z = -radius; z <= radius; z++) {
                     Block b = loc.clone().add(x, y, z).getBlock();
                     Material mat = b.getType();
@@ -287,25 +258,20 @@ public class ArgusAgArch extends AgArch {
                             for (int browseX = -CHOP_WOOD_RADIUS/2; browseX < CHOP_WOOD_RADIUS/2; browseX++) {
                                 for (int browseZ = -CHOP_WOOD_RADIUS/2; browseZ < CHOP_WOOD_RADIUS/2; browseZ++) {
                                     if (npc.getNavigator().canNavigateTo(loc.clone().add(x + browseX, y, z + browseZ))) {
-                                        reachableTreeBlock = loc.clone().add(x + browseX, y, z + browseZ).getBlock();
+                                        reachableTreeBlock = loc.clone().add(x + browseX, 0, z + browseZ).getBlock();
                                         break;
                                     }
                                 }
                             }
                         }
-                        if (reachableTreeBlock == null){
-                            continue;
-                        }
-                        double dist = reachableTreeBlock.getLocation().distanceSquared(loc);
-                        if (dist < bestDist) {
-                            bestDist = dist;
-                            log = reachableTreeBlock;
+                        if (reachableTreeBlock != null){
+                            return reachableTreeBlock;
                         }
                     }
                 }
             }
         }
-        return log;
+        return null;
     }
 
     private List<Zombie> findNearbyZombies(int radius) {
@@ -314,8 +280,7 @@ public class ArgusAgArch extends AgArch {
         if (!npc.isSpawned() || ent == null) {
             return zombies;
         }
-        for (Entity e : ent.getWorld().getNearbyEntities(ent.getLocation(), radius,
-                radius, radius)) {
+        for (Entity e : ent.getWorld().getNearbyEntities(ent.getLocation(), radius, radius, radius)) {
             if (e instanceof Zombie zombie) {
                 zombies.add(zombie);
             }
@@ -325,58 +290,68 @@ public class ArgusAgArch extends AgArch {
     }
 
     private void goToLocation(Location destination){
-        // Try to acquire the lock (non-blocking)
-        if (!locationSemaphore.tryAcquire()) {
-            if (npc.getNavigator().getTargetAsLocation().distance(destination) <= NAVIGATION_ERROR * NAVIGATION_ERROR) {
-                System.out.println("Already navigating to this location!");
-                return;
-            } else {
-                System.out.println("Replacing the current trip with a new one!");
-                npc.getNavigator().cancelNavigation();
-
-                if (!locationSemaphore.tryAcquire()) {
-                    System.out.println("STILL CANT GET A TRIP");
-                    return;
-                }
-            }
+        // If already heading roughly towards this location, ignore
+        Location currentTarget = npc.getNavigator().getTargetAsLocation();
+        if (currentTarget != null &&
+                currentTarget.distanceSquared(destination) <= NAVIGATION_ERROR * NAVIGATION_ERROR) {
+            System.out.println(getAgName() + " is already on this trip!");
+            return;
         }
-        plugin.getServer().getPluginManager().registerEvents(new Listener() {
-            @EventHandler
-            public void onComplete(NavigationCompleteEvent e) {
-                if (e.getNPC().equals(npc)) {
-                    locationSemaphore.release();
-                    HandlerList.unregisterAll(this);
-                }
-            }
 
-            @EventHandler
-            public void onCancel(NavigationCancelEvent e) {
-                if (e.getNPC().equals(npc)) {
-                    System.out.println("NAVIGATION CANCELLED");
-                    locationSemaphore.release();
-                    HandlerList.unregisterAll(this);
-                }
-            }
-        }, plugin);
-
+        // Set new navigation target
         npc.getNavigator().setTarget(destination);
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Entity ent = npc.getEntity();
-                // Agent has died
-                if (!npc.isSpawned() || ent == null) {
-                    cancel();
-                    return;
+        // Register listeners once per NPC
+        if (!navigationListenersRegistered) {
+            navigationListenersRegistered = true;
+            plugin.getServer().getPluginManager().registerEvents(new Listener() {
+                @EventHandler
+                public void onComplete(NavigationCompleteEvent e) {
+                    if (e.getNPC().equals(npc)) {
+                        System.out.println(getAgName() + " finished their trip!");
+                    }
                 }
-                if (ent.getLocation().equals(destination)) {
-                    System.out.println("Reached destination.");
-                    npc.getNavigator().cancelNavigation();
-                    this.cancel();
+
+                @EventHandler
+                public void onCancel(NavigationCancelEvent e) {
+                    if (e.getNPC().equals(npc)) {
+                        System.out.println(getAgName() + " cancelled their trip!");
+                    }
                 }
-            }
-        }.runTaskTimer(plugin, 1L, 5L);
+            }, plugin);
+        }
+
+        // Start only ONE repeating task
+        if (navigationTask == null || navigationTask.isCancelled()) {
+            navigationTask = new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!npc.isSpawned() || npc.getEntity() == null) {
+                        cancel();
+                        return;
+                    }
+
+                    if (!npc.getNavigator().isNavigating()) {
+                        cancel();
+                        return;
+                    }
+
+                    if (npc.getEntity().getLocation().distanceSquared(
+                            npc.getNavigator().getTargetAsLocation()) <= NAVIGATION_ERROR * NAVIGATION_ERROR) {
+                        npc.getNavigator().cancelNavigation();
+                        cancel();
+                    }
+                }
+            };
+            navigationTask.runTaskTimer(plugin, 0L, 20L);
+        }
+    }
+
+    private void cancelNavigation() {
+        npc.getNavigator().cancelNavigation();
+        if (navigationTask != null) {
+            navigationTask.cancel();
+        }
     }
 
     private void resetZombieTargets(){
