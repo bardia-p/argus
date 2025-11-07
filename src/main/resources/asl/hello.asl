@@ -1,7 +1,12 @@
 buildHouseWoodRequirement(30).
 treeSearchTimeout(1000).
+zombieDefenceLimit(1).
 
 !loop.
+
+canSurviveZombies(NumZombies) :-
+    zombieDefenceLimit(ZOMBIE_DEFENCE_LIMIT) &
+    NumZombies <= ZOMBIE_DEFENCE_LIMIT.
 
 hasEnoughWood :-
     woodsChopped(Woods) &
@@ -19,7 +24,17 @@ hasEnoughWood :-
     enter_house;
     !loop.
 
++!loop: nearbyZombies(NumZombies) & canSurviveZombies(NumZombies) <-
+    say("Fighting zombies!!!");
+    attack_zombies;
+    !loop.
+
 +!loop: nearbyZombies(NumZombies) <-
+    say("Escaping zombies...");
+    escape_zombies;
+    !loop.
+
++!loop: canSurviveZombies <-
     say("Fighting Zombies");
     attack_zombies;
     !loop.

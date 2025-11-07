@@ -44,6 +44,7 @@ public class ArgusAgArch extends AgArch {
     public static int CHOP_WOOD_RADIUS = 5;
     public static int ZOMBIE_KILL_RADIUS = 2;
     public static int TREE_BROWSE_RADIUS = 25;
+    public static int ZOMBIE_ESCAPE_RADIUS = 5;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
     public static int INVENTORY_SIZE = 27;
     public static int HOUSE_DISTANCE_OFFSET = 10;
@@ -104,6 +105,7 @@ public class ArgusAgArch extends AgArch {
             }
             case "find_tree" -> action.setResult(findTree());
             case "chop_wood" -> action.setResult(chopWood());
+            case "escape_zombies" -> action.setResult(escapeZombies());
             case "attack_zombies" -> action.setResult(attackZombies());
             case "build_house" -> action.setResult(buildHouse());
             case "enter_house" -> action.setResult(enterHouse());
@@ -159,6 +161,28 @@ public class ArgusAgArch extends AgArch {
         return true;
     }
 
+    public boolean escapeZombies() {
+        Entity ent = npc.getEntity();
+        if (!npc.isSpawned() || ent == null) {
+            return false;
+        }
+        List<Zombie> zombies = findNearbyZombies(ZOMBIE_KILL_RADIUS);
+
+        if (zombies.size() == 0) {
+            return false;
+        }
+
+        int x_offset = getRandomLocationAtRadius(ZOMBIE_ESCAPE_RADIUS);
+        int z_offset = getRandomLocationAtRadius(ZOMBIE_ESCAPE_RADIUS);
+        Location escapeLoc = ent.getLocation().clone().add(x_offset, 0, z_offset);
+
+        if (ent.getWorld().getBlockAt(escapeLoc).getType() == Material.AIR)  {
+            npc.teleport(escapeLoc, PlayerTeleportEvent.TeleportCause.PLUGIN);
+            return true;
+        }
+
+        return false;
+    }
 
     public boolean attackZombies() {
         Entity ent = npc.getEntity();
@@ -196,8 +220,8 @@ public class ArgusAgArch extends AgArch {
         Location base = ent.getLocation().clone();
         while (findHouseLocation) {
             findHouseLocation = false;
-            int x_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET / 2 * (new Random().nextBoolean() ? 1 : -1));
-            int z_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET / 2 * (new Random().nextBoolean() ? 1 : -1));
+            int x_offset = getRandomLocationAtRadius(HOUSE_DISTANCE_OFFSET);
+            int z_offset = getRandomLocationAtRadius(HOUSE_DISTANCE_OFFSET);
             base = ent.getLocation().clone().add(x_offset, 0, z_offset);
 
             // If there is entity within the house, find a new location
@@ -418,5 +442,9 @@ public class ArgusAgArch extends AgArch {
                 }
             }
         }
+    }
+
+    private int getRandomLocationAtRadius(double radius) {
+        return (int) Math.round((Math.random() + 1) * radius / 2 * (new Random().nextBoolean() ? 1 : -1));
     }
 }
