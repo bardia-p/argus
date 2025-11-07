@@ -34,9 +34,10 @@ public class ArgusAgArch extends AgArch {
     private final NPC npc;
     private final Inventory inv;
     private BukkitRunnable navigationTask;
-    private boolean navigationListenersRegistered = false;
+    private boolean navigationListenersRegistered;
 
-    private boolean hasHouse;
+    private List<Location> houses;
+    private boolean inHouse;
 
     public static int WOOD_NEEDED_FOR_HOUSE = 30;
     public static int NAVIGATION_ERROR = 2;
@@ -45,15 +46,16 @@ public class ArgusAgArch extends AgArch {
     public static int TREE_BROWSE_RADIUS = 25;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
     public static int INVENTORY_SIZE = 27;
-    public static int HOUSE_DISTANCE_OFFSET = 25;
+    public static int HOUSE_DISTANCE_OFFSET = 10;
 
     public ArgusAgArch(Argus plugin, NPC npc) {
         this.plugin = plugin;
         this.npc = npc;
         this.inv = Bukkit.createInventory(null, INVENTORY_SIZE, this.getAgName() + " Inventory");
-        this.hasHouse = false;
         this.navigationListenersRegistered = false;
         this.navigationTask = null;
+        this.houses = new ArrayList<>();
+        this.inHouse = false;
     }
 
     @Override
@@ -78,9 +80,14 @@ public class ArgusAgArch extends AgArch {
             result.add(Literal.parseLiteral("nearbyZombies(" + zombies.size() + ")"));
         }
 
-        if (hasHouse) {
+        if (houses.size() > 0) {
             result.add(Literal.parseLiteral("hasHouse"));
         }
+
+        if (this.inHouse) {
+            result.add(Literal.parseLiteral("inHouse"));
+        }
+
         return result;
     }
 
@@ -97,8 +104,9 @@ public class ArgusAgArch extends AgArch {
             }
             case "find_tree" -> action.setResult(findTree());
             case "chop_wood" -> action.setResult(chopWood());
-            case "build_house" -> action.setResult(buildHouse());
             case "attack_zombies" -> action.setResult(attackZombies());
+            case "build_house" -> action.setResult(buildHouse());
+            case "enter_house" -> action.setResult(enterHouse());
             default -> System.out.println("Unknown action: " + actionName);
         }
         actionExecuted(action);
@@ -151,6 +159,25 @@ public class ArgusAgArch extends AgArch {
         return true;
     }
 
+
+    public boolean attackZombies() {
+        Entity ent = npc.getEntity();
+        if (!npc.isSpawned() || ent == null) {
+            return false;
+        }
+        List<Zombie> zombies = findNearbyZombies(ZOMBIE_KILL_RADIUS);
+
+        if (zombies.size() == 0) {
+            return false;
+        }
+
+        Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
+        double damage = 1.0;
+        zombie.damage(damage, ent);
+
+        return true;
+    }
+
     public boolean buildHouse() {
         Entity ent = npc.getEntity();
         if (!npc.isSpawned() || ent == null) {
@@ -158,16 +185,33 @@ public class ArgusAgArch extends AgArch {
         }
 
         if (getNumLogs() < WOOD_NEEDED_FOR_HOUSE) {
-            System.out.println("NOT ENOUGH WOOD TO BUILD A HOUSE!");
+            System.out.println(getAgName() + " DOES NOT HAVE ENOUGH WOOD TO BUILD A HOUSE!");
             return false;
         }
 
         cancelNavigation();
 
-        int x_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET/2 * (new Random().nextBoolean() ? 1 : -1));
-        int z_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET/2 * (new Random().nextBoolean() ? 1 : -1));
+        // Find a safe house location
+        boolean findHouseLocation = true;
+        Location base = ent.getLocation().clone();
+        while (findHouseLocation) {
+            findHouseLocation = false;
+            int x_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET / 2 * (new Random().nextBoolean() ? 1 : -1));
+            int z_offset = (int) Math.round((Math.random() + 1) * HOUSE_DISTANCE_OFFSET / 2 * (new Random().nextBoolean() ? 1 : -1));
+            base = ent.getLocation().clone().add(x_offset, 0, z_offset);
 
-        Location base = ent.getLocation().clone().add(x_offset, 0, z_offset);
+            // If there is entity within the house, find a new location
+            for (Entity e : ent.getWorld().getEntities()) {
+                if (e instanceof Zombie || (e instanceof NPC n && !n.equals(npc))) {
+                    if (e.getLocation().getX() >= base.getX() && e.getLocation().getX() <= base.getX() + HOUSE_SIZE_IN_BLOCKS
+                            && e.getLocation().getZ() >= base.getZ() && e.getLocation().getZ() <= base.getZ() + HOUSE_SIZE_IN_BLOCKS) {
+                        findHouseLocation = true;
+                        break;
+                    }
+                }
+            }
+        }
+
         World world = base.getWorld();
 
         // Walls + roof
@@ -207,32 +251,42 @@ public class ArgusAgArch extends AgArch {
         world.getBlockAt(base.clone().add(1, HOUSE_SIZE_IN_BLOCKS - 2, 1)).setType(Material.TORCH);
 
         inv.removeItem(new ItemStack(Material.OAK_LOG, WOOD_NEEDED_FOR_HOUSE));
-        this.hasHouse = true;
 
-        // Move to a solid block *inside*
+        // Store the house location
         Location inside = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 1);
-        npc.teleport(inside, PlayerTeleportEvent.TeleportCause.PLUGIN);
-        resetZombieTargets();
+        houses.add(inside);
 
         return true;
     }
 
-    public boolean attackZombies() {
+    public boolean enterHouse() {
         Entity ent = npc.getEntity();
         if (!npc.isSpawned() || ent == null) {
             return false;
         }
-        List<Zombie> zombies = findNearbyZombies(ZOMBIE_KILL_RADIUS);
 
-        if (zombies.size() == 0) {
+        if (houses.size() == 0) {
+            System.out.println(getAgName() + " DOES NOT HAVE A HOUSE!");
             return false;
         }
 
-        Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
-        double damage = 1.0;
-        zombie.damage(damage, ent);
+        cancelNavigation();
 
-        return true;
+        for (Location houseLoc: houses) {
+            for (double x = -HOUSE_SIZE_IN_BLOCKS/2 + 1; x < HOUSE_SIZE_IN_BLOCKS/2; x++) {
+                for (double z = 0; z < HOUSE_SIZE_IN_BLOCKS - 1; z++) {
+                    Location inside = houseLoc.clone().add(x, 0, z);
+                    if (ent.getWorld().getBlockAt(inside).getType() == Material.AIR) {
+                        npc.teleport(inside, PlayerTeleportEvent.TeleportCause.PLUGIN);
+                        resetZombieTargets();
+                        this.inHouse = true;
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     private int getNumLogs() {

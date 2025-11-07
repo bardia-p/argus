@@ -1,4 +1,5 @@
 buildHouseWoodRequirement(30).
+treeSearchTimeout(1000).
 
 !loop.
 
@@ -7,10 +8,15 @@ hasEnoughWood :-
     buildHouseWoodRequirement(HOUSE_WOOD_REQUIREMENT) &
     Woods >= HOUSE_WOOD_REQUIREMENT.
 
-+!loop: hasHouse <-
-    say("I HAVE A HOUSE!!");
++!loop: inHouse <-
+    say("I AM HIDING IN MY HOUSE!");
     .my_name(AgName);
     .broadcast(tell, hasHouse(AgName));
+    !loop.
+
++!loop: hasHouse <-
+    say("Entering my house..");
+    enter_house;
     !loop.
 
 +!loop: nearbyZombies(NumZombies) <-
@@ -28,10 +34,10 @@ hasEnoughWood :-
     chop_wood;
     !loop.
 
-+!loop <-
++!loop: treeSearchTimeout(TREE_SEARCH_TIMEOUT) <-
     say("Looking for trees..");
     find_tree;
-    .wait({+canSeeTree}, 2000, EventTime);
+    .wait({+canSeeTree}, TREE_SEARCH_TIMEOUT, EventTime);
     !loop.
 
 -!loop <- !loop.
