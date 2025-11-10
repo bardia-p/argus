@@ -1,4 +1,9 @@
 @server_name = 'Argus';
+@player_name = 'bardibloo'; # change this based on your username
+@mapSizeMin = -25;
+@mapSizeMax = 25;
+@mapSizeStep = 5;
+@numZombies = 10;
 
 # Echo server greeting
 console(
@@ -7,14 +12,7 @@ console(
 );
 
 # Event binding
-bind('player_join', null, null, @event, @server_name,
-    @player_name = 'bardibloo';
-    @min = -25;
-    @max = 25;
-    @step = 5;
-    @numZombies = 5;
-    @zombieOffset = 0;
-
+bind('player_join', null, null, @event, @server_name, @player_name, @mapSizeMin, @mapSizeMax, @mapSizeStep, @numZombies,
     # Game settings
     run('/time set night');
     run('/weather clear');
@@ -24,24 +22,24 @@ bind('player_join', null, null, @event, @server_name,
     run('/gamerule randomTickSpeed 25');
 
     # Plant saplings
-    for(@x = @min, @x <= @max, @x += 5,
-        for(@z = @min, @z <= @max, @z += 5,
+    for(@x = @mapSizeMin, @x <= @mapSizeMax, @x += @mapSizeStep,
+        for(@z = @mapSizeMin, @z <= @mapSizeMax, @z += @mapSizeStep,
             run('/setblock ~'.@x.' ~ ~'.@z.' minecraft:oak_sapling');
         )
     )
 
     # Spawn zombies
     for(@i = 0, @i < @numZombies, @i += 1,
-       @countX = ((@max - @min) / @step) + @zombieOffset;
-       @countZ = ((@max - @min) / @step) + @zombieOffset;
+       @countX = ((@mapSizeMax - @mapSizeMin) / @mapSizeStep);
+       @countZ = ((@mapSizeMax - @mapSizeMin) / @mapSizeStep);
 
        @randXIndex = rand(0, @countX - 1);
        @randZIndex = rand(0, @countZ - 1);
 
-       @rx = @min + (@randXIndex * @step);
-       @rz = @min + (@randZIndex * @step);
+       @rx = @mapSizeMin + (@randXIndex * @mapSizeStep);
+       @rz = @mapSizeMin + (@randZIndex * @mapSizeStep);
 
-       run('/summon zombie ~'.@rx.' ~ ~'.@rz.' {NoAI:0b,PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:40},{Name:"generic.movement_speed",Base:0.3}],CanPickUpLoot:0b,Silent:1b}');
+       run('/summon zombie ~'.@rx.' ~ ~'.@rz.' {NoAI:0b,PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:100},{Name:"generic.movement_speed",Base:0.5}],CanPickUpLoot:0b,Silent:1b}');
     )
     run('/tp '.@player_name.' ~ ~5 ~ 0 90');
 

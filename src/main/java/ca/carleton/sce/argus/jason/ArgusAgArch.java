@@ -12,17 +12,21 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -35,7 +39,6 @@ public class ArgusAgArch extends AgArch {
     private final Inventory inv;
     private BukkitRunnable navigationTask;
     private boolean navigationListenersRegistered;
-
     private List<Location> houses;
     private boolean inHouse;
 
@@ -44,10 +47,11 @@ public class ArgusAgArch extends AgArch {
     public static int CHOP_WOOD_RADIUS = 5;
     public static int ZOMBIE_KILL_RADIUS = 2;
     public static int TREE_BROWSE_RADIUS = 25;
-    public static int ZOMBIE_ESCAPE_RADIUS = 5;
+    public static int ZOMBIE_ESCAPE_RADIUS = 2;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
     public static int INVENTORY_SIZE = 27;
     public static int HOUSE_DISTANCE_OFFSET = 10;
+    public static double HEALTH_REVIVE_AMOUNT_PER_TICK = 0.01;
 
     public ArgusAgArch(Argus plugin, NPC npc) {
         this.plugin = plugin;
@@ -57,6 +61,26 @@ public class ArgusAgArch extends AgArch {
         this.navigationTask = null;
         this.houses = new ArrayList<>();
         this.inHouse = false;
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!npc.isSpawned() || npc.getEntity() == null) {
+                    cancel();
+                    return;
+                }
+
+                // If in house, increase the entity's health.
+                if (inHouse) {
+                    LivingEntity entity = (LivingEntity) npc.getEntity();
+                    double current = entity.getHealth();
+                    double max = entity.getAttribute(Attribute.MAX_HEALTH).getValue();
+
+                    double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_TICK * max, max);
+                    entity.setHealth(newHealth);
+                }
+            }
+        }.runTaskTimer(plugin, 0L, 1L);
     }
 
     @Override
@@ -89,13 +113,17 @@ public class ArgusAgArch extends AgArch {
             result.add(Literal.parseLiteral("inHouse"));
         }
 
+        LivingEntity livingEnt = (LivingEntity) ent;
+        double health = livingEnt.getHealth() / livingEnt.getAttribute(Attribute.MAX_HEALTH).getValue();
+        result.add(Literal.parseLiteral("health(" + health + ")"));
+
         return result;
     }
 
     @Override
     public void act(ActionExec action) {
         String actionName = action.getActionTerm().getFunctor();
-        System.out.println("NPC " + npc.getName() + " performing action: " + actionName);
+        //Bukkit.getLogger().info(npc.getName() + " performing action: " + actionName);
         switch (actionName) {
             case "say" -> {
                 if (action.getActionTerm().getArity() == 1) {
@@ -109,15 +137,16 @@ public class ArgusAgArch extends AgArch {
             case "attack_zombies" -> action.setResult(attackZombies());
             case "build_house" -> action.setResult(buildHouse());
             case "enter_house" -> action.setResult(enterHouse());
-            default -> System.out.println("Unknown action: " + actionName);
+            default -> Bukkit.getLogger().warning(npc.getName() + " has an unknown action: " + actionName);
         }
         actionExecuted(action);
     }
 
-
     public void shutdown() {
         // Any cleanup if necessary
-        System.out.println(getAgName() + " DIED");
+        if (npc.isSpawned() && npc.getEntity() != null) {
+            Bukkit.getLogger().info(getAgName() + " DIED!!");
+        }
     }
 
     public boolean say(String message) {
@@ -145,8 +174,6 @@ public class ArgusAgArch extends AgArch {
         if (!npc.isSpawned() || npc.getEntity() == null) {
             return false;
         }
-
-        var ent = npc.getEntity();
 
         Block log = findNearbyTree(CHOP_WOOD_RADIUS, true);
 
@@ -209,7 +236,7 @@ public class ArgusAgArch extends AgArch {
         }
 
         if (getNumLogs() < WOOD_NEEDED_FOR_HOUSE) {
-            System.out.println(getAgName() + " DOES NOT HAVE ENOUGH WOOD TO BUILD A HOUSE!");
+            Bukkit.getLogger().warning(getAgName() + " DOES NOT HAVE ENOUGH WOOD TO BUILD A HOUSE!");
             return false;
         }
 
@@ -223,12 +250,24 @@ public class ArgusAgArch extends AgArch {
             int x_offset = getRandomLocationAtRadius(HOUSE_DISTANCE_OFFSET);
             int z_offset = getRandomLocationAtRadius(HOUSE_DISTANCE_OFFSET);
             base = ent.getLocation().clone().add(x_offset, 0, z_offset);
+            World world = ent.getWorld();
 
             // If there is entity within the house, find a new location
-            for (Entity e : ent.getWorld().getEntities()) {
+            for (Entity e : world.getEntities()) {
                 if (e instanceof Zombie || (e instanceof NPC n && !n.equals(npc))) {
                     if (e.getLocation().getX() >= base.getX() && e.getLocation().getX() <= base.getX() + HOUSE_SIZE_IN_BLOCKS
                             && e.getLocation().getZ() >= base.getZ() && e.getLocation().getZ() <= base.getZ() + HOUSE_SIZE_IN_BLOCKS) {
+                        findHouseLocation = true;
+                        break;
+                    }
+                }
+            }
+
+            // Check if it conflicts with other houses.
+            for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
+                for (int z = 0; z < HOUSE_SIZE_IN_BLOCKS; z++) {
+                    Block block = world.getBlockAt(base.clone().add(x, 0, z));
+                    if (block.getType() == Material.OAK_PLANKS || block.getType() == Material.OAK_DOOR) {
                         findHouseLocation = true;
                         break;
                     }
@@ -238,7 +277,7 @@ public class ArgusAgArch extends AgArch {
 
         World world = base.getWorld();
 
-        // Walls + roof
+        // Adding the walls and clearing the inside
         for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
             for (int y = 0; y < HOUSE_SIZE_IN_BLOCKS - 1; y++) {
                 for (int z = 0; z < HOUSE_SIZE_IN_BLOCKS; z++) {
@@ -253,14 +292,14 @@ public class ArgusAgArch extends AgArch {
             }
         }
 
-        // Roof
+        // Adding the roof
         for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
             for (int z = 0; z < HOUSE_SIZE_IN_BLOCKS; z++) {
                 world.getBlockAt(base.clone().add(x, HOUSE_SIZE_IN_BLOCKS - 1, z)).setType(Material.OAK_PLANKS);
             }
         }
 
-        // Door (2 blocks high)
+        // Adding the door
         Location doorBase = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 0);
         Door door = (Door) Bukkit.createBlockData(Material.OAK_DOOR);
         door.setHalf(Door.Half.BOTTOM); door.setFacing(BlockFace.SOUTH);
@@ -271,12 +310,12 @@ public class ArgusAgArch extends AgArch {
         doorTop.setOpen(false);
         doorBase.getBlock().getRelative(BlockFace.UP).setBlockData(doorTop);
 
-        // Torch inside
+        // Putting a torch inside
         world.getBlockAt(base.clone().add(1, HOUSE_SIZE_IN_BLOCKS - 2, 1)).setType(Material.TORCH);
 
         inv.removeItem(new ItemStack(Material.OAK_LOG, WOOD_NEEDED_FOR_HOUSE));
 
-        // Store the house location
+        // Storing the house location
         Location inside = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 1);
         houses.add(inside);
 
@@ -290,7 +329,7 @@ public class ArgusAgArch extends AgArch {
         }
 
         if (houses.size() == 0) {
-            System.out.println(getAgName() + " DOES NOT HAVE A HOUSE!");
+            Bukkit.getLogger().warning(getAgName() + " DOES NOT HAVE A HOUSE!");
             return false;
         }
 
@@ -302,7 +341,15 @@ public class ArgusAgArch extends AgArch {
                     Location inside = houseLoc.clone().add(x, 0, z);
                     if (ent.getWorld().getBlockAt(inside).getType() == Material.AIR) {
                         npc.teleport(inside, PlayerTeleportEvent.TeleportCause.PLUGIN);
-                        resetZombieTargets();
+                        ((LivingEntity) ent).addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY,
+                                Integer.MAX_VALUE, 1, false, false));
+
+                        // Resetting any zombies that were following the NPC.
+                        for (Zombie zombie : npc.getEntity().getWorld().getEntitiesByClass(Zombie.class)) {
+                            zombie.setTarget(null);
+                            zombie.teleport(zombie.getLocation().add(0.01, 0, 0));
+                        }
+
                         this.inHouse = true;
                         return true;
                     }
@@ -372,7 +419,7 @@ public class ArgusAgArch extends AgArch {
         Location currentTarget = npc.getNavigator().getTargetAsLocation();
         if (currentTarget != null &&
                 currentTarget.distanceSquared(destination) <= NAVIGATION_ERROR * NAVIGATION_ERROR) {
-            System.out.println(getAgName() + " is already on this trip!");
+            //Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " is already on this trip!");
             return;
         }
 
@@ -386,14 +433,14 @@ public class ArgusAgArch extends AgArch {
                 @EventHandler
                 public void onComplete(NavigationCompleteEvent e) {
                     if (e.getNPC().equals(npc)) {
-                        System.out.println(getAgName() + " finished their trip!");
+                        //Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " finished their trip!");
                     }
                 }
 
                 @EventHandler
                 public void onCancel(NavigationCancelEvent e) {
                     if (e.getNPC().equals(npc)) {
-                        System.out.println(getAgName() + " cancelled their trip!");
+                        //Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " cancelled their trip!");
                     }
                 }
             }, plugin);
@@ -429,18 +476,6 @@ public class ArgusAgArch extends AgArch {
         npc.getNavigator().cancelNavigation();
         if (navigationTask != null) {
             navigationTask.cancel();
-        }
-    }
-
-    private void resetZombieTargets(){
-        for (Zombie zombie : npc.getEntity().getWorld().getEntitiesByClass(Zombie.class)) {
-            Entity target = zombie.getTarget();
-            if (target instanceof NPC) {
-                if (target.equals(this.npc)) {
-                    zombie.setTarget(null);
-                    zombie.teleport(zombie.getLocation().add(0.01, 0, 0));
-                }
-            }
         }
     }
 
