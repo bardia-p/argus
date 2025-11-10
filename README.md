@@ -46,6 +46,7 @@ cp config/CommandHelper/main.ms run/plugins/CommandHelper/main.ms
 gradle runServer
 ```
 (Argus should now show up as available in the list of servers)
+
 6. Join the server!
 
 ## Using Argus
@@ -55,3 +56,7 @@ To navigate the level use `WASD`. Use `space` for zooming out and `shift` for zo
 
 If you want to stop the game simply type `/stop` in the Minecraft chat window (you can launch the window by pressing `T`
 or `/`).
+
+## Notes
+The name Argus is a nod to the previous major AgentSpeak projects namely, Jason and Peleus. The name Argus  was chosen 
+since this environment allows BDI agents to build weapons and houses!
