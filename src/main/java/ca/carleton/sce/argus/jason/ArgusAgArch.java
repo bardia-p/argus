@@ -17,7 +17,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
@@ -34,24 +33,36 @@ import java.util.List;
 import java.util.Random;
 
 public class ArgusAgArch extends AgArch {
+    // Infrastructure properties
     private final Argus plugin;
     private final NPC npc;
-    private final Inventory inv;
     private BukkitRunnable navigationTask;
     private boolean navigationListenersRegistered;
+
+    // Agent properties
+    private final Inventory inv;
     private List<Location> houses;
     private boolean inHouse;
+    private int score;
 
+    // Constants
+    // House building
     public static int WOOD_NEEDED_FOR_HOUSE = 30;
-    public static int NAVIGATION_ERROR = 2;
-    public static int CHOP_WOOD_RADIUS = 5;
-    public static int ZOMBIE_KILL_RADIUS = 2;
-    public static int TREE_BROWSE_RADIUS = 25;
-    public static int ZOMBIE_ESCAPE_RADIUS = 2;
+    public static int HOUSE_DISTANCE_OFFSET = 20;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
+    // Wood chopping
     public static int INVENTORY_SIZE = 27;
-    public static int HOUSE_DISTANCE_OFFSET = 10;
+    public static int CHOP_WOOD_RADIUS = 5;
+    public static int TREE_BROWSE_RADIUS = 25;
+    // Navigation
+    public static int NAVIGATION_ERROR = 2;
+    // Zombies
+    public static int ZOMBIE_KILL_RADIUS = 4;
+    public static int ZOMBIE_ESCAPE_RADIUS = 3;
     public static double HEALTH_REVIVE_AMOUNT_PER_TICK = 0.01;
+    // Rewards
+    public static int HOUSE_BUILD_REWARD = 200;
+    public static int ZOMBIE_DAMAGE_REWARD = 10;
 
     public ArgusAgArch(Argus plugin, NPC npc) {
         this.plugin = plugin;
@@ -61,27 +72,39 @@ public class ArgusAgArch extends AgArch {
         this.navigationTask = null;
         this.houses = new ArrayList<>();
         this.inHouse = false;
+        this.score = 0;
 
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!npc.isSpawned() || npc.getEntity() == null) {
-                    cancel();
-                    return;
-                }
+            if (!npc.isSpawned() || npc.getEntity() == null) {
+                cancel();
+                return;
+            }
 
-                // If in house, increase the entity's health.
-                if (inHouse) {
-                    LivingEntity entity = (LivingEntity) npc.getEntity();
-                    double current = entity.getHealth();
-                    double max = entity.getAttribute(Attribute.MAX_HEALTH).getValue();
+            // If in house, increase the entity's health.
+            if (inHouse) {
+                LivingEntity entity = (LivingEntity) npc.getEntity();
+                double current = entity.getHealth();
+                double max = entity.getAttribute(Attribute.MAX_HEALTH).getValue();
 
-                    double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_TICK * max, max);
-                    entity.setHealth(newHealth);
-                }
+                double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_TICK * max, max);
+                entity.setHealth(newHealth);
+            }
             }
         }.runTaskTimer(plugin, 0L, 1L);
     }
+
+    public void shutdown() {
+        // Any cleanup if necessary
+        Bukkit.getLogger().info(getAgName() + " has stopped!!");
+    }
+
+    // Property functions
+
+    public int getScore()  { return score; }
+
+    // Jason functions
 
     @Override
     public String getAgName() {
@@ -142,12 +165,7 @@ public class ArgusAgArch extends AgArch {
         actionExecuted(action);
     }
 
-    public void shutdown() {
-        // Any cleanup if necessary
-        if (npc.isSpawned() && npc.getEntity() != null) {
-            Bukkit.getLogger().info(getAgName() + " DIED!!");
-        }
-    }
+    // Abilities
 
     public boolean say(String message) {
         plugin.getServer().broadcastMessage("<" + getAgName() + "> " + message);
@@ -225,6 +243,7 @@ public class ArgusAgArch extends AgArch {
         Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
         double damage = 1.0;
         zombie.damage(damage, ent);
+        this.score += ZOMBIE_DAMAGE_REWARD;
 
         return true;
     }
@@ -318,6 +337,7 @@ public class ArgusAgArch extends AgArch {
         // Storing the house location
         Location inside = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 1);
         houses.add(inside);
+        this.score += HOUSE_BUILD_REWARD;
 
         return true;
     }
@@ -359,6 +379,8 @@ public class ArgusAgArch extends AgArch {
 
         return false;
     }
+
+    // Helper functions
 
     private int getNumLogs() {
         return inv.all(Material.OAK_LOG).values().stream().mapToInt(ItemStack::getAmount).sum();

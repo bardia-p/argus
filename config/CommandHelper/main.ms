@@ -41,7 +41,7 @@ bind('player_join', null, null, @event, @server_name, @player_name, @mapSizeMin,
 
        run('/summon zombie ~'.@rx.' ~ ~'.@rz.' {NoAI:0b,PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:100},{Name:"generic.movement_speed",Base:0.5}],CanPickUpLoot:0b,Silent:1b}');
     )
-    run('/tp '.@player_name.' ~ ~5 ~ 0 90');
+    run('/tp '.@player_name.' ~ ~10 ~ 0 90');
 
     run('/spawnagent cass hello.asl');
     run('/spawnagent eric hello.asl');

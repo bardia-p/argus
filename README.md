@@ -47,14 +47,12 @@ gradle runServer
 ```
 (Argus should now show up as available in the list of servers)
 
-6. Join the server!
+5. Join the server!
 
 ## Using Argus
-The games will by default run for 3-minutes. You can see what agent is doing in the chat log and inside your terminal.
-
-To navigate the level use `WASD`. Use `space` for zooming out and `shift` for zooming in.
-
-If you want to stop the game simply type `/stop` in the Minecraft chat window (you can launch the window by pressing `T`
+- The games will by default run for 3-minutes. You can see what agent is doing in the chat log and inside your terminal.
+- To navigate the level use `WASD`. Use `space` to move the camera up and `shift` to move the camera down.
+- If you want to stop the game simply type `/stop` in the Minecraft chat window (you can launch the window by pressing `T`
 or `/`).
 
 ## Notes

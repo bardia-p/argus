@@ -6,7 +6,6 @@ import jason.asSemantics.Agent;
 import jason.asSemantics.TransitionSystem;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Bukkit;
-import org.bukkit.Particle;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -67,6 +66,14 @@ public class JasonService {
         if (handle != null) {
             handle.architecture().shutdown();
         }
+    }
+
+    public int getAgentScore(String agentName) {
+        RuntimeHandle handle = runtimes.get(agentName);
+        if (handle != null) {
+            return handle.architecture().getScore();
+        }
+        return -1;
     }
 
     public record RuntimeHandle(String name, Agent agent,

@@ -33,8 +33,7 @@ tasks {
     runServer {
         doFirst {
             // Delete the cache
-            delete("run/world","run/world_nether", "run/world_the_end",
-                    "run/plugins/Citizens/saves.yml")
+            delete("run/world","run/world_nether", "run/world_the_end", "run/plugins/Citizens/saves.yml")
         }
         jvmArgs(
                 "-Xms2G",    // Minimum RAM
