@@ -33,7 +33,13 @@ public final class Argus extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Loading Argus...");
+        getLogger().info("\n\n" +
+                " █████╗ ██████╗  ██████╗ ██╗   ██╗███████╗██╗██╗\n" +
+                "██╔══██╗██╔══██╗██╔════╝ ██║   ██║██╔════╝██║██║\n" +
+                "███████║██████╔╝██║  ███╗██║   ██║███████╗██║██║\n" +
+                "██╔══██║██╔══██╗██║   ██║██║   ██║╚════██║╚═╝╚═╝\n" +
+                "██║  ██║██║  ██║╚██████╔╝╚██████╔╝███████║██╗██╗\n" +
+                "╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝╚═╝\n");
         this.jasonService = new JasonService(this);
 
         CitizensAPI.getTraitFactory().registerTrait(TraitInfo.create(JasonAgentTrait.class));
@@ -71,7 +77,7 @@ public final class Argus extends JavaPlugin {
         getLogger().info("JasonAgents enabled.");
 
         Bukkit.getScheduler().runTaskLater(this, () -> {
-            Bukkit.getLogger().info("The game has  ended!");
+            Bukkit.getLogger().info("The game has ended!");
             stopAllNPCS();
             Bukkit.shutdown();
         }, GAME_DURATION_IN_TICKS);

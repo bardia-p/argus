@@ -1,4 +1,9 @@
 # Argus
+
+<p align="center">
+    <img src="images/argus.png" alt="argus" width="200">
+</p>
+
 Argus is a custom Minecraft mod for BDI agents to interact with each other in a multi-agent environment. In this 
 environment, the agents act as NPCs with the goal of surviving the zombie attack and collecting as many points as 
 possible. The agents can work together to fight the zombies and/or build houses to hide from them. 
