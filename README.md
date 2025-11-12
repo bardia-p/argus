@@ -1,7 +1,7 @@
 # Argus
 
 <p align="center">
-    <img src="images/argus.png" alt="argus" width="200">
+    <img src="images/argus.png" alt="argus" width="400">
 </p>
 
 Argus is a custom Minecraft mod for BDI agents to interact with each other in a multi-agent environment. In this 
