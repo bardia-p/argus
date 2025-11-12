@@ -34,6 +34,10 @@ public class JasonAgentTrait extends Trait {
         }
     }
 
+    public String getAgentName() { return  agentName; }
+
+    public String getAslFile() { return  aslFile; }
+
     public int getAgentScore() {
         if (jason != null && agentName != null) {
             return jason.getAgentScore(agentName);

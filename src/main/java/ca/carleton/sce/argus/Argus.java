@@ -2,6 +2,7 @@ package ca.carleton.sce.argus;
 
 import ca.carleton.sce.argus.cmd.SpawnAgentCommand;
 import ca.carleton.sce.argus.jason.JasonService;
+import ca.carleton.sce.argus.trait.AgentData;
 import ca.carleton.sce.argus.trait.JasonAgentTrait;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
@@ -23,8 +24,8 @@ import java.util.*;
 
 public final class Argus extends JavaPlugin {
     private JasonService jasonService;
-    private Map<String, Integer> deadAgents;
-    private Map<String, Integer> liveAgents;
+    private Map<String, AgentData> deadAgents;
+    private Map<String, AgentData> liveAgents;
     private UUID worldId;
 
     public static long GAME_DURATION_IN_TICKS = 20L * 60 * 3; // 3 minutes
@@ -86,13 +87,13 @@ public final class Argus extends JavaPlugin {
         // Assign the end of game rewards
         if (liveAgents.size() > 0) {
             int endReward = TOTAL_GAME_REWARD / liveAgents.size();
-            liveAgents.forEach((name, score) -> liveAgents.put(name, score + endReward));
+            liveAgents.forEach((name, data) -> data.score += endReward);
         }
 
         StringBuilder msg = new StringBuilder("\n=========================").append("\nSURVIVORS:\n\n");
-        liveAgents.forEach((name, score) -> msg.append(name).append(": ").append(score).append("\n"));
+        liveAgents.forEach((name, data) -> msg.append(name).append(": ").append(data.toString()).append("\n"));
         msg.append("--------------------").append("\nDECEASED:\n\n");
-        deadAgents.forEach((name, score) -> msg.append(name).append(": ").append(score).append("\n"));
+        deadAgents.forEach((name, data) -> msg.append(name).append(": ").append(data.toString()).append("\n"));
         msg.append("=========================");
         getLogger().info(msg.toString());
 
@@ -108,13 +109,19 @@ public final class Argus extends JavaPlugin {
     }
 
     private void killNPC(NPC npc, boolean isDead) {
-        if (npc.isSpawned() && npc.getTrait(JasonAgentTrait.class) != null) {
+        JasonAgentTrait trait = npc.getTrait(JasonAgentTrait.class);
+        if (npc.isSpawned() && trait != null) {
+            AgentData agentData = new AgentData();
+            agentData.agentName = trait.getAgentName();
+            agentData.aslFile = trait.getAslFile();
+            agentData.score = trait.getAgentScore();
+
             if (isDead) {
-                deadAgents.put(npc.getName(), npc.getTrait(JasonAgentTrait.class).getAgentScore());
+                deadAgents.put(npc.getName(), agentData);
             } else {
-                liveAgents.put(npc.getName(), npc.getTrait(JasonAgentTrait.class).getAgentScore());
+                liveAgents.put(npc.getName(), agentData);
             }
-            npc.getTrait(JasonAgentTrait.class).onRemove();
+            trait.onRemove();
         }
 
         npc.despawn();
