@@ -1,8 +1,16 @@
-buildHouseWoodRequirement(30).
+// Variable beliefs
+inHouseCount(0).
+
+// Constant beliefs
+inHouseLimit(20).
 treeSearchTimeout(1000).
 zombieDefenceLimit(1).
 
 !loop.
+
+shouldStayInHouse(InHouseCount) :-
+    inHouseLimit(IN_HOUSE_LIMIT) &
+    InHouseCount < IN_HOUSE_LIMIT.
 
 canSurviveZombies(NumZombies) :-
     zombieDefenceLimit(ZOMBIE_DEFENCE_LIMIT) &
@@ -13,13 +21,20 @@ hasEnoughWood :-
     buildHouseWoodRequirement(HOUSE_WOOD_REQUIREMENT) &
     Woods >= HOUSE_WOOD_REQUIREMENT.
 
-+!loop: inHouse <-
++!loop: inHouse & inHouseCount(InHouseCount) & shouldStayInHouse(InHouseCount) <-
+    -+inHouseCount(InHouseCount + 1);
     say("I AM HIDING IN MY HOUSE!");
     .my_name(AgName);
     .broadcast(tell, hasHouse(AgName));
     !loop.
 
-+!loop: hasHouse <-
++!loop: inHouse <-
+    -+inHouseCount(0);
+    say("LEAVING MY HOUSE!");
+    leave_house;
+    !loop.
+
++!loop: hasHouse(NumHouses) <-
     say("Entering my house..");
     enter_house;
     !loop.
