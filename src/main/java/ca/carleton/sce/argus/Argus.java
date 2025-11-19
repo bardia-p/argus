@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.StreamSupport;
 
 public final class Argus extends JavaPlugin {
     private JasonService jasonService;
@@ -79,14 +80,13 @@ public final class Argus extends JavaPlugin {
         Bukkit.getScheduler().runTaskLater(this, () -> {
             Bukkit.getLogger().info("The game has ended!");
             stopAllNPCS();
-            Bukkit.shutdown();
         }, GAME_DURATION_IN_TICKS);
     }
 
     @Override
     public void onDisable() {
         // Stop any remaining NPCs.
-        if (CitizensAPI.getNPCRegistry().iterator().hasNext()) {
+        if (!StreamSupport.stream(CitizensAPI.getNPCRegistry().spliterator(), false).anyMatch(NPC::isSpawned)) {
             stopAllNPCS();
         }
 
@@ -131,6 +131,11 @@ public final class Argus extends JavaPlugin {
         }
 
         npc.despawn();
+
+        // No more NPCs left shut down the server!
+        if (!StreamSupport.stream(CitizensAPI.getNPCRegistry().spliterator(), false).anyMatch(NPC::isSpawned)) {
+            Bukkit.shutdown();
+        }
     }
 
     private void saveScores() {
