@@ -94,6 +94,14 @@ public class ArgusAgArch extends AgArch {
 
                     double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_TICK * max, max);
                     entity.setHealth(newHealth);
+
+                    // Reset any zombies targeting this NPC
+                    for (Zombie zombie : ent.getWorld().getEntitiesByClass(Zombie.class)) {
+                        if (zombie.getTarget().equals(npc)) {
+                            zombie.setTarget(null);
+                            zombie.teleport(zombie.getLocation().add(0.01, 0, 0));
+                        }
+                    }
                 } else { // Make zombies come after the NPC
                     Location npcLoc = ent.getLocation();
                     double closestDistance = 1000;
@@ -111,7 +119,7 @@ public class ArgusAgArch extends AgArch {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0L, 1L);
+        }.runTaskTimer(plugin, 0L, 20L);
     }
 
     public void shutdown() {
@@ -448,13 +456,14 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
+        cancelNavigation();
+
         for (int z_offset = 3; z_offset < BROWSE_RADIUS; z_offset++) {
             Location outside = inHouse.clone().subtract(0, 0, z_offset);
             if (ent.getWorld().getBlockAt(outside).getType() == Material.AIR) {
-                npc.teleport(outside, PlayerTeleportEvent.TeleportCause.PLUGIN);
-
                 // Make the NPC visible again
                 ((LivingEntity) ent).removePotionEffect(PotionEffectType.INVISIBILITY);
+                npc.teleport(outside, PlayerTeleportEvent.TeleportCause.PLUGIN);
                 this.inHouse = null;
                 return true;
             }

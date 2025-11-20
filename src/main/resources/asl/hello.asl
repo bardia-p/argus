@@ -1,9 +1,14 @@
 // Constant beliefs
+
 lowHealthThreshold(0.25).
 searchTimeout(1000).
-zombieDefenceLimit(1).
+zombieDefenceLimit(2).
+
+// Goals
 
 !loop.
+
+// Rules
 
 hasSufficientHealth :-
     health(Health) &
@@ -17,6 +22,7 @@ needsRecovery :-
 
 canSurviveZombies(NumZombies) :-
     zombieDefenceLimit(ZOMBIE_DEFENCE_LIMIT) &
+    not(needsRecovery) &
     NumZombies <= ZOMBIE_DEFENCE_LIMIT.
 
 hasEnoughWoodFor(Object) :-
@@ -24,19 +30,21 @@ hasEnoughWoodFor(Object) :-
     buildRequirement(Object,OBJECT_WOOD_REQUIREMENT) &
     Woods >= OBJECT_WOOD_REQUIREMENT.
 
-+!loop: hiding & needsRecovery <-
-    say("I AM HIDING IN MY HOUSE!");
+// Plans
+
++!loop: hiding & hasSufficientHealth <-
+    say("Leaving my house..");
+    leave_house;
+    !loop.
+
++!loop: hiding <-
+    say("I am hiding in my house to recover..");
     .my_name(AgName);
     .broadcast(tell, hasHouse(AgName));
     !loop.
 
-+!loop: hiding & hasSufficientHealth <-
-    say("LEAVING MY HOUSE!");
-    leave_house;
-    !loop.
-
 +!loop: houseCount(NumHouses) & needsRecovery <-
-    say("Entering my house..");
+    say("Heading to my house to recover..");
     enter_house;
     !loop.
 
