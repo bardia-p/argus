@@ -8,6 +8,7 @@ import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.ai.event.NavigationCancelEvent;
 import net.citizensnpcs.api.ai.event.NavigationCompleteEvent;
 import net.citizensnpcs.api.npc.NPC;
+import net.citizensnpcs.api.trait.trait.Equipment;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -32,6 +33,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class ArgusAgArch extends AgArch {
@@ -43,9 +45,11 @@ public class ArgusAgArch extends AgArch {
 
     // Agent properties
     private final Inventory inv;
-    private List<Location> houses;
+    private final List<Location> houses;
     private Location inHouse;
     private int score;
+    private int attackPower;
+    private String weapon;
 
     // Constants
     public static int BROWSE_RADIUS = 25;
@@ -61,6 +65,15 @@ public class ArgusAgArch extends AgArch {
     // Attacking
     public static int ATTACK_RADIUS = 4;
     public static int ESCAPE_RADIUS = 5;
+    public static int DEFAULT_ATTACK_POWER = 1;
+    public static int SWORD_ATTACK_POWER = 2;
+    public static int AXE_ATTACK_POWER = 4;
+    public static int TRIDENT_ATTACK_POWER = 8;
+    // Weapon building
+    public static int WOOD_NEEDED_FOR_SWORD = 10;
+    public static int WOOD_NEEDED_FOR_AXE = 20;
+    public static int WOOD_NEEDED_FOR_TRIDENT = 30;
+    // Health revival
     public static double HEALTH_REVIVE_AMOUNT_PER_TICK = 0.01;
     // Rewards
     public static int HOUSE_BUILD_REWARD = 200;
@@ -75,6 +88,8 @@ public class ArgusAgArch extends AgArch {
         this.houses = new ArrayList<>();
         this.inHouse = null;
         this.score = 0;
+        this.attackPower = DEFAULT_ATTACK_POWER;
+        this.weapon = null;
         npc.data().set(NPC.Metadata.DEFAULT_PROTECTED, false);
 
         new BukkitRunnable() {
@@ -90,14 +105,15 @@ public class ArgusAgArch extends AgArch {
                 if (inHouse != null) {
                     LivingEntity entity = (LivingEntity) npc.getEntity();
                     double current = entity.getHealth();
-                    double max = entity.getAttribute(Attribute.MAX_HEALTH).getValue();
+                    double max = Objects.requireNonNull(entity.getAttribute(Attribute.MAX_HEALTH)).getValue();
 
                     double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_TICK * max, max);
                     entity.setHealth(newHealth);
 
                     // Reset any zombies targeting this NPC
                     for (Zombie zombie : ent.getWorld().getEntitiesByClass(Zombie.class)) {
-                        if (zombie.getTarget().equals(npc)) {
+                        LivingEntity target = zombie.getTarget();
+                        if (target != null && target.equals(npc)) {
                             zombie.setTarget(null);
                             zombie.teleport(zombie.getLocation().add(0.01, 0, 0));
                         }
@@ -144,31 +160,34 @@ public class ArgusAgArch extends AgArch {
         ArrayList<Literal> result = new ArrayList<>();
         ent.getWorld().spawnParticle(Particle.GLOW, ent.getLocation().add(0, 2, 0), 1, 0.2,
                 0.2, 0.2, 0.1);
+
+        // Constants
         result.add(Literal.parseLiteral("woodsChopped(" + getNumLogs() + ")"));
         result.add(Literal.parseLiteral("buildRequirement(house," + WOOD_NEEDED_FOR_HOUSE + ")"));
+        result.add(Literal.parseLiteral("buildRequirement(sword," + WOOD_NEEDED_FOR_SWORD + ")"));
+        result.add(Literal.parseLiteral("buildRequirement(axe," + WOOD_NEEDED_FOR_AXE + ")"));
+        result.add(Literal.parseLiteral("buildRequirement(trident," + WOOD_NEEDED_FOR_TRIDENT + ")"));
+
+        // Entities nearby
         if (findNearbyTree(CHOP_WOOD_RADIUS, true) != null) {
             result.add(Literal.parseLiteral("near(tree)"));
         }
 
         List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
         if (zombies.size() != 0) {
-            result.add(Literal.parseLiteral("near(zombies," + zombies.size() + ")"));
+            result.add(Literal.parseLiteral("near(zombie," + zombies.size() + ")"));
         }
 
         List<NPC> players = findNearbyPlayers(ATTACK_RADIUS);
         if (players.size() != 0) {
             StringBuilder visiblePlayers = new StringBuilder();
             players.forEach(p -> visiblePlayers.append(p.getName()).append(","));
-            result.add(Literal.parseLiteral("near(players,[" +
+            result.add(Literal.parseLiteral("near(player,[" +
                     visiblePlayers.deleteCharAt(visiblePlayers.length()-1) + "])"));
         }
 
         // Check the player's houses
-        for (Location houseLoc: houses) {
-            if (findLivablePointInHouse(houseLoc) == null) {
-                houses.remove(houseLoc);
-            }
-        }
+        houses.removeIf(houseLoc -> findLivablePointInHouse(houseLoc) == null);
 
         if (houses.size() > 0) {
             result.add(Literal.parseLiteral("houseCount(" + houses.size() + ")"));
@@ -178,13 +197,18 @@ public class ArgusAgArch extends AgArch {
             result.add(Literal.parseLiteral("hiding"));
         }
 
+        // Health and damage
         LivingEntity livingEnt = (LivingEntity) ent;
-        double health = livingEnt.getHealth() / livingEnt.getAttribute(Attribute.MAX_HEALTH).getValue();
+        double health = livingEnt.getHealth() / Objects.requireNonNull(livingEnt.getAttribute(Attribute.MAX_HEALTH)).getValue();
         result.add(Literal.parseLiteral("health(" + health + ")"));
+
+        if (weapon != null) {
+            result.add(Literal.parseLiteral("hasWeapon(" + weapon + ")"));
+        }
 
         // Get the entity damage info
         EntityDamageEvent damageEvent = ent.getLastDamageCause();
-        if (damageEvent != null && damageEvent.getDamageSource() != null) {
+        if (damageEvent != null) {
             Entity causingEntity = damageEvent.getDamageSource().getCausingEntity();
             if (causingEntity instanceof Zombie) {
                 result.add(Literal.parseLiteral("damagedBy(zombie)"));
@@ -235,6 +259,8 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
+        Location destinationLocation;
+
         if (toFind.equals("tree")) {
             Block log = findNearbyTree(BROWSE_RADIUS, false);
             // Could not find a tree!
@@ -242,12 +268,34 @@ public class ArgusAgArch extends AgArch {
                 return false;
             }
 
-            // Pathfind towards the player entity (will repath as they move)
-            goToLocation(log.getLocation());
-            return true;
+            // Path find towards the player entity (will re-path as they move)
+            destinationLocation = log.getLocation();
+        } else if (toFind.equals("zombie")) {
+            List<Zombie> zombies = findNearbyZombies(BROWSE_RADIUS);
+            if (zombies.size() == 0) {
+                return false;
+            }
+            Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
+
+            destinationLocation = zombie.getLocation();
+        } else {
+            List<NPC> players = findNearbyPlayers(BROWSE_RADIUS);
+            NPC player = null;
+            for (NPC p: players) {
+                if (p.getName().equals(toFind)){
+                    player = p;
+                    break;
+                }
+            }
+
+            if (player == null) {
+                return false;
+            }
+            destinationLocation = player.getEntity().getLocation();
         }
 
-        return false;
+        goToLocation(destinationLocation);
+        return true;
     }
 
     public boolean chopWood() {
@@ -274,21 +322,39 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        if (from.equals("zombies")) {
-            List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
+        Location enemyLocation;
 
+        if (from.equals("zombie")) {
+            List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
             if (zombies.size() == 0) {
                 return false;
             }
+            Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
 
-            int x_offset = getRandomLocationAtRadius(ESCAPE_RADIUS);
-            int z_offset = getRandomLocationAtRadius(ESCAPE_RADIUS);
-            Location escapeLoc = ent.getLocation().clone().add(x_offset, 0, z_offset);
-
-            if (ent.getWorld().getBlockAt(escapeLoc).getType() == Material.AIR) {
-                npc.teleport(escapeLoc, PlayerTeleportEvent.TeleportCause.PLUGIN);
-                return true;
+            enemyLocation = zombie.getLocation();
+        } else {
+            List<NPC> players = findNearbyPlayers(ATTACK_RADIUS);
+            NPC player = null;
+            for (NPC p: players) {
+                if (p.getName().equals(from)){
+                    player = p;
+                    break;
+                }
             }
+
+            if (player == null) {
+                return false;
+            }
+            enemyLocation = player.getEntity().getLocation();
+        }
+
+        int x_offset = getRandomLocationAtRadius(ESCAPE_RADIUS);
+        int z_offset = getRandomLocationAtRadius(ESCAPE_RADIUS);
+        Location escapeLoc = enemyLocation.clone().add(x_offset, 0, z_offset);
+
+        if (npc.getNavigator().canNavigateTo(escapeLoc)) {
+            npc.teleport(escapeLoc, PlayerTeleportEvent.TeleportCause.PLUGIN);
+            return true;
         }
 
         return false;
@@ -300,21 +366,34 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        if (entity.equals("zombies")) {
+        LivingEntity enemyToAttack;
+        if (entity.equals("zombie")) {
             List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
-
             if (zombies.size() == 0) {
                 return false;
             }
-
             Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
-            double damage = 1.0;
-            zombie.damage(damage, ent);
-            this.score += ZOMBIE_DAMAGE_REWARD;
-            return true;
+            enemyToAttack = zombie;
+        } else {
+            List<NPC> players = findNearbyPlayers(ATTACK_RADIUS);
+            NPC player = null;
+            for (NPC p: players) {
+                if (p.getName().equals(entity)){
+                    player = p;
+                    break;
+                }
+            }
+
+            if (player == null) {
+                return false;
+            }
+            enemyToAttack = (LivingEntity) player.getEntity();
         }
 
-        return false;
+        enemyToAttack.damage(this.attackPower, ent);
+        this.score += ZOMBIE_DAMAGE_REWARD * this.attackPower;
+
+        return true;
     }
 
     public boolean build(String object) {
@@ -365,6 +444,9 @@ public class ArgusAgArch extends AgArch {
             }
 
             World world = base.getWorld();
+            if (world == null) {
+                return false;
+            }
 
             // Adding the walls and clearing the inside
             for (int x = 0; x < HOUSE_SIZE_IN_BLOCKS; x++) {
@@ -389,7 +471,7 @@ public class ArgusAgArch extends AgArch {
             }
 
             // Adding the door
-            Location doorBase = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 0);
+            Location doorBase = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2.0, 0, 0);
             Door door = (Door) Bukkit.createBlockData(Material.OAK_DOOR);
             door.setHalf(Door.Half.BOTTOM);
             door.setFacing(BlockFace.SOUTH);
@@ -407,11 +489,50 @@ public class ArgusAgArch extends AgArch {
             inv.removeItem(new ItemStack(Material.OAK_LOG, WOOD_NEEDED_FOR_HOUSE));
 
             // Storing the house location
-            Location inside = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2, 0, 1);
+            Location inside = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2.0, 0, 1);
             houses.add(inside);
             this.score += HOUSE_BUILD_REWARD;
 
             return true;
+        } else { // building a weapon
+            Equipment trait = npc.getOrAddTrait(Equipment.class);
+            ItemStack weapon = null;
+            int requiredWood = 0;
+            int newAttackPower = 1;
+            switch(object) {
+                case "sword":
+                    requiredWood = WOOD_NEEDED_FOR_SWORD;
+                    weapon = new ItemStack(Material.WOODEN_SWORD);
+                    newAttackPower = SWORD_ATTACK_POWER;
+                    break;
+                case "axe":
+                    requiredWood = WOOD_NEEDED_FOR_AXE;
+                    weapon = new ItemStack(Material.WOODEN_AXE);
+                    newAttackPower = AXE_ATTACK_POWER;
+                    break;
+                case "trident":
+                    requiredWood = WOOD_NEEDED_FOR_TRIDENT;
+                    weapon = new ItemStack(Material.TRIDENT);
+                    newAttackPower = TRIDENT_ATTACK_POWER;
+                    break;
+            }
+
+            if (weapon != null) {
+                if (getNumLogs() < requiredWood) {
+                    Bukkit.getLogger().warning(getAgName() + " DOES NOT HAVE ENOUGH WOOD TO BUILD " + object + "!");
+                    return false;
+                }
+
+                // Remove old weapon
+                trait.set(Equipment.EquipmentSlot.HAND, null);
+
+                this.attackPower = newAttackPower;
+                this.weapon = object;
+                trait.set(Equipment.EquipmentSlot.HAND, weapon);
+                inv.removeItem(new ItemStack(Material.OAK_LOG, requiredWood));
+
+                return true;
+            }
         }
 
         return false;
@@ -552,7 +673,7 @@ public class ArgusAgArch extends AgArch {
             return null;
         }
 
-        for (double x = -HOUSE_SIZE_IN_BLOCKS/2 + 1; x < HOUSE_SIZE_IN_BLOCKS/2; x++) {
+        for (double x = -HOUSE_SIZE_IN_BLOCKS/2.0 + 1; x < HOUSE_SIZE_IN_BLOCKS/2.0; x++) {
             for (double z = 0; z < HOUSE_SIZE_IN_BLOCKS - 1; z++) {
                 Location inside = houseLoc.clone().add(x, 0, z);
                 if (ent.getWorld().getBlockAt(inside).getType() == Material.AIR) {
@@ -582,16 +703,16 @@ public class ArgusAgArch extends AgArch {
             plugin.getServer().getPluginManager().registerEvents(new Listener() {
                 @EventHandler
                 public void onComplete(NavigationCompleteEvent e) {
-                    if (e.getNPC().equals(npc)) {
-                        //Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " finished their trip!");
-                    }
+                    //if (e.getNPC().equals(npc)) {
+                    //    Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " finished their trip!");
+                    //}
                 }
 
                 @EventHandler
                 public void onCancel(NavigationCancelEvent e) {
-                    if (e.getNPC().equals(npc)) {
-                        //Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " cancelled their trip!");
-                    }
+                    //if (e.getNPC().equals(npc)) {
+                    //    Bukkit.getLogger().warning("<NAVIGATION> " + getAgName() + " cancelled their trip!");
+                    //}
                 }
             }, plugin);
         }

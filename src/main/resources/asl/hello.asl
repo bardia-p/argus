@@ -48,19 +48,24 @@ hasEnoughWoodFor(Object) :-
     enter_house;
     !loop.
 
-+!loop: near(zombies,NumZombies) & canSurviveZombies(NumZombies) <-
++!loop: near(zombie,NumZombies) & canSurviveZombies(NumZombies) <-
     say("Fighting zombies!!!");
-    attack(zombies);
+    attack(zombie);
     !loop.
 
-+!loop: near(zombies,NumZombies) <-
++!loop: near(zombie,NumZombies) <-
     say("Escaping zombies...");
-    escape(zombies);
+    escape(zombie);
     !loop.
 
 +!loop: hasEnoughWoodFor(house) <-
     say("Building a house...");
     build(house);
+    !loop.
+
++!loop: hasEnoughWoodFor(sword) & not(hasWeapon(sword)) <-
+    say("Building a sword...");
+    build(sword);
     !loop.
 
 +!loop: near(tree) <-
