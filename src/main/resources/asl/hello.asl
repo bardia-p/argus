@@ -10,6 +10,10 @@ zombieDefenceLimit(2).
 
 // Rules
 
+isPlayerNearby(Player, [Player | _]).
+isPlayerNearby(Player, [_ | Rest]) :-
+    isPlayerNearby(Player, Rest).
+
 hasSufficientHealth :-
     health(Health) &
     lowHealthThreshold(LOW_HEALTH_THRESHOLD) &
@@ -32,6 +36,7 @@ hasEnoughWoodFor(Object) :-
 
 // Plans
 
+// Entering/Leaving Houses
 +!loop: hiding & hasSufficientHealth <-
     say("Leaving my house..");
     leave_house;
@@ -48,16 +53,29 @@ hasEnoughWoodFor(Object) :-
     enter_house;
     !loop.
 
-+!loop: near(zombie,NumZombies) & canSurviveZombies(NumZombies) <-
+// Attacking/Defending against players/zombies
+
++!loop: damagedBy(zombie) & near(zombie,NumZombies) & canSurviveZombies(NumZombies) <-
     say("Fighting zombies!!!");
     attack(zombie);
     !loop.
 
-+!loop: near(zombie,NumZombies) <-
++!loop: damagedBy(zombie) & near(zombie,NumZombies) <-
     say("Escaping zombies...");
     escape(zombie);
     !loop.
 
++!loop: damagedBy(Player) & not(damagedBy(zombie)) & near(player, NearbyPlayers) & isPlayerNearby(Player, NearbyPlayers) & needsRecovery <-
+    say("Escaping from another player!!");
+    escape(Player);
+    !loop.
+
++!loop: damagedBy(Player) & not(damagedBy(zombie)) & near(player, NearbyPlayers) & isPlayerNearby(Player, NearbyPlayers) <-
+    say("Defending against another player!!");
+    attack(Player);
+    !loop.
+
+// Building houses/weapons
 +!loop: hasEnoughWoodFor(house) <-
     say("Building a house...");
     build(house);
@@ -68,6 +86,7 @@ hasEnoughWoodFor(Object) :-
     build(sword);
     !loop.
 
+// Chopping wood
 +!loop: near(tree) <-
     say("Chopping wood!!");
     chop_wood;

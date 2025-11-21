@@ -64,7 +64,7 @@ public class ArgusAgArch extends AgArch {
     public static int NAVIGATION_ERROR = 2;
     // Attacking
     public static int ATTACK_RADIUS = 4;
-    public static int ESCAPE_RADIUS = 5;
+    public static int ESCAPE_RADIUS = 4;
     public static int DEFAULT_ATTACK_POWER = 1;
     public static int SWORD_ATTACK_POWER = 2;
     public static int AXE_ATTACK_POWER = 4;
