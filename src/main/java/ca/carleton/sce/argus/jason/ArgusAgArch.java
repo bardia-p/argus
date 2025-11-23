@@ -1,14 +1,18 @@
 package ca.carleton.sce.argus.jason;
 
 import ca.carleton.sce.argus.Argus;
+import jason.RevisionFailedException;
 import jason.architecture.AgArch;
 import jason.asSemantics.ActionExec;
+import jason.asSemantics.Agent;
 import jason.asSyntax.Literal;
+
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.ai.event.NavigationCancelEvent;
 import net.citizensnpcs.api.ai.event.NavigationCompleteEvent;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.trait.trait.Equipment;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -63,8 +67,8 @@ public class ArgusAgArch extends AgArch {
     // Navigation
     public static int NAVIGATION_ERROR = 2;
     // Attacking
-    public static int ATTACK_RADIUS = 4;
-    public static int ESCAPE_RADIUS = 4;
+    public static int ATTACK_RADIUS = 5;
+    public static int ESCAPE_RADIUS = 10;
     public static int DEFAULT_ATTACK_POWER = 1;
     public static int SWORD_ATTACK_POWER = 2;
     public static int AXE_ATTACK_POWER = 4;
@@ -168,6 +172,14 @@ public class ArgusAgArch extends AgArch {
         result.add(Literal.parseLiteral("buildRequirement(axe," + WOOD_NEEDED_FOR_AXE + ")"));
         result.add(Literal.parseLiteral("buildRequirement(trident," + WOOD_NEEDED_FOR_TRIDENT + ")"));
 
+        StringBuilder players = new StringBuilder();
+        for (NPC p: CitizensAPI.getNPCRegistry()) {
+            if (npc.isSpawned() && npc.getEntity() != null) {
+                players.append(p.getName()).append(",");
+            }
+        }
+        result.add(Literal.parseLiteral("allPlayers([" + players.deleteCharAt(players.length()-1) + "])"));
+
         // Entities nearby
         if (findNearbyTree(CHOP_WOOD_RADIUS, true) != null) {
             result.add(Literal.parseLiteral("near(tree)"));
@@ -178,10 +190,10 @@ public class ArgusAgArch extends AgArch {
             result.add(Literal.parseLiteral("near(zombie," + zombies.size() + ")"));
         }
 
-        List<NPC> players = findNearbyPlayers(ATTACK_RADIUS);
-        if (players.size() != 0) {
+        List<NPC> attackablePlayers = findNearbyPlayers(ATTACK_RADIUS);
+        if (attackablePlayers.size() != 0) {
             StringBuilder visiblePlayers = new StringBuilder();
-            players.forEach(p -> visiblePlayers.append(p.getName()).append(","));
+            attackablePlayers.forEach(p -> visiblePlayers.append(p.getName()).append(","));
             result.add(Literal.parseLiteral("near(player,[" +
                     visiblePlayers.deleteCharAt(visiblePlayers.length()-1) + "])"));
         }
@@ -247,6 +259,26 @@ public class ArgusAgArch extends AgArch {
         actionExecuted(action);
     }
 
+    @Override
+    public void sendMsg(jason.asSemantics.Message m) {
+        String receiver = m.getReceiver();
+
+        JasonService.RuntimeHandle target = plugin.getRuntimeHandle(receiver);
+        if (target != null && receiver != getAgName()) {
+            Agent targetAgent = target.agent();
+
+            // Convert message content into a literal
+            Literal belief = Literal.parseLiteral("message(" + m.getIlForce() + ","  + m.getSender() + "," + m.getPropCont().toString() + ")");
+
+            // Add as a belief to the target agent
+            try {
+                targetAgent.getTS().getAg().addBel(belief);
+            } catch (RevisionFailedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     // Abilities
 
     public boolean say(String message) {
@@ -270,19 +302,10 @@ public class ArgusAgArch extends AgArch {
 
             // Path find towards the player entity (will re-path as they move)
             destinationLocation = log.getLocation();
-        } else if (toFind.equals("zombie")) {
-            List<Zombie> zombies = findNearbyZombies(BROWSE_RADIUS);
-            if (zombies.size() == 0) {
-                return false;
-            }
-            Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
-
-            destinationLocation = zombie.getLocation();
         } else {
-            List<NPC> players = findNearbyPlayers(BROWSE_RADIUS);
             NPC player = null;
-            for (NPC p: players) {
-                if (p.getName().equals(toFind)){
+            for (NPC p: CitizensAPI.getNPCRegistry()) {
+                if (p.isSpawned() && p.getEntity() != null && p.getName().equals(toFind))  {
                     player = p;
                     break;
                 }

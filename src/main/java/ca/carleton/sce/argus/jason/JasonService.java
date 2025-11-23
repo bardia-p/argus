@@ -1,9 +1,11 @@
 package ca.carleton.sce.argus.jason;
 
 import ca.carleton.sce.argus.Argus;
+
 import jason.RevisionFailedException;
 import jason.asSemantics.Agent;
 import jason.asSemantics.TransitionSystem;
+
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Bukkit;
 
@@ -16,6 +18,10 @@ public class JasonService {
 
     public JasonService(Argus plugin) {
         this.plugin = plugin;
+    }
+
+    public RuntimeHandle getRuntimeHandle(String agent) {
+        return runtimes.getOrDefault(agent, null);
     }
 
     public void startOrAttachAgent(NPC npc, String agentName, String aslFile) {

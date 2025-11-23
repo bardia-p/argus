@@ -164,4 +164,8 @@ public final class Argus extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
+    public JasonService.RuntimeHandle getRuntimeHandle(String agent) {
+        return jasonService.getRuntimeHandle(agent);
+    }
 }

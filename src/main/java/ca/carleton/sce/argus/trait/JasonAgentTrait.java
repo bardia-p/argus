@@ -3,6 +3,7 @@ package ca.carleton.sce.argus.trait;
 import ca.carleton.sce.argus.jason.JasonService;
 import net.citizensnpcs.api.trait.Trait;
 import net.citizensnpcs.api.util.DataKey;
+import net.citizensnpcs.api.npc.NPC;
 
 /**
  * Citizens Trait that binds an NPC to a Jason agent instance.
