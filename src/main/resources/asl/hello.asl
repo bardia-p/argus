@@ -3,6 +3,7 @@
 // Constants
 lowHealthThreshold(0.25).
 searchTimeout(1000).
+buildRequirement(donation,2).
 
 // Variables
 allies([]).
@@ -14,31 +15,38 @@ allies([]).
 /* Plans */
 
 // Handling message communication
-+message(askIf, Sender, wantAlliance(Sender)): allies(Allies) & not(isMemberOf(Sender, Allies)) <-
++message(askIf, Sender, wantAlliance(Sender)): not(isPlayerAnAlly(Sender)) <-
     say("Received an alliance request..");
     !addAlly(Sender);
     .my_name(AgName);
     .send(Sender, tell, wantAlliance(AgName)).
-+message(tell, Sender, wantAlliance(Sender)): allies(Allies) & not(isMemberOf(Sender, Allies)) <-
++message(tell, Sender, wantAlliance(Sender)): not(isPlayerAnAlly(Sender)) <-
+    say("Formed an alliance.");
     !addAlly(Sender).
++message(askIf, Sender, needWood) <-
+    say("Ally need woods donation!!");
+    +allyNeedsWoodDonation(Sender).
++message(tell, Sender, donatedWoods(Woods)) <-
+    say("Received wood donation!!");
+    -askedForDonation;
+    receive_wood(Woods).
 
 // Messaging helpers
 +!broadcast(MsgType, MsgCont): allPlayers(Players) <-
     !sendToGroup(Players, MsgType, MsgCont).
-+!sendToGroup([], _, _) <- true.
++!sendToGroup([], _, _) <- !loop.
 +!sendToGroup([Player | Rest], MsgType, MsgCont): .my_name(AgName) & Player == AgName <-
     !sendToGroup(Rest, MsgType, MsgCont).
 +!sendToGroup([Player | Rest], MsgType, MsgCont) <-
     .send(Player, MsgType, MsgCont);
     !sendToGroup(Rest, MsgType, MsgCont).
 
-/* MAIN LOGIC LOOP */
-
 // Forming alliance
-+!addAlly(NewAlly) <-
-    say("Formed an alliance.");
++!addAlly(NewAlly): allies(Allies) <-
     .concat(Allies, [NewAlly], NewAllies);
     -+allies(NewAllies).
+
+/* MAIN LOGIC LOOP */
 
 // Asking for alliance
 +!loop: allies([]) & not(attempted_alliance) <-
@@ -73,6 +81,10 @@ allies([]).
     escape;
     !loop.
 
++!loop: near(players,[Player | _]) & health(Health) & not(needsRecovery(Health)) & not(isPlayerAnAlly(Sender)) <-
+    say("Attacking an enemy player...");
+    attack(Player);
+    !loop.
 +!loop: damagedBy(Player) & not(damagedBy(zombie)) & isTargetPlayerNearby(Player) & health(Health) & needsRecovery(Health) <-
     say("Escaping from another player!!");
     escape;
@@ -83,7 +95,7 @@ allies([]).
     !loop.
 
 // Building houses/weapons
-+!loop: woodsChopped(Woods) &  hasEnoughWoodFor(Woods, house) <-
++!loop: woodsChopped(Woods) & hasEnoughWoodFor(Woods, house) <-
     say("Building a house...");
     build(house);
     !loop.
@@ -92,21 +104,40 @@ allies([]).
     build(sword);
     !loop.
 
+// Donating wood
++!loop: woodsChopped(Woods) & allyNeedsWoodDonation(Ally) & isTargetPlayerNearby(Ally) & hasEnoughWoodFor(Woods,donation)
+ & buildRequirement(donation,WOOD_DONATION_LIMIT) <-
+    say("Donating wood to an ally..");
+    donate_wood(WOOD_DONATION_LIMIT);
+    .send(Ally, tell, donatedWoods(WOOD_DONATION_LIMIT));
+    -allyNeedsWoodDonation(Ally);
+    !loop.
+
 // Chopping wood
 +!loop: near(tree) <-
     say("Chopping wood!!");
     chop_wood;
     !loop.
+
+// Getting wood
 +!loop: searchTimeout(SEARCH_TIMEOUT) <-
     say("Looking for trees..");
     find(tree);
     .wait({+near(tree)}, SEARCH_TIMEOUT, EventTime);
     !loop.
 
+// No Allies
+-!loop: allies(Allies) & not(allies([])) & not(askedForDonation) <-
+    say("Asking for wood donation..");
+    +askedForDonation;
+    !sendToGroup(Allies, askIf, needWood).
 -!loop <- !loop.
 
-
 /* Rules */
+
+isPlayerAnAlly(Player) :-
+    allies(Allies) &
+    isMemberOf(Player, Allies).
 
 isTargetPlayerNearby(Player) :-
     near(player, NearbyPlayers) &

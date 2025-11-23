@@ -261,6 +261,8 @@ public class ArgusAgArch extends AgArch {
             case "build" -> action.setResult(build(action.getActionTerm().getTerm(0).toString()));
             case "enter_house" -> action.setResult(enterHouse());
             case "leave_house" -> action.setResult(leaveHouse());
+            case "donate_wood" -> action.setResult(donateWood(action.getActionTerm().getTerm(0).toString()));
+            case "receive_wood" -> action.setResult(receiveWood(action.getActionTerm().getTerm(0).toString()));
             default -> Bukkit.getLogger().warning(npc.getName() + " has an unknown action: " + actionName);
         }
         actionExecuted(action);
@@ -269,7 +271,6 @@ public class ArgusAgArch extends AgArch {
     @Override
     public void sendMsg(jason.asSemantics.Message m) {
         String receiver = m.getReceiver();
-
         JasonService.RuntimeHandle target = plugin.getRuntimeHandle(receiver);
         if (target != null && receiver != getAgName()) {
             Agent targetAgent = target.agent();
@@ -608,6 +609,28 @@ public class ArgusAgArch extends AgArch {
 
         // Cannot leave the house
         return false;
+    }
+
+    public boolean donateWood(String numWoods) {
+        Entity ent = npc.getEntity();
+        if (!npc.isSpawned() || ent == null) {
+            return false;
+        }
+
+        inv.removeItem(new ItemStack(Material.OAK_LOG, Integer.parseInt(numWoods)));
+
+        return true;
+    }
+
+    public boolean receiveWood(String numWoods) {
+        Entity ent = npc.getEntity();
+        if (!npc.isSpawned() || ent == null) {
+            return false;
+        }
+
+        inv.addItem(new ItemStack(Material.OAK_LOG, Integer.parseInt(numWoods)));
+
+        return true;
     }
 
     // Helper functions
