@@ -46,6 +46,7 @@ public class ArgusAgArch extends AgArch {
     private final NPC npc;
     private BukkitRunnable navigationTask;
     private boolean navigationListenersRegistered;
+    private static final Random RNG = new Random(System.currentTimeMillis());
 
     // Agent properties
     private final Inventory inv;
@@ -54,9 +55,11 @@ public class ArgusAgArch extends AgArch {
     private int score;
     private int attackPower;
     private String weapon;
+    private int escapeRadius;
+    private int simulatenousZombieCapability;
 
     // Constants
-    public static int BROWSE_RADIUS = 25;
+    public static int BROWSE_RADIUS = 50;
     // House building
     public static int WOOD_NEEDED_FOR_HOUSE = 30;
     public static int HOUSE_DISTANCE_OFFSET = 20;
@@ -67,12 +70,13 @@ public class ArgusAgArch extends AgArch {
     // Navigation
     public static int NAVIGATION_ERROR = 2;
     // Attacking
+    public  static int DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY = 1;
     public static int ATTACK_RADIUS = 5;
     public static int ESCAPE_RADIUS = 10;
     public static int DEFAULT_ATTACK_POWER = 1;
     public static int SWORD_ATTACK_POWER = 2;
     public static int AXE_ATTACK_POWER = 4;
-    public static int TRIDENT_ATTACK_POWER = 8;
+    public static int TRIDENT_ATTACK_POWER = 6;
     // Weapon building
     public static int WOOD_NEEDED_FOR_SWORD = 10;
     public static int WOOD_NEEDED_FOR_AXE = 20;
@@ -94,6 +98,8 @@ public class ArgusAgArch extends AgArch {
         this.score = 0;
         this.attackPower = DEFAULT_ATTACK_POWER;
         this.weapon = null;
+        this.escapeRadius = ESCAPE_RADIUS;
+        this.simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY;
         npc.data().set(NPC.Metadata.DEFAULT_PROTECTED, false);
 
         new BukkitRunnable() {
@@ -171,6 +177,7 @@ public class ArgusAgArch extends AgArch {
         result.add(Literal.parseLiteral("buildRequirement(sword," + WOOD_NEEDED_FOR_SWORD + ")"));
         result.add(Literal.parseLiteral("buildRequirement(axe," + WOOD_NEEDED_FOR_AXE + ")"));
         result.add(Literal.parseLiteral("buildRequirement(trident," + WOOD_NEEDED_FOR_TRIDENT + ")"));
+        result.add(Literal.parseLiteral("zombieDefenceLimit(" + simulatenousZombieCapability + ")"));
 
         StringBuilder players = new StringBuilder();
         for (NPC p: CitizensAPI.getNPCRegistry()) {
@@ -249,7 +256,7 @@ public class ArgusAgArch extends AgArch {
             }
             case "find" -> action.setResult(find(action.getActionTerm().getTerm(0).toString()));
             case "chop_wood" -> action.setResult(chopWood());
-            case "escape" -> action.setResult(escape(action.getActionTerm().getTerm(0).toString()));
+            case "escape" -> action.setResult(escape());
             case "attack" -> action.setResult(attack(action.getActionTerm().getTerm(0).toString()));
             case "build" -> action.setResult(build(action.getActionTerm().getTerm(0).toString()));
             case "enter_house" -> action.setResult(enterHouse());
@@ -299,18 +306,23 @@ public class ArgusAgArch extends AgArch {
             if (log == null) {
                 return false;
             }
-
-            // Path find towards the player entity (will re-path as they move)
             destinationLocation = log.getLocation();
+        } else if (toFind.equals("zombie")) {
+            List<Zombie> zombies = findNearbyZombies(BROWSE_RADIUS);
+            if (zombies.size() == 0) {
+                return false;
+            }
+            Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
+            destinationLocation = zombie.getLocation();
         } else {
+            List<NPC> players = findNearbyPlayers(BROWSE_RADIUS);
             NPC player = null;
-            for (NPC p: CitizensAPI.getNPCRegistry()) {
-                if (p.isSpawned() && p.getEntity() != null && p.getName().equals(toFind))  {
+            for (NPC p: players) {
+                if (p.getName().equals(toFind)) {
                     player = p;
                     break;
                 }
             }
-
             if (player == null) {
                 return false;
             }
@@ -339,41 +351,15 @@ public class ArgusAgArch extends AgArch {
         return true;
     }
 
-    public boolean escape(String from) {
+    public boolean escape() {
         Entity ent = npc.getEntity();
         if (!npc.isSpawned() || ent == null) {
             return false;
         }
 
-        Location enemyLocation;
-
-        if (from.equals("zombie")) {
-            List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
-            if (zombies.size() == 0) {
-                return false;
-            }
-            Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
-
-            enemyLocation = zombie.getLocation();
-        } else {
-            List<NPC> players = findNearbyPlayers(ATTACK_RADIUS);
-            NPC player = null;
-            for (NPC p: players) {
-                if (p.getName().equals(from)){
-                    player = p;
-                    break;
-                }
-            }
-
-            if (player == null) {
-                return false;
-            }
-            enemyLocation = player.getEntity().getLocation();
-        }
-
-        int x_offset = getRandomLocationAtRadius(ESCAPE_RADIUS);
-        int z_offset = getRandomLocationAtRadius(ESCAPE_RADIUS);
-        Location escapeLoc = enemyLocation.clone().add(x_offset, 0, z_offset);
+        int x_offset = getRandomLocationAtRadius(this.escapeRadius);
+        int z_offset = getRandomLocationAtRadius(this.escapeRadius);
+        Location escapeLoc = ent.getLocation().clone().add(x_offset, 0, z_offset);
 
         if (npc.getNavigator().canNavigateTo(escapeLoc)) {
             npc.teleport(escapeLoc, PlayerTeleportEvent.TeleportCause.PLUGIN);
@@ -389,14 +375,16 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        LivingEntity enemyToAttack;
         if (entity.equals("zombie")) {
             List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
             if (zombies.size() == 0) {
                 return false;
             }
-            Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
-            enemyToAttack = zombie;
+            for (int i = 0; i < simulatenousZombieCapability; i++) {
+                Zombie zombie = zombies.get(RNG.nextInt(zombies.size()));
+                zombie.damage(this.attackPower, ent);
+                this.score += ZOMBIE_DAMAGE_REWARD * this.attackPower;
+            }
         } else {
             List<NPC> players = findNearbyPlayers(ATTACK_RADIUS);
             NPC player = null;
@@ -410,11 +398,10 @@ public class ArgusAgArch extends AgArch {
             if (player == null) {
                 return false;
             }
-            enemyToAttack = (LivingEntity) player.getEntity();
+
+            ((LivingEntity) player.getEntity()).damage(this.attackPower, ent);
         }
 
-        enemyToAttack.damage(this.attackPower, ent);
-        this.score += ZOMBIE_DAMAGE_REWARD * this.attackPower;
 
         return true;
     }
@@ -527,16 +514,22 @@ public class ArgusAgArch extends AgArch {
                     requiredWood = WOOD_NEEDED_FOR_SWORD;
                     weapon = new ItemStack(Material.WOODEN_SWORD);
                     newAttackPower = SWORD_ATTACK_POWER;
+                    escapeRadius = ESCAPE_RADIUS - SWORD_ATTACK_POWER;
+                    simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY + SWORD_ATTACK_POWER / 2;
                     break;
                 case "axe":
                     requiredWood = WOOD_NEEDED_FOR_AXE;
                     weapon = new ItemStack(Material.WOODEN_AXE);
                     newAttackPower = AXE_ATTACK_POWER;
+                    escapeRadius = ESCAPE_RADIUS - AXE_ATTACK_POWER;
+                    simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY + AXE_ATTACK_POWER / 2;
                     break;
                 case "trident":
                     requiredWood = WOOD_NEEDED_FOR_TRIDENT;
                     weapon = new ItemStack(Material.TRIDENT);
                     newAttackPower = TRIDENT_ATTACK_POWER;
+                    escapeRadius = ESCAPE_RADIUS - TRIDENT_ATTACK_POWER;
+                    simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY + TRIDENT_ATTACK_POWER / 2;
                     break;
             }
 
@@ -774,6 +767,6 @@ public class ArgusAgArch extends AgArch {
     }
 
     private int getRandomLocationAtRadius(double radius) {
-        return (int) Math.round((Math.random() + 1) * radius / 2 * (new Random().nextBoolean() ? 1 : -1));
+        return (int) Math.round((Math.random() + 1) * radius / 2 * (RNG.nextBoolean() ? 1 : -1));
     }
 }

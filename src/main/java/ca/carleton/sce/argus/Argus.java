@@ -86,7 +86,7 @@ public final class Argus extends JavaPlugin {
     @Override
     public void onDisable() {
         // Stop any remaining NPCs.
-        if (!StreamSupport.stream(CitizensAPI.getNPCRegistry().spliterator(), false).anyMatch(NPC::isSpawned)) {
+        if (StreamSupport.stream(CitizensAPI.getNPCRegistry().spliterator(), false).anyMatch(NPC::isSpawned)) {
             stopAllNPCS();
         }
 
