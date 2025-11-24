@@ -7,6 +7,7 @@ import jason.asSemantics.ActionExec;
 import jason.asSemantics.Agent;
 import jason.asSyntax.Literal;
 
+import jason.asSyntax.Term;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.ai.event.NavigationCancelEvent;
 import net.citizensnpcs.api.ai.event.NavigationCompleteEvent;
@@ -181,7 +182,7 @@ public class ArgusAgArch extends AgArch {
 
         StringBuilder players = new StringBuilder();
         for (NPC p: CitizensAPI.getNPCRegistry()) {
-            if (npc.isSpawned() && npc.getEntity() != null) {
+            if (p.isSpawned() && p.getEntity() != null && !p.equals(npc)) {
                 players.append(p.getName()).append(",");
             }
         }
@@ -249,9 +250,12 @@ public class ArgusAgArch extends AgArch {
         //Bukkit.getLogger().info(npc.getName() + " performing action: " + actionName);
         switch (actionName) {
             case "say" -> {
-                if (action.getActionTerm().getArity() == 1) {
-                    String message = action.getActionTerm().getTerm(0).toString();
-                    action.setResult(say(message));
+                String message = "";
+                for (Term t : action.getActionTerm().getTerms()) {
+                    message += t;
+                }
+                if (message != "") {
+                    action.setResult(say(message.replace("\"", "")));
                 }
             }
             case "find" -> action.setResult(find(action.getActionTerm().getTerm(0).toString()));
@@ -316,10 +320,9 @@ public class ArgusAgArch extends AgArch {
             Zombie zombie = zombies.get(new Random().nextInt(zombies.size()));
             destinationLocation = zombie.getLocation();
         } else {
-            List<NPC> players = findNearbyPlayers(BROWSE_RADIUS);
             NPC player = null;
-            for (NPC p: players) {
-                if (p.getName().equals(toFind)) {
+            for (NPC p: CitizensAPI.getNPCRegistry()) {
+                if (p.isSpawned() && p.getEntity() != null && p.getName().equals(toFind)){
                     player = p;
                     break;
                 }
