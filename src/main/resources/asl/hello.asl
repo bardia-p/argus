@@ -83,14 +83,14 @@ buildRequirement(donation,2).
     say("Defending against ", Player, "!!");
     attack(Player);
     !loop.
-+!loop: near(player,NearbyPlayers) & health(Health) & not(needsRecovery(Health)) & not(getEnemyPlayers(NearbyPlayers,[]))
++!loop: near(player,NearbyPlayers) & health(Health) & not(needsRecovery(Health)) & hasWeapon(_) & not(getEnemyPlayers(NearbyPlayers,[]))
 & getEnemyPlayers(NearbyPlayers, [EnemyPlayer|_]) <-
-    say("Attacking ", Player, "!!!");
+    say("Attacking ", EnemyPlayer, "!!!");
     attack(EnemyPlayer);
     !loop.
 +!loop: allPlayers(Players) & health(Health) & hasSufficientHealth(Health) & hasWeapon(_) & not(getEnemyPlayers(Players,[]))
 & getEnemyPlayers(Players, [EnemyPlayer|_]) & searchTimeout(SEARCH_TIMEOUT) <-
-    say("Looking for ", Player, "!!!");
+    say("Looking for ", EnemyPlayer, "!!!");
     find(EnemyPlayer);
     .wait({+near(player,_)}, SEARCH_TIMEOUT, EventTime);
     !loop.
