@@ -66,16 +66,18 @@ buildRequirement(donation,2).
 
 // Attacking/Defending against players/zombies
 
-+!loop: near(zombie,NumZombies) & health(Health) & canSurviveZombies(Health, NumZombies) <-
++!loop: health(Health) & ((damagedBy(zombie) & not(needsRecovery(Health))) |
+(near(zombie,NumZombies) & canSurviveZombies(Health, NumZombies))) <-
     say("Fighting zombies!!!");
     attack(zombie);
     !loop.
-+!loop: near(zombie,NumZombies) <-
++!loop: near(zombie,NumZombies) | damagedBy(zombie) <-
     say("Escaping zombies...");
     escape;
     !loop.
 
-+!loop: damagedBy(Player) & not(damagedBy(zombie)) & isTargetPlayerNearby(Player) & health(Health) & needsRecovery(Health) <-
++!loop: damagedBy(Player) & not(damagedBy(zombie)) & isTargetPlayerNearby(Player) & health(Health) &
+needsRecovery(Health) <-
     say("Escaping from ", Player, "!!");
     escape;
     !loop.
@@ -83,13 +85,13 @@ buildRequirement(donation,2).
     say("Defending against ", Player, "!!");
     attack(Player);
     !loop.
-+!loop: near(player,NearbyPlayers) & health(Health) & not(needsRecovery(Health)) & hasWeapon(_) & not(getEnemyPlayers(NearbyPlayers,[]))
-& getEnemyPlayers(NearbyPlayers, [EnemyPlayer|_]) <-
++!loop: near(player,NearbyPlayers) & health(Health) & not(needsRecovery(Health)) & hasWeapon(_) &
+not(getEnemyPlayers(NearbyPlayers,[])) & getEnemyPlayers(NearbyPlayers, [EnemyPlayer|_]) <-
     say("Attacking ", EnemyPlayer, "!!!");
     attack(EnemyPlayer);
     !loop.
-+!loop: allPlayers(Players) & health(Health) & hasSufficientHealth(Health) & hasWeapon(_) & not(getEnemyPlayers(Players,[]))
-& getEnemyPlayers(Players, [EnemyPlayer|_]) & searchTimeout(SEARCH_TIMEOUT) <-
++!loop: allPlayers(Players) & health(Health) & hasSufficientHealth(Health) & hasWeapon(_) &
+not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & searchTimeout(SEARCH_TIMEOUT) <-
     say("Looking for ", EnemyPlayer, "!!!");
     find(EnemyPlayer);
     .wait({+near(player,_)}, SEARCH_TIMEOUT, EventTime);

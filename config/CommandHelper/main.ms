@@ -39,7 +39,7 @@ bind('player_join', null, null, @event, @server_name, @player_name, @mapSizeMin,
        @rx = @mapSizeMin + (@randXIndex * @mapSizeStep);
        @rz = @mapSizeMin + (@randZIndex * @mapSizeStep);
 
-       run('/summon zombie ~'.@rx.' ~ ~'.@rz.' {NoAI:0b,PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:100},{Name:"generic.movement_speed",Base:0.3}],CanPickUpLoot:0b,Silent:1b}');
+       run('/summon zombie ~'.@rx.' ~ ~'.@rz.' {NoAI:0b,PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:5},{Name:"generic.movement_speed",Base:0.3}],CanPickUpLoot:0b,Silent:1b}');
     )
     run('/tp '.@player_name.' ~ ~10 ~ 0 90');
 

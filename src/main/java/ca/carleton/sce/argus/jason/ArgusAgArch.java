@@ -36,10 +36,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class ArgusAgArch extends AgArch {
     // Infrastructure properties
@@ -78,6 +75,7 @@ public class ArgusAgArch extends AgArch {
     public static int SWORD_ATTACK_POWER = 2;
     public static int AXE_ATTACK_POWER = 4;
     public static int TRIDENT_ATTACK_POWER = 6;
+    public static  int ZOMBIE_BROWSE_RADIUS = 5;
     // Weapon building
     public static int WOOD_NEEDED_FOR_SWORD = 10;
     public static int WOOD_NEEDED_FOR_AXE = 20;
@@ -131,18 +129,17 @@ public class ArgusAgArch extends AgArch {
                     }
                 } else { // Make zombies come after the NPC
                     Location npcLoc = ent.getLocation();
-                    double closestDistance = 1000;
+                    double closestDistance = ZOMBIE_BROWSE_RADIUS * ZOMBIE_BROWSE_RADIUS;
                     Zombie closestZombie = null;
                     for (Zombie zombie : ent.getWorld().getEntitiesByClass(Zombie.class)) {
                         double distanceToZombie = zombie.getLocation().distanceSquared(npcLoc);
-                        if (distanceToZombie < closestDistance) {
+                        if (distanceToZombie <= closestDistance) {
                             closestZombie = zombie;
                             closestDistance = distanceToZombie;
                         }
-
-                        if (closestZombie != null) {
-                            closestZombie.setTarget((LivingEntity) ent);
-                        }
+                    }
+                    if (closestZombie != null) {
+                        closestZombie.setTarget((LivingEntity) ent);
                     }
                 }
             }
@@ -180,35 +177,45 @@ public class ArgusAgArch extends AgArch {
         result.add(Literal.parseLiteral("buildRequirement(trident," + WOOD_NEEDED_FOR_TRIDENT + ")"));
         result.add(Literal.parseLiteral("zombieDefenceLimit(" + simulatenousZombieCapability + ")"));
 
-        StringBuilder players = new StringBuilder();
+        // Adding all available players
+        List<NPC> allPlayers = new ArrayList<>();
         for (NPC p: CitizensAPI.getNPCRegistry()) {
             if (p.isSpawned() && p.getEntity() != null && !p.equals(npc)) {
-                players.append(p.getName()).append(",");
+                allPlayers.add(p);
             }
         }
-        result.add(Literal.parseLiteral("allPlayers([" + players.deleteCharAt(players.length()-1) + "])"));
+        if (allPlayers.size() > 0) {
+            Collections.shuffle(allPlayers);
+            StringBuilder allPlayersStringList = new StringBuilder();
+            allPlayers.forEach(p -> allPlayersStringList.append(p.getName()).append(","));
+            result.add(Literal.parseLiteral("allPlayers([" +
+                    allPlayersStringList.deleteCharAt(allPlayersStringList.length() - 1) + "])"));
+        }
 
         // Entities nearby
+        // Trees
         if (findNearbyTree(CHOP_WOOD_RADIUS, true) != null) {
             result.add(Literal.parseLiteral("near(tree)"));
         }
 
+        // Zombies
         List<Zombie> zombies = findNearbyZombies(ATTACK_RADIUS);
-        if (zombies.size() != 0) {
+        if (zombies.size() > 0) {
             result.add(Literal.parseLiteral("near(zombie," + zombies.size() + ")"));
         }
 
-        List<NPC> attackablePlayers = findNearbyPlayers(ATTACK_RADIUS);
-        if (attackablePlayers.size() != 0) {
-            StringBuilder visiblePlayers = new StringBuilder();
-            attackablePlayers.forEach(p -> visiblePlayers.append(p.getName()).append(","));
+        // Players
+        List<NPC> nearbyPlayers = findNearbyPlayers(ATTACK_RADIUS);
+        if (nearbyPlayers.size() > 0) {
+            Collections.shuffle(nearbyPlayers);
+            StringBuilder nearbyPlayersStringList = new StringBuilder();
+            nearbyPlayers.forEach(p -> nearbyPlayersStringList.append(p.getName()).append(","));
             result.add(Literal.parseLiteral("near(player,[" +
-                    visiblePlayers.deleteCharAt(visiblePlayers.length()-1) + "])"));
+                    nearbyPlayersStringList.deleteCharAt(nearbyPlayersStringList.length()-1) + "])"));
         }
 
         // Check the player's houses
         houses.removeIf(houseLoc -> findLivablePointInHouse(houseLoc) == null);
-
         if (houses.size() > 0) {
             result.add(Literal.parseLiteral("houseCount(" + houses.size() + ")"));
         }
@@ -228,7 +235,7 @@ public class ArgusAgArch extends AgArch {
 
         // Get the entity damage info
         EntityDamageEvent damageEvent = ent.getLastDamageCause();
-        if (damageEvent != null) {
+        if (damageEvent != null && ((LivingEntity) ent).getLastDamage() != 0) {
             Entity causingEntity = damageEvent.getDamageSource().getCausingEntity();
             if (causingEntity instanceof Zombie) {
                 result.add(Literal.parseLiteral("damagedBy(zombie)"));
@@ -238,6 +245,7 @@ public class ArgusAgArch extends AgArch {
                     result.add(Literal.parseLiteral("damagedBy(" + causingNPC.getName() + ")"));
                 }
             }
+            ((LivingEntity) ent).setLastDamage(0);
         }
 
         //Bukkit.getLogger().info("Agent " + getAgName() + " beliefs are: " + result);
