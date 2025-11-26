@@ -3,7 +3,7 @@ version: '1.0-SNAPSHOT'
 main: ca.carleton.sce.argus.Argus
 api-version: '1.21.8'
 
-depend: [Citizens, CommandHelper]
+depend: [Citizens]
 
 libraries:
   - io.github.jason-lang:jason-interpreter:3.2.1

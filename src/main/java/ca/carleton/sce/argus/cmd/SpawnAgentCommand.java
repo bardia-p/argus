@@ -33,10 +33,6 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage("Only players can run this command.");
-            return true;
-        }
         if (args.length < 2) {
             sender.sendMessage("Usage: /spawnagent <agentName> <aslFile>");
             return true;
@@ -44,13 +40,8 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
         final String agentName = args[0];
         final String aslFile = args[1];
 
-        // Locate the target block the player is looking at
-        var block = player.getTargetBlockExact(15, FluidCollisionMode.NEVER);
-        if (block == null || block.getType() == Material.AIR) {
-            sender.sendMessage("Look at a solid block within 15 blocks.");
-            return true;
-        }
-        Location spawnAt = block.getLocation().add(0.5, 1.01, 0.5);
+        Location spawnLoc = getSpawnLocationFor(sender);
+
 
         // Load ASL content from resources/asl/<aslFile>
         String aslPath = "asl/" + aslFile;
@@ -68,7 +59,7 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
 
         // Create NPC via Citizens
         NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, agentName);
-        npc.spawn(spawnAt);
+        npc.spawn(spawnLoc);
 
         npc.data().setPersistent("argus_agent", true);
 
@@ -106,5 +97,18 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
             }
         }
         return Collections.emptyList();
+    }
+
+    private Location getSpawnLocationFor(CommandSender sender) {
+        if (!(sender instanceof Player player)) {
+            return new Location(plugin.getServer().getWorld("world"), 0, -60, 0);
+        }
+        // Locate the target block the player is looking at
+        var block = player.getTargetBlockExact(15, FluidCollisionMode.NEVER);
+        if (block == null || block.getType() == Material.AIR) {
+            sender.sendMessage("Look at a solid block within 15 blocks.");
+            return null;
+        }
+        return block.getLocation().add(0.5, 1.01, 0.5);
     }
 }
