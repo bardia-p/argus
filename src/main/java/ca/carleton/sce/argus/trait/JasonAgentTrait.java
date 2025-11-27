@@ -3,7 +3,6 @@ package ca.carleton.sce.argus.trait;
 import ca.carleton.sce.argus.jason.JasonService;
 import net.citizensnpcs.api.trait.Trait;
 import net.citizensnpcs.api.util.DataKey;
-import net.citizensnpcs.api.npc.NPC;
 
 /**
  * Citizens Trait that binds an NPC to a Jason agent instance.
@@ -38,13 +37,6 @@ public class JasonAgentTrait extends Trait {
     public String getAgentName() { return  agentName; }
 
     public String getAslFile() { return  aslFile; }
-
-    public int getAgentScore() {
-        if (jason != null && agentName != null) {
-            return jason.getAgentScore(agentName);
-        }
-        return -1;
-    }
 
     @Override
     public void load(DataKey key) {

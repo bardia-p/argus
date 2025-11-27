@@ -23,13 +23,16 @@ buildRequirement(donation,2).
 +message(tell, Sender, endAlliance(Sender)) <-
     say("Ended an alliance with ", Sender);
     -ally(Sender).
-+message(askIf, Sender, needWood) <-
++message(tell, Sender, hasHouse(Sender)) <-
+    say(Sender, " has a house!!");
+    receive(house, Sender).
++message(askIf, Sender, need(wood)) <-
     say(Sender, " need woods donation!!");
     +allyNeedsWoodDonation(Sender).
-+message(tell, Sender, donatedWoods(Woods)) <-
++message(tell, Sender, donated(wood, Woods)) <-
     say("Received wood donation from ", Sender, " :)");
     -askedForDonation;
-    receive_wood(Woods).
+    receive(wood, Woods).
 
 // Messaging helpers
 +!broadcast(MsgType, MsgCont): allPlayers(Players) <-
@@ -56,11 +59,11 @@ buildRequirement(donation,2).
     leave_house;
     !loop.
 +!loop: hiding <-
-    say("Hiding in my house to recover..");
+    say("Hiding in a house to recover..");
     .my_name(AgName);
     !loop.
 +!loop: houseCount(NumHouses) & health(Health) & needsRecovery(Health) <-
-    say("Heading to my house to recover..");
+    say("Heading to a house to recover..");
     enter_house;
     !loop.
 
@@ -120,7 +123,9 @@ not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & s
 +!loop: woodsChopped(Woods) & hasEnoughWoodFor(Woods, house) <-
     say("Building a house...");
     build(house);
-    !loop.
+    .my_name(AgName);
+    .findall(Ally, ally(Ally), Allies);
+    !sendToGroup(Allies, tell, hasHouse(AgName)).
 +!loop: woodsChopped(Woods) & hasEnoughWoodFor(Woods, sword) & not(hasWeapon(sword)) <-
     say("Building a sword...");
     build(sword);
@@ -131,7 +136,7 @@ not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & s
  & buildRequirement(donation,WOOD_DONATION_LIMIT) <-
     say("Donating wood to ", Ally, "..");
     donate_wood(WOOD_DONATION_LIMIT);
-    .send(Ally, tell, donatedWoods(WOOD_DONATION_LIMIT));
+    .send(Ally, tell, donated(wood, WOOD_DONATION_LIMIT));
     -allyNeedsWoodDonation(Ally);
     !loop.
 
@@ -175,7 +180,7 @@ not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & s
     +askedForDonation;
     .findall(Ally, ally(Ally), Allies);
     say("Failed to find wood :( Asking for donation from ", Allies);
-    !sendToGroup(Allies, askIf, needWood).
+    !sendToGroup(Allies, askIf, need(wood)).
 -!loop <- !loop.
 
 /* Rules */

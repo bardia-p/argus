@@ -62,6 +62,7 @@ public class ArgusAgArch extends AgArch {
     public static int WOOD_NEEDED_FOR_HOUSE = 30;
     public static int HOUSE_DISTANCE_OFFSET = 20;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
+    public static int HOUSE_OCCUPANCY_LIMIT = 2;
     // Wood chopping
     public static int INVENTORY_SIZE = 27;
     public static int CHOP_WOOD_RADIUS = 5;
@@ -157,6 +158,8 @@ public class ArgusAgArch extends AgArch {
 
     public int getScore()  { return score; }
 
+    public List<Location> getHouses() { return houses; }
+
     // Jason functions
 
     @Override
@@ -218,8 +221,9 @@ public class ArgusAgArch extends AgArch {
 
         // Check the player's houses
         houses.removeIf(houseLoc -> findLivablePointInHouse(houseLoc) == null);
-        if (houses.size() > 0) {
-            result.add(Literal.parseLiteral("houseCount(" + houses.size() + ")"));
+        List<Location> hidableHouses = houses.stream().filter(houseLoc -> canHideInHouse(houseLoc)).toList();
+        if (hidableHouses.size() > 0) {
+            result.add(Literal.parseLiteral("houseCount(" + hidableHouses.size() + ")"));
         }
 
         if (this.inHouse != null) {
@@ -276,7 +280,8 @@ public class ArgusAgArch extends AgArch {
             case "enter_house" -> action.setResult(enterHouse());
             case "leave_house" -> action.setResult(leaveHouse());
             case "donate_wood" -> action.setResult(donateWood(action.getActionTerm().getTerm(0).toString()));
-            case "receive_wood" -> action.setResult(receiveWood(action.getActionTerm().getTerm(0).toString()));
+            case "receive" -> action.setResult(receive(action.getActionTerm().getTerm(0).toString(),
+                                                       action.getActionTerm().getTerm(1).toString()));
             default -> Bukkit.getLogger().warning(npc.getName() + " has an unknown action: " + actionName);
         }
         actionExecuted(action);
@@ -528,27 +533,27 @@ public class ArgusAgArch extends AgArch {
             int requiredWood = 0;
             int newAttackPower = 1;
             switch(object) {
-                case "sword":
+                case "sword" -> {
                     requiredWood = WOOD_NEEDED_FOR_SWORD;
                     weapon = new ItemStack(Material.WOODEN_SWORD);
                     newAttackPower = SWORD_ATTACK_POWER;
                     escapeRadius = ESCAPE_RADIUS - SWORD_ATTACK_POWER;
                     simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY + SWORD_ATTACK_POWER / 2;
-                    break;
-                case "axe":
+                }
+                case "axe" -> {
                     requiredWood = WOOD_NEEDED_FOR_AXE;
                     weapon = new ItemStack(Material.WOODEN_AXE);
                     newAttackPower = AXE_ATTACK_POWER;
                     escapeRadius = ESCAPE_RADIUS - AXE_ATTACK_POWER;
                     simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY + AXE_ATTACK_POWER / 2;
-                    break;
-                case "trident":
+                }
+                case "trident" -> {
                     requiredWood = WOOD_NEEDED_FOR_TRIDENT;
                     weapon = new ItemStack(Material.TRIDENT);
                     newAttackPower = TRIDENT_ATTACK_POWER;
                     escapeRadius = ESCAPE_RADIUS - TRIDENT_ATTACK_POWER;
                     simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY + TRIDENT_ATTACK_POWER / 2;
-                    break;
+                }
             }
 
             if (weapon != null) {
@@ -585,7 +590,8 @@ public class ArgusAgArch extends AgArch {
 
         cancelNavigation();
 
-        for (Location houseLoc: houses) {
+        List<Location> hidableHouses = houses.stream().filter(houseLoc -> canHideInHouse(houseLoc)).toList();
+        for (Location houseLoc: hidableHouses) {
             Location inside = findLivablePointInHouse(houseLoc);
 
             if (inside != null) {
@@ -639,13 +645,23 @@ public class ArgusAgArch extends AgArch {
         return true;
     }
 
-    public boolean receiveWood(String numWoods) {
+    public boolean receive(String type, String parameters) {
         Entity ent = npc.getEntity();
         if (!npc.isSpawned() || ent == null) {
             return false;
         }
 
-        inv.addItem(new ItemStack(Material.OAK_LOG, Integer.parseInt(numWoods)));
+        switch (type) {
+            case "wood" -> inv.addItem(new ItemStack(Material.OAK_LOG, Integer.parseInt(parameters)));
+            case "house" -> {
+                JasonService.RuntimeHandle agentRuntime = plugin.getRuntimeHandle(parameters);
+                if (agentRuntime != null) {
+                    houses.addAll(agentRuntime.architecture().houses);
+                } else {
+                    return false;
+                }
+            }
+        }
 
         return true;
     }
@@ -739,6 +755,29 @@ public class ArgusAgArch extends AgArch {
         }
 
         return null;
+    }
+
+    private boolean canHideInHouse(Location houseLoc) {
+        Entity ent = npc.getEntity();
+        if (!npc.isSpawned() || ent == null) {
+            return false;
+        }
+
+        Location houseMinCorner = houseLoc.clone().add( -HOUSE_SIZE_IN_BLOCKS / 2.0 + 1, 0, 0);
+        Location houseMaxCorner = houseLoc.clone().add( HOUSE_SIZE_IN_BLOCKS / 2.0 - 1, 0, HOUSE_SIZE_IN_BLOCKS - 2);
+
+        int numPlayersInHouse = 0;
+        for (NPC p: CitizensAPI.getNPCRegistry()) {
+            if (p.isSpawned() && p.getEntity() != null && p != npc) {
+                Location playerLoc = p.getEntity().getLocation();
+                if (playerLoc.getX() >= houseMinCorner.getX() && playerLoc.getX() <= houseMaxCorner.getX() &&
+                playerLoc.getZ() >= houseMinCorner.getZ() && playerLoc.getZ() <= houseMaxCorner.getZ()) {
+                    numPlayersInHouse += 1;
+                }
+            }
+        }
+
+        return numPlayersInHouse < HOUSE_OCCUPANCY_LIMIT;
     }
 
     private void goToLocation(Location destination){

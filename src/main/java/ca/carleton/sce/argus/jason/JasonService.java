@@ -74,14 +74,6 @@ public class JasonService {
         }
     }
 
-    public int getAgentScore(String agentName) {
-        RuntimeHandle handle = runtimes.get(agentName);
-        if (handle != null) {
-            return handle.architecture().getScore();
-        }
-        return -1;
-    }
-
     public record RuntimeHandle(String name, Agent agent,
                                 ArgusAgArch architecture) {
     }

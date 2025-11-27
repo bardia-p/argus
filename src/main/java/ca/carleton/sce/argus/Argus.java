@@ -116,11 +116,12 @@ public final class Argus extends JavaPlugin {
 
     private void killNPC(NPC npc, boolean isDead) {
         JasonAgentTrait trait = npc.getTrait(JasonAgentTrait.class);
-        if (npc.isSpawned() && trait != null) {
+        JasonService.RuntimeHandle runtimeHandle = getRuntimeHandle(trait.getAgentName());
+        if (npc.isSpawned() && trait != null && runtimeHandle != null) {
             AgentData agentData = new AgentData();
             agentData.agentName = trait.getAgentName();
             agentData.aslFile = trait.getAslFile();
-            agentData.score = trait.getAgentScore();
+            agentData.score = runtimeHandle.architecture().getScore();
 
             if (isDead) {
                 deadAgents.put(npc.getName(), agentData);
