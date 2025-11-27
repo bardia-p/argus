@@ -68,33 +68,52 @@ buildRequirement(donation,2).
 
 +!loop: health(Health) & ((damagedBy(zombie) & not(needsRecovery(Health))) |
 (near(zombie,NumZombies) & canSurviveZombies(Health, NumZombies))) <-
+    +attempted_attack;
     say("Fighting zombies!!!");
     attack(zombie);
+    -attempted_attack;
     !loop.
 +!loop: near(zombie,NumZombies) | damagedBy(zombie) <-
+    +attempted_escape;
     say("Escaping zombies...");
     escape;
+    -attempted_escape;
     !loop.
 
 +!loop: damagedBy(Player) & not(damagedBy(zombie)) & isTargetPlayerNearby(Player) & health(Health) &
 needsRecovery(Health) <-
+    +attempted_escape;
     say("Escaping from ", Player, "!!");
     escape;
+    -attempted_escape;
     !loop.
 +!loop: damagedBy(Player) & isTargetPlayerNearby(Player) <-
+    +attempted_attack;
     say("Defending against ", Player, "!!");
     attack(Player);
+    -attempted_attack;
     !loop.
 +!loop: near(player,NearbyPlayers) & health(Health) & not(needsRecovery(Health)) & hasWeapon(_) &
 not(getEnemyPlayers(NearbyPlayers,[])) & getEnemyPlayers(NearbyPlayers, [EnemyPlayer|_]) <-
+    +attempted_attack;
     say("Attacking ", EnemyPlayer, "!!!");
     attack(EnemyPlayer);
+    -attempted_attack;
     !loop.
 +!loop: allPlayers(Players) & health(Health) & hasSufficientHealth(Health) & hasWeapon(_) &
 not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & searchTimeout(SEARCH_TIMEOUT) <-
+    +attempted_player_search;
     say("Looking for ", EnemyPlayer, "!!!");
     find(EnemyPlayer);
     .wait({+near(player,_)}, SEARCH_TIMEOUT, EventTime);
+    -attempted_player_search;
+    !loop.
++!loop: health(Health) & hasSufficientHealth(Health) & hasWeapon(_) & searchTimeout(SEARCH_TIMEOUT) <-
+    +attempted_zombie_search;
+    say("Looking for zombies!!!");
+    find(zombie);
+    .wait({+near(zombie,_)}, SEARCH_TIMEOUT, EventTime);
+    -attempted_zombie_search;
     !loop.
 
 // Building houses/weapons
@@ -124,16 +143,38 @@ not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & s
 
 // Getting wood
 +!loop: searchTimeout(SEARCH_TIMEOUT) <-
+    +attempted_tree_search;
     say("Looking for trees..");
     find(tree);
     .wait({+near(tree)}, SEARCH_TIMEOUT, EventTime);
+    -attempted_tree_search;
     !loop.
 
-// No Allies
--!loop: not(askedForDonation) <-
-    .findall(Ally, ally(Ally), Allies);
-    say("Asking for wood donation from ", Allies);
+// Handling Failed plans.
+-!loop: attempted_attack <-
+    -attempted_attack;
+    say("Failed to attack, escaping now!");
+    escape;
+    !loop.
+-!loop: attempted_escape <-
+    -attempted_escape;
+    say("Failed to escape, trying again!");
+    escape;
+    !loop.
+-!loop: (attempted_player_search | attempted_zombie_search) & searchTimeout(SEARCH_TIMEOUT) <-
+    -attempted_player_search;
+    -attempted_zombie_search;
+    +attempted_tree_search;
+    say("Looking for trees..");
+    find(tree);
+    .wait({+near(tree)}, SEARCH_TIMEOUT, EventTime);
+    -attempted_tree_search;
+    !loop.
+-!loop: attempted_tree_search & not(askedForDonation) <-
+    -attempted_tree_search;
     +askedForDonation;
+    .findall(Ally, ally(Ally), Allies);
+    say("Failed to find wood :( Asking for donation from ", Allies);
     !sendToGroup(Allies, askIf, needWood).
 -!loop <- !loop.
 

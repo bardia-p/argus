@@ -371,13 +371,16 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
-        int x_offset = getRandomLocationAtRadius(this.escapeRadius);
-        int z_offset = getRandomLocationAtRadius(this.escapeRadius);
-        Location escapeLoc = ent.getLocation().clone().add(x_offset, 0, z_offset);
+        // Attempt to escape the zombie repeatedly
+        for (int i = 0; i < escapeRadius / 2; i++) {
+            int x_offset = getRandomLocationAtRadius(this.escapeRadius);
+            int z_offset = getRandomLocationAtRadius(this.escapeRadius);
+            Location escapeLoc = ent.getLocation().clone().add(x_offset, 0, z_offset);
 
-        if (npc.getNavigator().canNavigateTo(escapeLoc)) {
-            npc.teleport(escapeLoc, PlayerTeleportEvent.TeleportCause.PLUGIN);
-            return true;
+            if (npc.getNavigator().canNavigateTo(escapeLoc)) {
+                npc.teleport(escapeLoc, PlayerTeleportEvent.TeleportCause.PLUGIN);
+                return true;
+            }
         }
 
         return false;
