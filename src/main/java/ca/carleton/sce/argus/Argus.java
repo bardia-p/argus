@@ -29,7 +29,7 @@ public final class Argus extends JavaPlugin {
     private Map<String, AgentData> liveAgents;
     private UUID worldId;
 
-    public static long GAME_DURATION_IN_TICKS = 20L * 60 * 3; // 3 minutes
+    public static long GAME_DURATION_IN_TICKS = 10L * 60 * 3; // 1.5 minutes
     public static int TOTAL_GAME_REWARD = 10000;
 
     @Override

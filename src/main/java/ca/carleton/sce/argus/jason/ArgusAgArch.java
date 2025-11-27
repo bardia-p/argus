@@ -75,7 +75,7 @@ public class ArgusAgArch extends AgArch {
     public static int SWORD_ATTACK_POWER = 2;
     public static int AXE_ATTACK_POWER = 4;
     public static int TRIDENT_ATTACK_POWER = 6;
-    public static  int ZOMBIE_BROWSE_RADIUS = 5;
+    public static  int ZOMBIE_BROWSE_RADIUS = 10;
     // Weapon building
     public static int WOOD_NEEDED_FOR_SWORD = 10;
     public static int WOOD_NEEDED_FOR_AXE = 20;
@@ -83,8 +83,10 @@ public class ArgusAgArch extends AgArch {
     // Health revival
     public static double HEALTH_REVIVE_AMOUNT_PER_TICK = 0.01;
     // Rewards
-    public static int HOUSE_BUILD_REWARD = 200;
-    public static int ZOMBIE_DAMAGE_REWARD = 10;
+    public static int HOUSE_BUILD_REWARD = 500;
+    public static int ZOMBIE_DAMAGE_REWARD = 25;
+    public static int WOOD_DONATION_REWARD = 50;
+    public static int PLAYER_DAMAGE_PENALTY = -10;
 
     public ArgusAgArch(Argus plugin, NPC npc) {
         this.plugin = plugin;
@@ -143,7 +145,7 @@ public class ArgusAgArch extends AgArch {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0L, 20L);
+        }.runTaskTimer(plugin, 0L, 10L);
     }
 
     public void shutdown() {
@@ -411,6 +413,7 @@ public class ArgusAgArch extends AgArch {
                 return false;
             }
 
+            this.score -= PLAYER_DAMAGE_PENALTY * this.attackPower;
             ((LivingEntity) player.getEntity()).damage(this.attackPower, ent);
         }
 
@@ -629,7 +632,7 @@ public class ArgusAgArch extends AgArch {
         }
 
         inv.removeItem(new ItemStack(Material.OAK_LOG, Integer.parseInt(numWoods)));
-
+        this.score += WOOD_DONATION_REWARD;
         return true;
     }
 
