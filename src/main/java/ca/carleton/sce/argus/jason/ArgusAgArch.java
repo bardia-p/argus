@@ -90,7 +90,7 @@ public class ArgusAgArch extends AgArch {
     public static int WOOD_DONATION_REWARD = 50;
     public static int PLAYER_DAMAGE_PENALTY = -10;
 
-    public ArgusAgArch(Argus plugin, NPC npc, String aslFile) {
+    public ArgusAgArch(Argus plugin, NPC npc, String aslFile, String agentType) {
         this.plugin = plugin;
         this.npc = npc;
         this.inv = Bukkit.createInventory(null, INVENTORY_SIZE, this.getAgName() + "'s Inventory");
@@ -103,9 +103,8 @@ public class ArgusAgArch extends AgArch {
         this.weapon = null;
         this.escapeRadius = ESCAPE_RADIUS;
         this.simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY;
-        this.type = aslFile.substring(0, aslFile.lastIndexOf(".asl"));
-        System.out.println("MY TYPE IS " + type);
-        npc.data().set(NPC.Metadata.DEFAULT_PROTECTED, false);
+        this.type = (agentType.equals("loner")) ? agentType :
+                                                  aslFile.substring(0, aslFile.lastIndexOf(".asl")) + "_" + agentType;
 
         new BukkitRunnable() {
             @Override

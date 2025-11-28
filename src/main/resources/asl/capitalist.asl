@@ -12,7 +12,7 @@ buildRequirement(donation,1).
 /* Plans */
 
 // Handling message communication
-+message(askIf, Sender, wantAlliance(Sender, SenderType)): type(AgType) & SenderType == AgType <-
++message(askIf, Sender, wantAlliance(Sender, SenderType)): type(AgType) & not(type(loner)) & SenderType == AgType <-
     say("Received an alliance request from ", Sender);
     +ally(Sender);
     .my_name(AgName);

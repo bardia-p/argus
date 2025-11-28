@@ -24,13 +24,13 @@ public class JasonService {
         return runtimes.getOrDefault(agent, null);
     }
 
-    public void startOrAttachAgent(NPC npc, String agentName, String aslFile) {
+    public void startOrAttachAgent(NPC npc, String agentName, String aslFile, String agentType) {
         if (runtimes.containsKey(agentName)) {
             plugin.getLogger().info("Agent " + agentName + " is already running.");
             return;
         }
 
-        ArgusAgArch arch = new ArgusAgArch(plugin, npc, aslFile);
+        ArgusAgArch arch = new ArgusAgArch(plugin, npc, aslFile, agentType);
         Agent agent = new Agent();
         agent.setTS(new TransitionSystem(agent, null, null, arch));
 

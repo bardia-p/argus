@@ -34,11 +34,12 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage("Usage: /spawnagent <agentName> <aslFile>");
+            sender.sendMessage("Usage: /spawnagent <agentName> <aslFile> <agentType>");
             return true;
         }
         final String agentName = args[0];
         final String aslFile = args[1];
+        final String agentType = args[2];
 
         Location spawnLoc = getSpawnLocationFor(sender);
 
@@ -67,6 +68,7 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
         npc.getOrAddTrait(JasonAgentTrait.class);
 
         npc.setProtected(false);
+        npc.data().set(NPC.Metadata.DEFAULT_PROTECTED, false);
 
         JasonAgentTrait trait = npc.getTraitNullable(JasonAgentTrait.class);
         if (trait == null) {
@@ -75,7 +77,7 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
             npc.destroy();
             return true;
         }
-        trait.initialize(agentName, aslFile, aslSource, jasonService);
+        trait.initialize(agentName, aslFile, aslSource, agentType, jasonService);
 
         sender.sendMessage(ChatColor.GREEN + "Spawned agent NPC '" + agentName + "' using " + aslFile + ".");
         return true;

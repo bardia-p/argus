@@ -17,13 +17,13 @@ public class JasonAgentTrait extends Trait {
         super("jason-agent");
     }
 
-    public void initialize(String agentName, String aslFile, String aslSource, JasonService jasonService) {
+    public void initialize(String agentName, String aslFile, String aslSource, String agentType, JasonService jasonService) {
         this.agentName = agentName;
         this.aslFile = aslFile;
         this.jason = jasonService;
 
         if (jason != null && agentName != null && aslSource != null) {
-            jason.startOrAttachAgent(npc, agentName, aslFile);
+            jason.startOrAttachAgent(npc, agentName, aslFile, agentType);
         }
     }
 

@@ -3,7 +3,7 @@
 @mapSizeMin = -25;
 @mapSizeMax = 25;
 @mapSizeStep = 5;
-@numZombies = 10;
+@numZombies = 8;
 
 # Echo server greeting
 console(
@@ -22,7 +22,7 @@ run('/time set night');
 run('/weather clear');
 run('/gamerule doDaylightCycle false');
 run('/gamerule doWeatherCycle false');
-run('/gamerule randomTickSpeed 25');
+run('/gamerule randomTickSpeed 50');
 
 # Plant saplings
 for(@x = @mapSizeMin, @x <= @mapSizeMax, @x += @mapSizeStep,
@@ -45,10 +45,41 @@ for(@i = 0, @i < @numZombies, @i += 1,
    run('/summon zombie ~'.@rx.' ~ ~'.@rz.' {NoAI:0b,PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:5},{Name:"generic.movement_speed",Base:0.3}],CanPickUpLoot:0b,Silent:1b}');
 )
 
-run('/spawnagent cass hello.asl');
-run('/spawnagent eric hello.asl');
-run('/spawnagent bardia hello.asl');
-run('/spawnagent charissa hello.asl');
-run('/spawnagent daniel hello.asl');
+# Experiment 1 - Full alliance
+run('/spawnagent a1 attacker.asl group');
+run('/spawnagent a2 attacker.asl group');
+run('/spawnagent a3 attacker.asl group');
+run('/spawnagent a4 attacker.asl group');
+
+run('/spawnagent c1 capitalist.asl group');
+run('/spawnagent c2 capitalist.asl group');
+run('/spawnagent c3 capitalist.asl group');
+run('/spawnagent c4 capitalist.asl group');
+
+# Experiment 2 - Odd/Even alliance
+/*
+run('/spawnagent a1 attacker.asl odd');
+run('/spawnagent a2 attacker.asl even');
+run('/spawnagent a3 attacker.asl odd');
+run('/spawnagent a4 attacker.asl even');
+
+run('/spawnagent c1 capitalist.asl odd');
+run('/spawnagent c2 capitalist.asl even');
+run('/spawnagent c3 capitalist.asl odd');
+run('/spawnagent c4 capitalist.asl even');
+*/
+
+# Experiment 3 - No alliance
+/*
+run('/spawnagent a1 attacker.asl loner');
+run('/spawnagent a2 attacker.asl loner');
+run('/spawnagent a3 attacker.asl loner');
+run('/spawnagent a4 attacker.asl loner');
+
+run('/spawnagent c1 capitalist.asl loner');
+run('/spawnagent c2 capitalist.asl loner');
+run('/spawnagent c3 capitalist.asl loner');
+run('/spawnagent c4 capitalist.asl loner');
+*/
 
 msg('Welcome to '.@server_name.'!');
