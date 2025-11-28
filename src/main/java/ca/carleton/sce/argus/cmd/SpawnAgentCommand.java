@@ -92,7 +92,8 @@ public class SpawnAgentCommand implements CommandExecutor, TabCompleter {
                 // List known ASL files from the plugin's JAR resources (best effort)
                 // NOTE: Java doesn't easily list resources in a JAR; maintain an index txt or hardcode.
                 // For convenience, we support a fixed shortlist here; replace with your own index.
-                return List.of("hello.asl").stream().filter(f -> f.startsWith(args[1].toLowerCase())).collect(Collectors.toList());
+                return List.of("capitalist.asl", "attacker.asl").stream()
+                        .filter(f -> f.startsWith(args[1].toLowerCase())).collect(Collectors.toList());
             } catch (Exception ignored) {
             }
         }

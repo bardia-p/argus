@@ -30,7 +30,7 @@ public class JasonService {
             return;
         }
 
-        ArgusAgArch arch = new ArgusAgArch(plugin, npc);
+        ArgusAgArch arch = new ArgusAgArch(plugin, npc, aslFile);
         Agent agent = new Agent();
         agent.setTS(new TransitionSystem(agent, null, null, arch));
 

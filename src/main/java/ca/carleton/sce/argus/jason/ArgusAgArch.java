@@ -55,11 +55,12 @@ public class ArgusAgArch extends AgArch {
     private String weapon;
     private int escapeRadius;
     private int simulatenousZombieCapability;
+    private String type;
 
     // Constants
     public static int BROWSE_RADIUS = 50;
     // House building
-    public static int WOOD_NEEDED_FOR_HOUSE = 30;
+    public static int WOOD_NEEDED_FOR_HOUSE = 12;
     public static int HOUSE_DISTANCE_OFFSET = 20;
     public static int HOUSE_SIZE_IN_BLOCKS = 4;
     public static int HOUSE_OCCUPANCY_LIMIT = 2;
@@ -79,17 +80,17 @@ public class ArgusAgArch extends AgArch {
     public static  int ZOMBIE_BROWSE_RADIUS = 10;
     // Weapon building
     public static int WOOD_NEEDED_FOR_SWORD = 10;
-    public static int WOOD_NEEDED_FOR_AXE = 20;
-    public static int WOOD_NEEDED_FOR_TRIDENT = 30;
+    public static int WOOD_NEEDED_FOR_AXE = 15;
+    public static int WOOD_NEEDED_FOR_TRIDENT = 20;
     // Health revival
-    public static double HEALTH_REVIVE_AMOUNT_PER_TICK = 0.01;
+    public static double HEALTH_REVIVE_AMOUNT_PER_SECOND = 0.01;
     // Rewards
     public static int HOUSE_BUILD_REWARD = 500;
     public static int ZOMBIE_DAMAGE_REWARD = 25;
     public static int WOOD_DONATION_REWARD = 50;
     public static int PLAYER_DAMAGE_PENALTY = -10;
 
-    public ArgusAgArch(Argus plugin, NPC npc) {
+    public ArgusAgArch(Argus plugin, NPC npc, String aslFile) {
         this.plugin = plugin;
         this.npc = npc;
         this.inv = Bukkit.createInventory(null, INVENTORY_SIZE, this.getAgName() + "'s Inventory");
@@ -102,6 +103,8 @@ public class ArgusAgArch extends AgArch {
         this.weapon = null;
         this.escapeRadius = ESCAPE_RADIUS;
         this.simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY;
+        this.type = aslFile.substring(0, aslFile.lastIndexOf(".asl"));
+        System.out.println("MY TYPE IS " + type);
         npc.data().set(NPC.Metadata.DEFAULT_PROTECTED, false);
 
         new BukkitRunnable() {
@@ -119,7 +122,7 @@ public class ArgusAgArch extends AgArch {
                     double current = entity.getHealth();
                     double max = Objects.requireNonNull(entity.getAttribute(Attribute.MAX_HEALTH)).getValue();
 
-                    double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_TICK * max, max);
+                    double newHealth = Math.min(current + HEALTH_REVIVE_AMOUNT_PER_SECOND * max, max);
                     entity.setHealth(newHealth);
 
                     // Reset any zombies targeting this NPC
@@ -146,7 +149,7 @@ public class ArgusAgArch extends AgArch {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0L, 10L);
+        }.runTaskTimer(plugin, 0L, 20L);
     }
 
     public void shutdown() {
@@ -175,6 +178,7 @@ public class ArgusAgArch extends AgArch {
                 0.2, 0.2, 0.1);
 
         // Constants
+        result.add(Literal.parseLiteral("type(" + type + ")"));
         result.add(Literal.parseLiteral("woodsChopped(" + getNumLogs() + ")"));
         result.add(Literal.parseLiteral("buildRequirement(house," + WOOD_NEEDED_FOR_HOUSE + ")"));
         result.add(Literal.parseLiteral("buildRequirement(sword," + WOOD_NEEDED_FOR_SWORD + ")"));
@@ -421,7 +425,6 @@ public class ArgusAgArch extends AgArch {
                 return false;
             }
 
-            this.score -= PLAYER_DAMAGE_PENALTY * this.attackPower;
             ((LivingEntity) player.getEntity()).damage(this.attackPower, ent);
         }
 
@@ -770,8 +773,8 @@ public class ArgusAgArch extends AgArch {
         for (NPC p: CitizensAPI.getNPCRegistry()) {
             if (p.isSpawned() && p.getEntity() != null && p != npc) {
                 Location playerLoc = p.getEntity().getLocation();
-                if (playerLoc.getX() >= houseMinCorner.getX() && playerLoc.getX() <= houseMaxCorner.getX() &&
-                playerLoc.getZ() >= houseMinCorner.getZ() && playerLoc.getZ() <= houseMaxCorner.getZ()) {
+                if (playerLoc.getBlockX() >= houseMinCorner.getBlockX() && playerLoc.getBlockX() <= houseMaxCorner.getBlockX() &&
+                playerLoc.getBlockZ() >= houseMinCorner.getBlockZ() && playerLoc.getBlockZ() <= houseMaxCorner.getBlockZ()) {
                     numPlayersInHouse += 1;
                 }
             }

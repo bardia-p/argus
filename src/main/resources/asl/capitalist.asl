@@ -3,7 +3,7 @@
 // Constants
 lowHealthThreshold(0.25).
 searchTimeout(1000).
-buildRequirement(donation,2).
+buildRequirement(donation,1).
 
 /* Goals */
 
@@ -12,7 +12,7 @@ buildRequirement(donation,2).
 /* Plans */
 
 // Handling message communication
-+message(askIf, Sender, wantAlliance(Sender)) <-
++message(askIf, Sender, wantAlliance(Sender, SenderType)): type(AgType) & SenderType == AgType <-
     say("Received an alliance request from ", Sender);
     +ally(Sender);
     .my_name(AgName);
@@ -47,11 +47,11 @@ buildRequirement(donation,2).
 /* MAIN LOGIC LOOP */
 
 // Asking for alliance
-+!loop: not(ally(_)) & not(attempted_alliance) <-
++!loop: not(ally(_)) & not(attempted_alliance) & type(AgType) <-
     +attempted_alliance;
     say("Asking to form an alliance...");
     .my_name(AgName);
-    !broadcast(askIf, wantAlliance(AgName)).
+    !broadcast(askIf, wantAlliance(AgName, AgType)).
 
 // Entering/Leaving Houses
 +!loop: hiding & health(Health) & hasSufficientHealth(Health) <-
@@ -103,21 +103,6 @@ not(getEnemyPlayers(NearbyPlayers,[])) & getEnemyPlayers(NearbyPlayers, [EnemyPl
     attack(EnemyPlayer);
     -attempted_attack;
     !loop.
-+!loop: allPlayers(Players) & health(Health) & hasSufficientHealth(Health) & hasWeapon(_) &
-not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & searchTimeout(SEARCH_TIMEOUT) <-
-    +attempted_player_search;
-    say("Looking for ", EnemyPlayer, "!!!");
-    find(EnemyPlayer);
-    .wait({+near(player,_)}, SEARCH_TIMEOUT, EventTime);
-    -attempted_player_search;
-    !loop.
-+!loop: health(Health) & hasSufficientHealth(Health) & hasWeapon(_) & searchTimeout(SEARCH_TIMEOUT) <-
-    +attempted_zombie_search;
-    say("Looking for zombies!!!");
-    find(zombie);
-    .wait({+near(zombie,_)}, SEARCH_TIMEOUT, EventTime);
-    -attempted_zombie_search;
-    !loop.
 
 // Building houses/weapons
 +!loop: woodsChopped(Woods) & hasEnoughWoodFor(Woods, house) <-
@@ -126,7 +111,7 @@ not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & s
     .my_name(AgName);
     .findall(Ally, ally(Ally), Allies);
     !sendToGroup(Allies, tell, hasHouse(AgName)).
-+!loop: woodsChopped(Woods) & hasEnoughWoodFor(Woods, sword) & not(hasWeapon(sword)) <-
++!loop: houseCount(_) & woodsChopped(Woods) & hasEnoughWoodFor(Woods, sword) & not(hasWeapon(sword)) <-
     say("Building a sword...");
     build(sword);
     !loop.
@@ -146,7 +131,22 @@ not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & s
     chop_wood;
     !loop.
 
-// Getting wood
+// Searching
++!loop: allPlayers(Players) & health(Health) & hasSufficientHealth(Health) & hasWeapon(_) &
+not(getEnemyPlayers(Players,[])) & getEnemyPlayers(Players, [EnemyPlayer|_]) & searchTimeout(SEARCH_TIMEOUT) <-
+    +attempted_player_search;
+    say("Looking for ", EnemyPlayer, "!!!");
+    find(EnemyPlayer);
+    .wait({+near(player,_)}, SEARCH_TIMEOUT, EventTime);
+    -attempted_player_search;
+    !loop.
++!loop: health(Health) & hasSufficientHealth(Health) & hasWeapon(_) & searchTimeout(SEARCH_TIMEOUT) <-
+    +attempted_zombie_search;
+    say("Looking for zombies!!!");
+    find(zombie);
+    .wait({+near(zombie,_)}, SEARCH_TIMEOUT, EventTime);
+    -attempted_zombie_search;
+    !loop.
 +!loop: searchTimeout(SEARCH_TIMEOUT) <-
     +attempted_tree_search;
     say("Looking for trees..");
