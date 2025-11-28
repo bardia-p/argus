@@ -1,0 +1,1321 @@
+runs:
+- date: '2025-11-28T13:58:20.692987'
+  world_id: 79e20dae-c1a6-4fb5-8bd4-aef6ccc3a9d2
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 3516
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 3041
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2466
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 5491
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2466
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2566
+  deceased:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 400
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4725
+- date: '2025-11-28T14:00:07.149143'
+  world_id: 44ba3a7f-fea4-44cb-8f95-82b35d1ecec5
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 10250
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2325
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 4775
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 3125
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 7150
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4425
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 9250
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 3475
+  deceased: {}
+- date: '2025-11-28T14:01:52.756179'
+  world_id: e7152160-b0c9-4d99-9a37-f6c9ff71a2f9
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 8541
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 8966
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 5341
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 7991
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2916
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 6341
+  deceased:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 300
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 1425
+- date: '2025-11-28T14:03:40.385692'
+  world_id: 30bb2f4a-8e2c-4cd0-829f-46356878ad17
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 12003
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2753
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 2353
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 4028
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 3903
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 3103
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2728
+  deceased:
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 650
+- date: '2025-11-28T14:05:27.077533'
+  world_id: 9b25b3b3-08b3-4ce2-9497-b518eea24c42
+  survivors:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2400
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 2800
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 3350
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4400
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2325
+  deceased:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 650
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 500
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 700
+- date: '2025-11-28T14:07:13.447048'
+  world_id: 9943cf9e-a624-46bb-b954-5751916d7203
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 2875
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 10575
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 3000
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 3175
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 2875
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 2550
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 12825
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 7375
+  deceased: {}
+- date: '2025-11-28T14:23:57.553865'
+  world_id: 518086cb-3d13-4066-8cf6-1ad3434294ba
+  survivors:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 3400
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2775
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 11225
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3075
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 3225
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 275
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 375
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 175
+- date: '2025-11-28T14:33:29.928951'
+  world_id: 7e87c974-91d1-40f9-a885-24ee744e8380
+  survivors:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2316
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 4441
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2466
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 3241
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2016
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2841
+  deceased:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 1050
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 500
+- date: '2025-11-28T14:35:45.329647'
+  world_id: d15d8fe1-e28d-47a1-8102-7a934afa5204
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 5858
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 4483
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 3708
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 900
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 575
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 475
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 425
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 950
+- date: '2025-11-28T14:41:53.525521'
+  world_id: b3031f71-3082-49f8-8377-7e20d37294e5
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 2553
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2803
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 1978
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 3578
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 3978
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 2428
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 1803
+  deceased:
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 325
+- date: '2025-11-28T14:43:38.935142'
+  world_id: fddc7ba2-0ce6-4997-bb43-699e041d9b78
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 5200
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 3950
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 5825
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 3300
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 4975
+  deceased:
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 1025
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 5375
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 875
+- date: '2025-11-28T14:45:25.742054'
+  world_id: cd87991b-0fd8-43a1-afd7-f60bdc02fb4f
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 4691
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 9466
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 8416
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 11016
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4341
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2941
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 900
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 375
+- date: '2025-11-28T14:47:13.405162'
+  world_id: b6c1271f-6629-4336-bfd0-b919f2db0958
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 2416
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 3066
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2841
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 5066
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2166
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 4016
+  deceased:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 225
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 1500
+- date: '2025-11-28T14:49:01.483769'
+  world_id: 5e2aea64-4493-4da4-abda-9d978173a5d3
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 4358
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 4958
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 5633
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 400
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 275
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 425
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 825
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 350
+- date: '2025-11-28T14:50:49.31239'
+  world_id: 22acb407-1718-46bb-9d99-884525297deb
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 3616
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 2391
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 1991
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 8391
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 6916
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 4266
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 1325
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 325
+- date: '2025-11-28T14:52:37.677058'
+  world_id: 4a002e45-a244-4bf1-b457-c6afa206164f
+  survivors:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 4075
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 3250
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 5125
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3850
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 4500
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 450
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 4900
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 100
+- date: '2025-11-28T14:54:25.778034'
+  world_id: 1aeb4fdd-f794-4c3d-b1b5-b969b4723e01
+  survivors:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 3091
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2741
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 2616
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 2316
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2466
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 3766
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 225
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 1450
+- date: '2025-11-28T14:56:12.99609'
+  world_id: e441c500-5a02-4348-a671-735c65fec65f
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 2591
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2691
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2591
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 2091
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2916
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2291
+  deceased:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 1225
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 1775
+- date: '2025-11-28T14:58:00.213569'
+  world_id: 0962932d-d1d2-4f86-ba5b-a0661ab97247
+  survivors:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 4600
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 5500
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 9100
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 13550
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3700
+  deceased:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 1575
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 750
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 350
+- date: '2025-11-28T14:59:47.191723'
+  world_id: c019f9d8-dfd8-47b0-9367-6e2da1b2be0f
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 11050
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 4600
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 2425
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 3300
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 6975
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4025
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3775
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 4475
+  deceased: {}
+- date: '2025-11-28T15:01:36.308631'
+  world_id: 873c9d22-b108-4c06-9f8e-f5655e28de15
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 2928
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2478
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 2903
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2303
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 2753
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2303
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2353
+  deceased:
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 350
+- date: '2025-11-28T15:03:24.101867'
+  world_id: 3764f33e-7e2b-404c-9988-25767dd58777
+  survivors:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 5883
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4333
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 4308
+  deceased:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 1275
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 475
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 975
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 425
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 375
+- date: '2025-11-28T15:05:54.640686'
+  world_id: 64684399-621b-4760-b3fe-a9b6fab112a4
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 2041
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 3391
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2141
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 3916
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2416
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2966
+  deceased:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 425
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 300
+- date: '2025-11-28T15:07:41.666836'
+  world_id: 9d24d8d1-bff7-47fe-bf50-12c711699685
+  survivors:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 7625
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 7075
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 7550
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3025
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 3800
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 275
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 425
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 625
+- date: '2025-11-28T15:09:28.771928'
+  world_id: f162151f-b5d4-4eec-8244-d7ffb9a5da7a
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 10541
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 3166
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 5766
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 5866
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 4216
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 3191
+  deceased:
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 500
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 1650
+- date: '2025-11-28T15:11:15.693639'
+  world_id: 412040a5-5ce7-4617-8342-dd626773a738
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 6650
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 8675
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2525
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 11550
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 11650
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 250
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 200
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2450
+- date: '2025-11-28T15:13:02.245499'
+  world_id: d13f9453-b25c-4964-9256-e6c961e57ae4
+  survivors:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 4183
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 4533
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3708
+  deceased:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 525
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 1250
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 225
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 350
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 900
+- date: '2025-11-28T15:14:48.001454'
+  world_id: 54a3888d-145f-4018-b7c0-1b54e7c08eca
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 3528
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 2128
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 3853
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 14553
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 4328
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 2678
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 2453
+  deceased:
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 2050
+- date: '2025-11-28T15:16:33.699534'
+  world_id: 9ddc7184-92fd-4fcf-9179-0365b3a5f4b4
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 3175
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 3650
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 3575
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 3300
+  deceased:
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 1375
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 1175
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 550
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 575
+- date: '2025-11-28T15:18:21.538948'
+  world_id: f32ad511-03cc-415d-a9d6-d1e19bfae62c
+  survivors:
+    a1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a1
+      aslFile: attacker.asl
+      score: 5200
+    a2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a2
+      aslFile: attacker.asl
+      score: 5900
+    a3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a3
+      aslFile: attacker.asl
+      score: 8650
+    a4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: a4
+      aslFile: attacker.asl
+      score: 3375
+    c2:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c2
+      aslFile: capitalist.asl
+      score: 4550
+  deceased:
+    c3:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c3
+      aslFile: capitalist.asl
+      score: 400
+    c4:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c4
+      aslFile: capitalist.asl
+      score: 875
+    c1:
+      ==: ca.carleton.sce.argus.trait.AgentData
+      agentName: c1
+      aslFile: capitalist.asl
+      score: 475
