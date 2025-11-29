@@ -9,7 +9,7 @@ for ((i=1; i<=RUNS; i++)); do
 
     echo "Finished experiment. Killing Java processes..."
 
-    pkill -f java   # or the safer method below
+    pkill -f java
 
     echo "Cleanup done."
     echo "----------------------"
