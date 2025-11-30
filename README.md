@@ -5,10 +5,11 @@
     <em>Logo designed by Charissa Pacada</em>
 </p>
 
-Argus is a custom Minecraft mod for BDI agents to interact with each other in a multi-agent environment. In this environment, the agents act as NPCs with the goal of surviving the zombie attack and collecting as many points as possible. The agents can work together to fight the zombies and/or build houses to hide from them. 
+## Description
 
-## Beliefs
-### External Beliefs (Perceptions)
+Argus is a custom Minecraft mod for BDI agents to interact with each other in a multi-agent environment. In this environment, the agents act as NPCs with the goal of surviving the zombie attack and collecting as many points as possible. The agents can work together to fight the zombies and/or build houses to hide from them. 
+### Beliefs
+#### External Beliefs (Perceptions)
 | Perception | Meaning |
 |---|---|
 | type(_) | the agent type |
@@ -28,7 +29,7 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 | hasWeapon(_) | the agent has a weapon. Parameter indicates the weapon type |
 | damagedBy(_) | the agent took damage from the given entity |
 
-### Internal Beliefs
+#### Internal Beliefs
 | Belief | Meaning |
 |---|---|
 | lowHealthThreshold(_) | the agent considers this a low health |
@@ -36,14 +37,14 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 | buildRequirement(donation, _) | the agent's donation limit |
 | ally(_) | the agent is an ally with the agent |
 
-## Desires
+### Desires
 | Desire | Meaning |
 |---|---|
 | !broadcast(_, _) | send a message of given type and content to all players |
 | !sendToGroup(_, _, _) | send a message to a given group of people with a given type and content |
 | !loop | the agent's main logic loop |
 
-## Actions
+### Actions
 | Action | Meaning |
 |---|---|
 | say(_) | the agent sends a message to the logs |
@@ -57,7 +58,7 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 | donate_wood(_) | the agent donates a certain amount of wood |
 | receive(_, _) | the agent either receives (wood, count) or (house, from) |
 
-## Messages
+### Messages
 | Message | Type | Meaning |
 |---|---|---|
 | wantAlliance(_) | askIf | the asking agent wants an alliance |
@@ -66,6 +67,10 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 | hasHouse(_) | tell | the agent announces they have a house |
 | need(_) | askIf | the asking agent needs something |
 | donated(_, _) | tell | the agent donated a number of woods to the agent |
+
+## Design
+
+For details regarding the design of the project please navigate to the [documents](documents) folder.
 
 ## Installation
 1. Get [Minecraft Java Edition](https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc?tabs=%7B%22details%22%3A0%7D)
@@ -122,6 +127,8 @@ gradle runServer
 ```
 ./run_experiment.sh
 ```
+
+For existing experiment results and data please navigate to the [data_analysis](data_analysis) folder
 
 ## Notes
 The name Argus is a nod to the previous major AgentSpeak projects namely, Jason and Peleus. The name Argus  was chosen since this environment allows BDI agents to build weapons and houses!

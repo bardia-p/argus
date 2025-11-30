@@ -88,7 +88,6 @@ public class ArgusAgArch extends AgArch {
     public static int HOUSE_BUILD_REWARD = 500;
     public static int ZOMBIE_DAMAGE_REWARD = 25;
     public static int WOOD_DONATION_REWARD = 50;
-    public static int PLAYER_DAMAGE_PENALTY = -10;
 
     public ArgusAgArch(Argus plugin, NPC npc, String aslFile, String agentType) {
         this.plugin = plugin;
