@@ -72,6 +72,10 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 
 For details regarding the design of the project please navigate to the [documents](documents) folder.
 
+## Demos!
+
+You can find demos of Argus [here](https://youtube.com/playlist?list=PLOsC27zWBS6fVtT3lOkh32wWJWRePIk7G&si=SXSP9Szyow69gYZC)!
+
 ## Installation
 1. Get [Minecraft Java Edition](https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc?tabs=%7B%22details%22%3A0%7D)
 2. Install [IntelliJ IDEA](https://www.jetbrains.com/idea/) (recommended!)
