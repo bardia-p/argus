@@ -3,6 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
+TEAM_COLORS = {
+    "attacker": "red",
+    "capitalist": "blue",
+}
+
 def parse_yaml(file_path):
     with open(file_path, "r") as f:
         data = yaml.safe_load(f)
@@ -98,7 +103,8 @@ def avg_score_plot_for(df, alliance_size):
         stats.index,
         stats["mean"],
         yerr=stats["std"],
-        capsize=6
+        capsize=6,
+        color=[TEAM_COLORS[t] for t in stats.index]
     )
 
     ax.set_ylabel("Average Score per Agent (dead = 0)")
@@ -106,7 +112,7 @@ def avg_score_plot_for(df, alliance_size):
 
     for bar, mean in zip(bars, stats["mean"]):
         ax.text(
-            bar.get_x() + bar.get_width() / 2,
+            bar.get_x() + bar.get_width() / 2 - 0.1,
             bar.get_height(),
             f"{mean:.1f}",
             ha="center",
@@ -138,7 +144,8 @@ def survival_rate_plot_for(df, alliance_size):
         stats.index,
         stats["mean"],
         yerr=stats["std"],
-        capsize=6
+        capsize=6,
+        color=[TEAM_COLORS[t] for t in stats.index]
     )
 
     ax.set_ylabel("Survival Probability")
@@ -147,7 +154,7 @@ def survival_rate_plot_for(df, alliance_size):
 
     for bar, mean in zip(bars, stats["mean"]):
         ax.text(
-            bar.get_x() + bar.get_width() / 2,
+            bar.get_x() + bar.get_width() / 2 - 0.1,
             bar.get_height(),
             f"{mean:.2f}",
             ha="center",
