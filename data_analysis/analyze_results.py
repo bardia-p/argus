@@ -77,37 +77,140 @@ def individual_score_plot_for(df, alliance_size):
     plt.savefig("plots/individual_score_plot_alliance_{}.png".format(alliance_size), dpi=300)
 
 def avg_score_plot_for(df, alliance_size):
-    avg_scores = df.groupby("team")["score"].mean()
+    df = df.copy()
+    df["effective_score"] = df["score"] * df["survived"].astype(int)
+
+    score_per_run = (
+        df
+        .groupby(["date", "world_id", "team"])["effective_score"]
+        .mean()
+        .reset_index(name="avg_score_per_agent")
+    )
+
+    stats = (
+        score_per_run
+        .groupby("team")["avg_score_per_agent"]
+        .agg(["mean", "std"])
+    )
 
     fig, ax = plt.subplots()
-    bars = ax.bar(avg_scores.index, avg_scores.values, color=['red', 'blue'])
+    bars = ax.bar(
+        stats.index,
+        stats["mean"],
+        yerr=stats["std"],
+        capsize=6
+    )
 
-    for bar, avg in zip(bars, avg_scores.values):
-        height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width()/2, height + 0.5, f'{avg:.2f}', ha='center', va='bottom')
+    ax.set_ylabel("Average Score per Agent (dead = 0)")
+    ax.set_title(f"Normalized Team Score - Alliance Size {alliance_size}")
 
-    ax.set_ylabel("Average Score")
-    ax.set_title("Average Score by Team - Alliance Size {}".format(alliance_size))
-    plt.savefig("plots/avg_score_plot_alliance_{}.png".format(alliance_size), dpi=300)
+    for bar, mean in zip(bars, stats["mean"]):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height(),
+            f"{mean:.1f}",
+            ha="center",
+            va="bottom"
+        )
+
+    plt.tight_layout()
+    plt.savefig(
+        f"plots/avg_score_plot_alliance_{alliance_size}.png",
+        dpi=300
+    )
 
 def survival_rate_plot_for(df, alliance_size):
-    survival_prob = df.groupby("team")["survived"].mean()
+    survival_per_run = (
+        df
+        .groupby(["date", "world_id", "team"])["survived"]
+        .mean()
+        .reset_index(name="survival_rate")
+    )
+
+    stats = (
+        survival_per_run
+        .groupby("team")["survival_rate"]
+        .agg(["mean", "std"])
+    )
 
     fig, ax = plt.subplots()
-    bars = ax.bar(survival_prob.index, survival_prob.values, color=['red', 'blue'])
+    bars = ax.bar(
+        stats.index,
+        stats["mean"],
+        yerr=stats["std"],
+        capsize=6
+    )
 
-    for bar, prob in zip(bars, survival_prob.values):
-        height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width()/2, height + 0.02, f'{prob:.2f}', ha='center', va='bottom')
+    ax.set_ylabel("Survival Probability")
+    ax.set_title(f"Survival Probability by Team - Alliance Size {alliance_size}")
+    ax.set_ylim(0, 1)
 
-    ax.set_ylabel("Probability of Survival")
-    ax.set_title("Survival Probability by Team - Alliance Size {}".format(alliance_size))
-    ax.set_ylim(0, 1) 
+    for bar, mean in zip(bars, stats["mean"]):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height(),
+            f"{mean:.2f}",
+            ha="center",
+            va="bottom"
+        )
 
-    plt.savefig("plots/survival_rate_plot_alliance_{}.png".format(alliance_size), dpi=300)
+    plt.tight_layout()
+    plt.savefig(
+        f"plots/survival_rate_plot_alliance_{alliance_size}.png",
+        dpi=300
+    )
+
+def print_stats_for(df, alliance_size):
+    print(f"\n=== Alliance Size {alliance_size} (Run-level, normalized) ===")
+
+    df = df.copy()
+    df["effective_score"] = df["score"] * df["survived"].astype(int)
+
+    # ---- SCORE: per-run average score per agent (dead = 0) ----
+    score_per_run = (
+        df
+        .groupby(["date", "world_id", "team"])["effective_score"]
+        .mean()
+        .reset_index(name="avg_score_per_agent")
+    )
+
+    score_stats = (
+        score_per_run
+        .groupby("team")["avg_score_per_agent"]
+        .agg(
+            score_mean="mean",
+            score_std="std"
+        )
+    )
+
+    # ---- SURVIVAL: per-run survival rate ----
+    survival_per_run = (
+        df
+        .groupby(["date", "world_id", "team"])["survived"]
+        .mean()
+        .reset_index(name="survival_rate")
+    )
+
+    survival_stats = (
+        survival_per_run
+        .groupby("team")["survival_rate"]
+        .agg(
+            survival_mean="mean",
+            survival_std="std"
+        )
+    )
+
+    stats = score_stats.join(survival_stats)
+
+    print(stats.round(3))
+    return stats
+
 
 def do_plots_for_alliance_size(alliance_size):
     df = parse_yaml("data/game_data_alliance_size_{}.yml".format(alliance_size))
+    
+    print_stats_for(df, alliance_size)
+
     individual_score_plot_for(df, alliance_size)
     avg_score_plot_for(df, alliance_size)
     survival_rate_plot_for(df, alliance_size)
