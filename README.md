@@ -68,10 +68,6 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 | need(_) | askIf | the asking agent needs something |
 | donated(_, _) | tell | the agent donated a number of woods to the agent |
 
-## Design
-
-For details regarding the design of the project please navigate to the [documents](documents) folder.
-
 ## Demos!
 
 You can find demos of Argus [here](https://youtube.com/playlist?list=PLOsC27zWBS6fVtT3lOkh32wWJWRePIk7G&si=SXSP9Szyow69gYZC)!
