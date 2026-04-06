@@ -57,6 +57,13 @@ public class ArgusAgArch extends AgArch {
     private int simulatenousZombieCapability;
     private String type;
 
+    private int woodsDonated;
+
+    private int woodsChopped;
+
+    private int numHitsOnZombies;
+    private int numHouses;
+
     // Constants
     public static int BROWSE_RADIUS = 50;
     // House building
@@ -104,6 +111,10 @@ public class ArgusAgArch extends AgArch {
         this.simulatenousZombieCapability = DEFAULT_SIMULATENOUS_ZOMBIE_CAPABILITY;
         this.type = (agentType.equals("loner")) ? agentType :
                                                   aslFile.substring(0, aslFile.lastIndexOf(".asl")) + "_" + agentType;
+        this.woodsChopped = 0;
+        this.woodsDonated = 0;
+        this.numHouses = 0;
+        this.numHitsOnZombies = 0;
 
         new BukkitRunnable() {
             @Override
@@ -159,7 +170,15 @@ public class ArgusAgArch extends AgArch {
 
     public int getScore()  { return score; }
 
-    public List<Location> getHouses() { return houses; }
+    public int getNumHouses() { return numHouses; }
+
+    public int getNumWoodsChopped() { return woodsChopped; }
+
+    public int getNumWoodsDonated() { return woodsDonated; }
+
+    public String getWeapon() { return weapon; }
+
+    public int getNumHitsOnZombies() { return numHitsOnZombies; }
 
     // Jason functions
 
@@ -368,6 +387,7 @@ public class ArgusAgArch extends AgArch {
 
         log.breakNaturally();
         inv.addItem(new ItemStack(Material.OAK_LOG, 1));
+        this.woodsChopped += 1;
 
         return true;
     }
@@ -407,6 +427,7 @@ public class ArgusAgArch extends AgArch {
             for (int i = 0; i < simulatenousZombieCapability; i++) {
                 Zombie zombie = zombies.get(RNG.nextInt(zombies.size()));
                 zombie.damage(this.attackPower, ent);
+                this.numHitsOnZombies += 1;
                 this.score += ZOMBIE_DAMAGE_REWARD * this.attackPower;
             }
         } else {
@@ -525,6 +546,7 @@ public class ArgusAgArch extends AgArch {
             // Storing the house location
             Location inside = base.clone().add(HOUSE_SIZE_IN_BLOCKS / 2.0, 0, 1);
             houses.add(inside);
+            this.numHouses += 1;
             this.score += HOUSE_BUILD_REWARD;
 
             return true;
@@ -641,6 +663,7 @@ public class ArgusAgArch extends AgArch {
             return false;
         }
 
+        this.woodsDonated += Integer.parseInt(numWoods);
         inv.removeItem(new ItemStack(Material.OAK_LOG, Integer.parseInt(numWoods)));
         this.score += WOOD_DONATION_REWARD;
         return true;

@@ -1,6 +1,7 @@
 package ca.carleton.sce.argus;
 
 import ca.carleton.sce.argus.cmd.SpawnAgentCommand;
+import ca.carleton.sce.argus.jason.ArgusAgArch;
 import ca.carleton.sce.argus.jason.JasonService;
 import ca.carleton.sce.argus.trait.AgentData;
 import ca.carleton.sce.argus.trait.JasonAgentTrait;
@@ -119,9 +120,15 @@ public final class Argus extends JavaPlugin {
         JasonService.RuntimeHandle runtimeHandle = getRuntimeHandle(trait.getAgentName());
         if (npc.isSpawned() && trait != null && runtimeHandle != null) {
             AgentData agentData = new AgentData();
+            ArgusAgArch agentArch = runtimeHandle.architecture();
             agentData.agentName = trait.getAgentName();
             agentData.aslFile = trait.getAslFile();
-            agentData.score = runtimeHandle.architecture().getScore();
+            agentData.score = agentArch.getScore();
+            agentData.weapon = agentArch.getWeapon();
+            agentData.numHouses = agentArch.getNumHouses();
+            agentData.woodsChopped = agentArch.getNumWoodsChopped();
+            agentData.woodsDonated = agentArch.getNumWoodsDonated();
+            agentData.numHitsOnZombies = agentArch.getNumHitsOnZombies();
 
             if (isDead) {
                 deadAgents.put(npc.getName(), agentData);

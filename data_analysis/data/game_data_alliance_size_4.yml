@@ -1,1321 +1,4201 @@
 runs:
-- date: '2025-11-28T12:12:47.484416'
-  world_id: 3a8f5a8a-d58c-429f-ae13-8d8b495f02ad
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2428
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2453
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 12503
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2028
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 1978
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 1753
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2128
-  deceased:
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 650
-- date: '2025-11-28T12:14:33.371795'
-  world_id: 46571e41-dc83-4279-9cbc-40665fd38436
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3450
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 5275
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 4025
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 5875
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 900
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 500
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 425
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 575
-- date: '2025-11-28T12:16:19.166429'
-  world_id: 5945cd3d-9fe4-402b-aecf-6e2fb1cb5fc9
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 14450
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 12850
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 8725
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 1850
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 11325
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 11050
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 3225
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2450
-  deceased: {}
-- date: '2025-11-28T12:18:04.762761'
-  world_id: 113c1ca7-56a2-4959-a2a8-cf44a75885f1
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 4225
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 3875
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 3900
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2850
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 4100
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 475
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 275
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 300
-- date: '2025-11-28T12:19:50.527873'
-  world_id: 1350191e-b108-4ad3-967d-491ded97e1b4
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2825
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1950
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2075
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2150
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2600
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2050
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 1725
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 1750
-  deceased: {}
-- date: '2025-11-28T12:21:37.927816'
-  world_id: 3464c513-fb52-45f3-a91b-715490e85113
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 8578
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1928
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 1703
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2353
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 3403
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2328
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 1903
-  deceased:
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 1550
-- date: '2025-11-28T12:23:26.822069'
-  world_id: b48e3210-de68-4c53-b9d8-61b29cbf2910
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3925
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2675
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 9375
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 4175
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 3875
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 11850
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 12125
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 9125
-  deceased: {}
-- date: '2025-11-28T12:25:12.878908'
-  world_id: 795581f5-d607-4d30-a833-e0f340900fcc
-  survivors:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 5725
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 3800
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 3375
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 4375
-  deceased:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 225
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 375
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2775
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 1350
-- date: '2025-11-28T12:26:58.7322'
-  world_id: fbf5954b-35cd-4478-b176-381cd3f35201
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 10203
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 3528
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 12903
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2628
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 1928
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 1853
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2378
-  deceased:
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 375
-- date: '2025-11-28T12:28:44.5437'
-  world_id: 90043f35-bc21-40f9-bfe3-046e7a712871
-  survivors:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 4325
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 3275
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 6675
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 3775
-  deceased:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 250
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 950
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 50
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 425
-- date: '2025-11-28T12:30:31.598361'
-  world_id: 213e4e9a-6e03-426e-b96e-29203d3c2b89
-  survivors:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2253
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 11978
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2428
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2628
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2003
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 1678
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2228
-  deceased:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 100
-- date: '2025-11-28T12:32:17.939185'
-  world_id: eb6ed63e-4666-4d44-866e-8f627d5e8e4f
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 12578
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 4628
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 3053
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 12528
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 4403
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 3303
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 4678
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 325
-- date: '2025-11-28T12:38:03.237984'
-  world_id: ea740f6c-7be7-4628-8d5e-91afea8ac12c
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2700
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2800
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2175
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 3225
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2600
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 200
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 225
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 975
-- date: '2025-11-28T12:39:49.189654'
-  world_id: edc59056-528d-4d5c-9c0c-40955812d53f
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3625
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 4550
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 4125
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 7725
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 4050
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 10575
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 11400
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 4450
-  deceased: {}
-- date: '2025-11-28T12:46:25.540089'
-  world_id: e2905621-4686-45ee-9215-03dc21452e5e
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2775
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 3475
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 6425
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2625
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2725
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 525
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 675
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 625
-- date: '2025-11-28T12:56:28.729109'
-  world_id: 8a5f47b4-d744-4adf-a08c-db996b442d2c
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3228
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1703
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 9303
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 7403
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 4753
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2628
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 3603
-  deceased:
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 1000
-- date: '2025-11-28T12:58:13.925632'
-  world_id: 0dc84675-c440-4b59-8f5e-f85f5f843791
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2353
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1828
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2053
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2428
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 1753
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 3878
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2603
-  deceased:
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 600
-- date: '2025-11-28T12:59:59.580651'
-  world_id: ec81b585-9cd3-4384-b650-a8546ca72774
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2000
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2450
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2525
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2100
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 1775
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 1700
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2275
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 1950
-  deceased: {}
-- date: '2025-11-28T13:04:52.093362'
-  world_id: ef913b16-9be2-437d-97ce-007cc35f8b9c
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3366
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 11191
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2266
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 9116
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 3616
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2066
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 375
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 400
-- date: '2025-11-28T13:14:40.2138'
-  world_id: 9a5c2945-b459-4187-b16d-371813190451
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2091
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2516
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2441
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2691
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2216
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2066
-  deceased:
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 550
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 650
-- date: '2025-11-28T13:29:15.738957'
-  world_id: 2abad30e-d756-4d25-8e83-829a5dd056bb
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3650
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 4550
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 3250
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 3600
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2950
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 100
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 400
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 525
-- date: '2025-11-28T13:31:03.113849'
-  world_id: 2ffbc074-3a19-46d2-ba6b-46c5bb90334a
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3525
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2925
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2425
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2975
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 3225
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 225
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 1500
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2025
-- date: '2025-11-28T13:32:49.186986'
-  world_id: 373bcb72-8197-44ac-8042-4068d8925753
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 5391
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2066
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2166
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2616
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 3016
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2891
-  deceased:
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 925
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 1150
-- date: '2025-11-28T13:34:35.218365'
-  world_id: f30e645b-d1a0-4225-aa0c-0d0ef0e84197
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2591
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 4216
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2691
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 2641
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 3066
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2716
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1025
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 475
-- date: '2025-11-28T13:36:21.365954'
-  world_id: 8ac13de2-a641-4de5-853d-57f7370adcf9
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3228
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1703
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 2178
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 1778
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 2453
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 7403
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2478
-  deceased:
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 2725
-- date: '2025-11-28T13:38:08.404742'
-  world_id: b59c8448-227b-4afb-9505-9511207a2f31
-  survivors:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 6050
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 12425
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 4300
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 4450
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 9700
-  deceased:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 600
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 425
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 525
-- date: '2025-11-28T13:39:58.376525'
-  world_id: 8fd98eaf-7aa4-4f5c-9f1a-dead2f008eeb
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 4033
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 5733
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 3958
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 125
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 375
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 175
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 875
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 1025
-- date: '2025-11-28T13:46:07.632866'
-  world_id: f42c722d-510b-4df6-8ed4-4c1c4d7794e3
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 3125
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 3300
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 3100
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 3550
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 1075
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 700
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 300
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 475
-- date: '2025-11-28T13:47:55.651254'
-  world_id: 9fbcbef6-afda-4936-ac8a-c611b4469541
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 5453
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 2278
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 4253
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 4278
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 4353
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 9628
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2253
-  deceased:
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 325
-- date: '2025-11-28T13:49:43.541513'
-  world_id: 45fa5d72-2bb3-4b33-a21c-78e6bda73e7a
-  survivors:
-    a1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a1
-      aslFile: attacker.asl
-      score: 2241
-    a2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a2
-      aslFile: attacker.asl
-      score: 3691
-    a3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a3
-      aslFile: attacker.asl
-      score: 3091
-    a4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: a4
-      aslFile: attacker.asl
-      score: 3691
-    c1:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c1
-      aslFile: capitalist.asl
-      score: 2291
-    c2:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c2
-      aslFile: capitalist.asl
-      score: 2766
-  deceased:
-    c3:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c3
-      aslFile: capitalist.asl
-      score: 200
-    c4:
-      ==: ca.carleton.sce.argus.trait.AgentData
-      agentName: c4
-      aslFile: capitalist.asl
-      score: 350
+  - date: '2026-04-06T15:04:02.921205'
+    world_id: 71aa88ea-1359-4b6f-a9ff-ef9adbd63ac8
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2053
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 21
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 1603
+        weapon: axe
+        woodsChopped: 24
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 5
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 1953
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 1
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2603
+        weapon: axe
+        woodsChopped: 43
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 25
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3153
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 41
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 3303
+        weapon: sword
+        woodsChopped: 45
+        numHouses: 3
+        woodsDonated: 0
+        numHitsOnZombies: 15
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1778
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 12
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 775
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 11
+  - date: '2026-04-06T15:05:49.232661'
+    world_id: 58b2f739-17b1-4b34-812f-b2c91a453ee2
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 7841
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 125
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2716
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 18
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 10891
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 193
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3941
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 53
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 9116
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 156
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 4891
+        weapon: sword
+        woodsChopped: 40
+        numHouses: 2
+        woodsDonated: 1
+        numHitsOnZombies: 47
+    deceased:
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 1200
+        weapon: sword
+        woodsChopped: 35
+        numHouses: 2
+        woodsDonated: 1
+        numHitsOnZombies: 6
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 400
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 14
+  - date: '2026-04-06T15:07:35.282609'
+    world_id: 4f30c216-dc96-4b2f-8515-3cd9be79f766
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3800
+        weapon: sword
+        woodsChopped: 34
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 20
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 4400
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 70
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 4000
+        weapon: sword
+        woodsChopped: 16
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 38
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 4975
+        weapon: axe
+        woodsChopped: 29
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 51
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1050
+        weapon: null
+        woodsChopped: 14
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 20
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 350
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 14
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 1575
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 33
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 675
+        weapon: null
+        woodsChopped: 16
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 7
+  - date: '2026-04-06T15:09:21.491218'
+    world_id: 55924b20-f9eb-468b-be00-fb7a7e545252
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3875
+        weapon: sword
+        woodsChopped: 34
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 29
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3900
+        weapon: axe
+        woodsChopped: 38
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 33
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2650
+        weapon: null
+        woodsChopped: 16
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 6
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3100
+        weapon: axe
+        woodsChopped: 25
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 24
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2750
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 24
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 75
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 1
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 350
+        weapon: null
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 12
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1100
+        weapon: null
+        woodsChopped: 12
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 24
+  - date: '2026-04-06T15:11:07.494099'
+    world_id: a0c0ba41-c84b-4c24-948a-2333e80d9cc3
+    survivors:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 3791
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 37
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2966
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 24
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2191
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 17
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3066
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 52
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2616
+        weapon: sword
+        woodsChopped: 31
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 14
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 3291
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 35
+    deceased:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 800
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 20
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 350
+        weapon: null
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 12
+  - date: '2026-04-06T15:12:53.240196'
+    world_id: e123c8c7-f5f3-4d06-ae2a-d6bc5954cb90
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2953
+        weapon: axe
+        woodsChopped: 29
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 29
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 4103
+        weapon: null
+        woodsChopped: 1
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 107
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2428
+        weapon: axe
+        woodsChopped: 31
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 40
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2378
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 16
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2953
+        weapon: axe
+        woodsChopped: 27
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 61
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3703
+        weapon: axe
+        woodsChopped: 52
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 27
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2328
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 16
+    deceased:
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 450
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 16
+  - date: '2026-04-06T15:14:39.14363'
+    world_id: ef098b61-246f-451b-90a5-9e09fbebf6fb
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3275
+        weapon: axe
+        woodsChopped: 31
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 29
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 4050
+        weapon: axe
+        woodsChopped: 37
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 44
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 3275
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 21
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2750
+        weapon: axe
+        woodsChopped: 40
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 10
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2175
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 7
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 925
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 17
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 1300
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 22
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 375
+        weapon: null
+        woodsChopped: 2
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 15
+  - date: '2026-04-06T15:16:24.861184'
+    world_id: 866b54a4-aaa8-4711-aeca-3f0f199173fa
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 4966
+        weapon: sword
+        woodsChopped: 16
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 68
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2341
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 3
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 6816
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 106
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2366
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 4
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3541
+        weapon: axe
+        woodsChopped: 55
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 29
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2091
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 11
+    deceased:
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 625
+        weapon: null
+        woodsChopped: 2
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 19
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1500
+        weapon: null
+        woodsChopped: 27
+        numHouses: 2
+        woodsDonated: 2
+        numHitsOnZombies: 16
+  - date: '2026-04-06T15:18:10.72252'
+    world_id: a0c09a46-ab94-4a2c-be1a-4267afb78da4
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2250
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 28
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 4325
+        weapon: sword
+        woodsChopped: 35
+        numHouses: 2
+        woodsDonated: 1
+        numHitsOnZombies: 51
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2000
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 20
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2550
+        weapon: null
+        woodsChopped: 24
+        numHouses: 2
+        woodsDonated: 2
+        numHitsOnZombies: 8
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2350
+        weapon: axe
+        woodsChopped: 48
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 16
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3200
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 74
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2500
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 20
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1850
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 18
+    deceased: {}
+  - date: '2026-04-06T15:19:56.378442'
+    world_id: 83c5386e-37f7-4564-8df1-733594366936
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 10125
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 153
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 11175
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 177
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 9425
+        weapon: axe
+        woodsChopped: 28
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 141
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3975
+        weapon: trident
+        woodsChopped: 108
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 25
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 250
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 10
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 150
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 6
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 250
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 10
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 100
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 4
+  - date: '2026-04-06T15:21:42.224747'
+    world_id: eaa1f55d-2645-4830-888b-9ab6638b2d4e
+    survivors:
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2416
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 6
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 3316
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 60
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3316
+        weapon: sword
+        woodsChopped: 16
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 62
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 4216
+        weapon: axe
+        woodsChopped: 44
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 53
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 5841
+        weapon: sword
+        woodsChopped: 59
+        numHouses: 4
+        woodsDonated: 1
+        numHitsOnZombies: 51
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2216
+        weapon: null
+        woodsChopped: 8
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 20
+    deceased:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 25
+        weapon: null
+        woodsChopped: 1
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 1
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 475
+        weapon: null
+        woodsChopped: 3
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 17
+  - date: '2026-04-06T15:23:28.078327'
+    world_id: ba67f5ee-5d4e-4358-a2a5-a7afe7a4e6e8
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 6700
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 98
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3075
+        weapon: axe
+        woodsChopped: 31
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 25
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3500
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 28
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 4150
+        weapon: sword
+        woodsChopped: 34
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 32
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2875
+        weapon: null
+        woodsChopped: 11
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 13
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 225
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 5
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 800
+        weapon: null
+        woodsChopped: 13
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 10
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 275
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 9
+  - date: '2026-04-06T15:25:14.008422'
+    world_id: 9764fa08-1979-4a6f-8e0d-2d36f757efe4
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 4100
+        weapon: axe
+        woodsChopped: 31
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 42
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 5175
+        weapon: trident
+        woodsChopped: 78
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 36
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 5100
+        weapon: axe
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 37
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 5575
+        weapon: axe
+        woodsChopped: 38
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 34
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2775
+        weapon: null
+        woodsChopped: 17
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 9
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 325
+        weapon: null
+        woodsChopped: 2
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 13
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 600
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 24
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 50
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 2
+  - date: '2026-04-06T15:26:59.852015'
+    world_id: 220572e9-5e81-440f-aac4-7f46c0a6497f
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 9816
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 168
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2641
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 25
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2741
+        weapon: sword
+        woodsChopped: 27
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 17
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2141
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 13
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2641
+        weapon: trident
+        woodsChopped: 66
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 13
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2541
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 21
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 550
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 16
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 875
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 21
+  - date: '2026-04-06T15:28:45.657796'
+    world_id: 3f37c950-d1aa-4546-8427-0209d23d5dce
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3525
+        weapon: trident
+        woodsChopped: 54
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 41
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3200
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 16
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 4100
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 42
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3375
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 13
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 400
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 16
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 175
+        weapon: null
+        woodsChopped: 1
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 5
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 550
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 20
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 950
+        weapon: null
+        woodsChopped: 20
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 18
+  - date: '2026-04-06T15:30:31.406493'
+    world_id: c85ff20a-dbb4-43ac-8967-a8db04ce6c53
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 12225
+        weapon: sword
+        woodsChopped: 32
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 187
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 12250
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 196
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 7150
+        weapon: axe
+        woodsChopped: 39
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 66
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 25550
+        weapon: axe
+        woodsChopped: 33
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 248
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 525
+        weapon: null
+        woodsChopped: 12
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 1
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 300
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 450
+        weapon: null
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 18
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 550
+        weapon: null
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 22
+  - date: '2026-04-06T15:32:17.541761'
+    world_id: 353a9ba2-b2c7-4f0d-bdc0-e60304ba8e0d
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 10141
+        weapon: sword
+        woodsChopped: 28
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 167
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2241
+        weapon: sword
+        woodsChopped: 27
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 3
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2916
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 32
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 1991
+        weapon: axe
+        woodsChopped: 34
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 13
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2391
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 17
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2566
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 12
+    deceased:
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2100
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 84
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 300
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+  - date: '2026-04-06T15:34:03.348945'
+    world_id: 2e016bc8-fad3-47bc-9c03-8c44201652ab
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 4625
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 49
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 5000
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 80
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2950
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 18
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 5250
+        weapon: axe
+        woodsChopped: 28
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 56
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 925
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 17
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 375
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 13
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 400
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 14
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 325
+        weapon: null
+        woodsChopped: 3
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 11
+  - date: '2026-04-06T15:35:49.000986'
+    world_id: d4f64dd5-48ae-415d-8bce-9afa2b894797
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 4550
+        weapon: axe
+        woodsChopped: 31
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 38
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 4675
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 43
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 3025
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 25
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 9175
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 145
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3275
+        weapon: axe
+        woodsChopped: 37
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 45
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1675
+        weapon: null
+        woodsChopped: 16
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 41
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 350
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 8
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 400
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 10
+  - date: '2026-04-06T15:37:34.976608'
+    world_id: dc36dd98-ee90-4960-a9e9-b524f5035edd
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 11625
+        weapon: axe
+        woodsChopped: 28
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 123
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 3450
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 50
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 10700
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 192
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 10625
+        weapon: sword
+        woodsChopped: 33
+        numHouses: 2
+        woodsDonated: 1
+        numHitsOnZombies: 169
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 8425
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 159
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 9875
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 167
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2475
+        weapon: null
+        woodsChopped: 17
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 25
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2600
+        weapon: sword
+        woodsChopped: 42
+        numHouses: 2
+        woodsDonated: 2
+        numHitsOnZombies: 10
+    deceased: {}
+  - date: '2026-04-06T15:39:21.327274'
+    world_id: fc7fe4de-bc15-47dc-a146-8c3cb201f727
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2400
+        weapon: axe
+        woodsChopped: 28
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 26
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1900
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 16
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3025
+        weapon: trident
+        woodsChopped: 50
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 37
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2850
+        weapon: sword
+        woodsChopped: 34
+        numHouses: 2
+        woodsDonated: 3
+        numHitsOnZombies: 18
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2325
+        weapon: axe
+        woodsChopped: 40
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 13
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2250
+        weapon: sword
+        woodsChopped: 31
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 14
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2675
+        weapon: sword
+        woodsChopped: 33
+        numHouses: 2
+        woodsDonated: 2
+        numHitsOnZombies: 13
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2125
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 11
+    deceased: {}
+  - date: '2026-04-06T15:41:07.204826'
+    world_id: bfed408c-e0c4-4143-a923-4a3dc5359a42
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2566
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 14
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2366
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 20
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 8016
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 128
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2641
+        weapon: sword
+        woodsChopped: 30
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 17
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 4741
+        weapon: trident
+        woodsChopped: 56
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 69
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 4266
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 58
+    deceased:
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 325
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 11
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2150
+        weapon: null
+        woodsChopped: 33
+        numHouses: 2
+        woodsDonated: 0
+        numHitsOnZombies: 46
+  - date: '2026-04-06T15:42:53.61391'
+    world_id: a9ba1261-a34f-41ac-bf57-f11adc222cd4
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2703
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 33
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2678
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 50
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 8228
+        weapon: axe
+        woodsChopped: 46
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 79
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 4528
+        weapon: axe
+        woodsChopped: 24
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 55
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 7603
+        weapon: axe
+        woodsChopped: 29
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 76
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 3428
+        weapon: sword
+        woodsChopped: 46
+        numHouses: 3
+        woodsDonated: 0
+        numHitsOnZombies: 20
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2603
+        weapon: null
+        woodsChopped: 1
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 47
+    deceased:
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 1000
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 24
+  - date: '2026-04-06T15:44:41.007893'
+    world_id: 8a996d1b-857c-4004-9ef8-cb15f59b11b7
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 12875
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 223
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3500
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 34
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2825
+        weapon: null
+        woodsChopped: 3
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 33
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3075
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 15
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2475
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 15
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 575
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 23
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 650
+        weapon: null
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 22
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1725
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 33
+  - date: '2026-04-06T15:46:28.468448'
+    world_id: 99912825-6440-4873-b2a9-bf42e5d4de9e
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 10750
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 176
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 4400
+        weapon: null
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 92
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 11350
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 194
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 11875
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 205
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 11500
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 190
+    deceased:
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 375
+        weapon: null
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 11
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 575
+        weapon: null
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 19
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 200
+        weapon: null
+        woodsChopped: 0
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 8
+  - date: '2026-04-06T15:48:15.341794'
+    world_id: 6b8980a5-c2b8-49bf-ba01-b8faf6a611f6
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2525
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 35
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1900
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 6
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2475
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 21
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2350
+        weapon: sword
+        woodsChopped: 28
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 22
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 10375
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 173
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 7425
+        weapon: sword
+        woodsChopped: 16
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 127
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 3675
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 61
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2875
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 39
+    deceased: {}
+  - date: '2026-04-06T15:50:02.713041'
+    world_id: f1580b5d-5330-4bbd-9f37-4c0a5ebf8f8b
+    survivors:
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3550
+        weapon: sword
+        woodsChopped: 29
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 26
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2750
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 20
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2475
+        weapon: trident
+        woodsChopped: 52
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 17
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3825
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 39
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 3325
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 25
+    deceased:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 1525
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 33
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1000
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 16
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 775
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 19
+  - date: '2026-04-06T15:51:49.997158'
+    world_id: b30ff63f-1169-45bd-ae30-2814b3325965
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3550
+        weapon: sword
+        woodsChopped: 28
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 30
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2675
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 25
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3100
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 36
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 6000
+        weapon: null
+        woodsChopped: 0
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 160
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3575
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 37
+    deceased:
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 525
+        weapon: null
+        woodsChopped: 3
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 21
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 1050
+        weapon: null
+        woodsChopped: 16
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 18
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 525
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 19
+  - date: '2026-04-06T15:53:37.697188'
+    world_id: ee499a22-f260-40eb-b3ca-39c09ac78057
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2691
+        weapon: trident
+        woodsChopped: 83
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 9
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2741
+        weapon: null
+        woodsChopped: 21
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 17
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 4266
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 96
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 3591
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 47
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2741
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 17
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 9141
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 155
+    deceased:
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 975
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 27
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 800
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 30
+  - date: '2026-04-06T15:55:24.755075'
+    world_id: 4db8fbbf-12c7-4616-9124-ca2b47dcde31
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 6400
+        weapon: axe
+        woodsChopped: 26
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 56
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 4450
+        weapon: axe
+        woodsChopped: 39
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 35
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 8200
+        weapon: axe
+        woodsChopped: 44
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 72
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 9550
+        weapon: axe
+        woodsChopped: 56
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 91
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1200
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 34
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 75
+        weapon: null
+        woodsChopped: 0
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 3
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 975
+        weapon: null
+        woodsChopped: 20
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 19
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 725
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 29
+  - date: '2026-04-06T15:57:12.169636'
+    world_id: 020e5201-a1ba-41a6-b0b5-5c4f44dcd264
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3700
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 62
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 3075
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 17
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 5000
+        weapon: trident
+        woodsChopped: 51
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 43
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2950
+        weapon: sword
+        woodsChopped: 27
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 12
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2950
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 8
+    deceased:
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 725
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 19
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 925
+        weapon: null
+        woodsChopped: 3
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 31
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 925
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 13
+  - date: '2026-04-06T15:58:59.542259'
+    world_id: 4cf99ed4-136c-453f-b930-0d5c4649e2c3
+    survivors:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 3325
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 29
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 5975
+        weapon: sword
+        woodsChopped: 66
+        numHouses: 4
+        woodsDonated: 0
+        numHitsOnZombies: 37
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 6000
+        weapon: sword
+        woodsChopped: 32
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 98
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 4025
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 33
+    deceased:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 775
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 21
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 575
+        weapon: null
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 23
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 400
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 14
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 300
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+  - date: '2026-04-06T16:00:46.715591'
+    world_id: 3747c54d-8e11-4e08-b0c6-1a5cfc3e747b
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 10075
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 153
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 10800
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 170
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 9825
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 149
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 9575
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 145
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 175
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 7
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 750
+        weapon: null
+        woodsChopped: 13
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 8
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 175
+        weapon: null
+        woodsChopped: 8
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 5
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 150
+        weapon: null
+        woodsChopped: 7
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 6
+  - date: '2026-04-06T16:02:34.981314'
+    world_id: 10c7ccd5-6bd4-4c5d-97b8-7564a9f0ce13
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2500
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2900
+        weapon: sword
+        woodsChopped: 34
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 12
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2600
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 24
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2675
+        weapon: trident
+        woodsChopped: 70
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 21
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2050
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 2
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 275
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 11
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 375
+        weapon: null
+        woodsChopped: 1
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 15
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 800
+        weapon: null
+        woodsChopped: 14
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 12
+  - date: '2026-04-06T16:04:22.404694'
+    world_id: ab8e1993-9d9a-4342-9420-8bf66530bf7f
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 11525
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 189
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2725
+        weapon: trident
+        woodsChopped: 74
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 19
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2825
+        weapon: trident
+        woodsChopped: 53
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 25
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3025
+        weapon: trident
+        woodsChopped: 59
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 21
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 5750
+        weapon: sword
+        woodsChopped: 36
+        numHouses: 2
+        woodsDonated: 1
+        numHitsOnZombies: 60
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 400
+        weapon: sword
+        woodsChopped: 19
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 14
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 575
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 23
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 900
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 16
+  - date: '2026-04-06T16:06:09.836269'
+    world_id: abd2deb8-514a-4917-b6ff-77b04eeb2c4d
+    survivors:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 8375
+        weapon: sword
+        woodsChopped: 28
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 109
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 3075
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 17
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 7075
+        weapon: sword
+        woodsChopped: 42
+        numHouses: 2
+        woodsDonated: 3
+        numHitsOnZombies: 79
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 8150
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 118
+    deceased:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 1625
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 39
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 350
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 8
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 350
+        weapon: null
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 8
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 275
+        weapon: null
+        woodsChopped: 3
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 5
+  - date: '2026-04-06T16:07:57.843141'
+    world_id: 9d360b12-4922-4e57-8e23-2b22961a1d5e
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 5000
+        weapon: trident
+        woodsChopped: 58
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 42
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 5975
+        weapon: sword
+        woodsChopped: 16
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 73
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 5750
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 70
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 5150
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 58
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1675
+        weapon: sword
+        woodsChopped: 24
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 29
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 325
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 9
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 875
+        weapon: null
+        woodsChopped: 13
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 13
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 125
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 5
+  - date: '2026-04-06T16:09:45.980998'
+    world_id: 21913176-e75a-4e80-befa-0e6cfffb9614
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 4453
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 63
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2353
+        weapon: sword
+        woodsChopped: 32
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 13
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2628
+        weapon: sword
+        woodsChopped: 40
+        numHouses: 2
+        woodsDonated: 1
+        numHitsOnZombies: 6
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3253
+        weapon: trident
+        woodsChopped: 65
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 31
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 1528
+        weapon: axe
+        woodsChopped: 33
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 4
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2853
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 21
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1553
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 5
+    deceased:
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 275
+        weapon: null
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 11
+  - date: '2026-04-06T16:11:32.307027'
+    world_id: b98a7490-6bed-4b9e-9e43-79aabe71536d
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2466
+        weapon: sword
+        woodsChopped: 16
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 18
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2091
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 11
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3816
+        weapon: axe
+        woodsChopped: 33
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 34
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 6241
+        weapon: sword
+        woodsChopped: 36
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 87
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2491
+        weapon: null
+        woodsChopped: 20
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 11
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 2116
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 14
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 900
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 10
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 750
+        weapon: sword
+        woodsChopped: 13
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 22
+  - date: '2026-04-06T16:13:19.443164'
+    world_id: 8c57013d-ba1d-4a62-89d6-ad201c9f6f86
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3175
+        weapon: trident
+        woodsChopped: 48
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 19
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 8450
+        weapon: axe
+        woodsChopped: 43
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 62
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 6525
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 85
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3000
+        weapon: axe
+        woodsChopped: 40
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 175
+        weapon: null
+        woodsChopped: 8
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 7
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 1175
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 35
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 1075
+        weapon: null
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 23
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1000
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 30
+  - date: '2026-04-06T16:15:06.68508'
+    world_id: 3e5ff574-ef20-4379-9469-8e45f67ecc20
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 10075
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 187
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 3375
+        weapon: sword
+        woodsChopped: 54
+        numHouses: 3
+        woodsDonated: 1
+        numHitsOnZombies: 23
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 1850
+        weapon: axe
+        woodsChopped: 30
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 16
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 2225
+        weapon: sword
+        woodsChopped: 8
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 33
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 18325
+        weapon: trident
+        woodsChopped: 52
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 137
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 9125
+        weapon: sword
+        woodsChopped: 22
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 153
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2300
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 18
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 1700
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 18
+    deceased: {}
+  - date: '2026-04-06T16:16:54.613418'
+    world_id: d110f719-cf29-46b7-8935-3300df0c01c2
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 4550
+        weapon: sword
+        woodsChopped: 36
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 40
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2350
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 6
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3575
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 31
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3300
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 26
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2875
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 11
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 175
+        weapon: sword
+        woodsChopped: 20
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 5
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 150
+        weapon: null
+        woodsChopped: 0
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 6
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 625
+        weapon: null
+        woodsChopped: 8
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 21
+  - date: '2026-04-06T16:18:42.276301'
+    world_id: 9ec2c08e-7305-46f0-8732-16a83760e46c
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 5653
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 95
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 2803
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 29
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 4153
+        weapon: sword
+        woodsChopped: 30
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 49
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 2603
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 39
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3728
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 92
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 2578
+        weapon: sword
+        woodsChopped: 32
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 18
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 3103
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 67
+    deceased:
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 375
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 15
+  - date: '2026-04-06T16:20:29.348383'
+    world_id: ad5a42b2-6922-407b-af2e-51637e8dc633
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3475
+        weapon: sword
+        woodsChopped: 17
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 21
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3650
+        weapon: sword
+        woodsChopped: 31
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 20
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3350
+        weapon: axe
+        woodsChopped: 35
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 28
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 2975
+        weapon: sword
+        woodsChopped: 24
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 13
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 1125
+        weapon: null
+        woodsChopped: 14
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 21
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 975
+        weapon: null
+        woodsChopped: 19
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 15
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 850
+        weapon: null
+        woodsChopped: 11
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 10
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 200
+        weapon: null
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 4
+  - date: '2026-04-06T16:22:16.046821'
+    world_id: 0d0b9ffc-d371-401e-876e-22b21752f1e8
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 6275
+        weapon: sword
+        woodsChopped: 26
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 67
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 3350
+        weapon: sword
+        woodsChopped: 27
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 22
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 3025
+        weapon: axe
+        woodsChopped: 24
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 19
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 13450
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 226
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 625
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 23
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 750
+        weapon: null
+        woodsChopped: 4
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 28
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 1000
+        weapon: null
+        woodsChopped: 15
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 16
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 675
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 21
+  - date: '2026-04-06T16:24:02.824226'
+    world_id: b3029cb8-bc59-4a5b-b627-10a673a22c2e
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3078
+        weapon: null
+        woodsChopped: 8
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 62
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 4153
+        weapon: sword
+        woodsChopped: 41
+        numHouses: 2
+        woodsDonated: 3
+        numHitsOnZombies: 43
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 6403
+        weapon: axe
+        woodsChopped: 42
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 64
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 3903
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 43
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 8153
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 151
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 1903
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 17
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 12378
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 222
+    deceased:
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 200
+        weapon: sword
+        woodsChopped: 11
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 6
+  - date: '2026-04-06T16:25:49.517747'
+    world_id: 7fd38b6a-b7ae-49a9-94b2-055650bd1e13
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2700
+        weapon: sword
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 6
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 8475
+        weapon: trident
+        woodsChopped: 52
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 58
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 4850
+        weapon: axe
+        woodsChopped: 45
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 24
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 10550
+        weapon: trident
+        woodsChopped: 50
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 58
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 275
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 7
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 275
+        weapon: null
+        woodsChopped: 0
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 9
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 250
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 8
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 850
+        weapon: sword
+        woodsChopped: 33
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 10
+  - date: '2026-04-06T16:27:37.025389'
+    world_id: 4113e4f4-9dc9-4d6e-8b79-ce0c11148613
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 2425
+        weapon: sword
+        woodsChopped: 15
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 17
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 7200
+        weapon: sword
+        woodsChopped: 29
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 98
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 4125
+        weapon: axe
+        woodsChopped: 35
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 31
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 3225
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 35
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 4025
+        weapon: sword
+        woodsChopped: 54
+        numHouses: 3
+        woodsDonated: 0
+        numHitsOnZombies: 13
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 400
+        weapon: sword
+        woodsChopped: 10
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 16
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 1700
+        weapon: sword
+        woodsChopped: 18
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 44
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 775
+        weapon: null
+        woodsChopped: 0
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 31
+  - date: '2026-04-06T16:29:24.733727'
+    world_id: 49ea02f1-b907-41c9-bb67-447cc786def1
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 6850
+        weapon: sword
+        woodsChopped: 25
+        numHouses: 1
+        woodsDonated: 2
+        numHitsOnZombies: 76
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 10325
+        weapon: sword
+        woodsChopped: 9
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 159
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 12150
+        weapon: axe
+        woodsChopped: 33
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 133
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 3625
+        weapon: axe
+        woodsChopped: 25
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 25
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 475
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 15
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 1200
+        weapon: null
+        woodsChopped: 16
+        numHouses: 1
+        woodsDonated: 3
+        numHitsOnZombies: 22
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 775
+        weapon: sword
+        woodsChopped: 12
+        numHouses: 0
+        woodsDonated: 3
+        numHitsOnZombies: 25
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 400
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 2
+        numHitsOnZombies: 12
+  - date: '2026-04-06T16:31:13.223462'
+    world_id: 4a34faa9-2e77-420d-ac68-a7b0bb3e737a
+    survivors:
+      a1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a1
+        aslFile: attacker.asl
+        score: 3150
+        weapon: sword
+        woodsChopped: 21
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 20
+      a2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a2
+        aslFile: attacker.asl
+        score: 2850
+        weapon: axe
+        woodsChopped: 23
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+      a3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a3
+        aslFile: attacker.asl
+        score: 10650
+        weapon: sword
+        woodsChopped: 14
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 170
+      a4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: a4
+        aslFile: attacker.asl
+        score: 21325
+        weapon: axe
+        woodsChopped: 47
+        numHouses: 1
+        woodsDonated: 1
+        numHitsOnZombies: 206
+    deceased:
+      c3:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c3
+        aslFile: capitalist.asl
+        score: 3575
+        weapon: sword
+        woodsChopped: 29
+        numHouses: 1
+        woodsDonated: 0
+        numHitsOnZombies: 71
+      c4:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c4
+        aslFile: capitalist.asl
+        score: 300
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 12
+      c1:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c1
+        aslFile: capitalist.asl
+        score: 525
+        weapon: null
+        woodsChopped: 6
+        numHouses: 0
+        woodsDonated: 1
+        numHitsOnZombies: 19
+      c2:
+        ==: ca.carleton.sce.argus.trait.AgentData
+        agentName: c2
+        aslFile: capitalist.asl
+        score: 225
+        weapon: null
+        woodsChopped: 5
+        numHouses: 0
+        woodsDonated: 0
+        numHitsOnZombies: 9

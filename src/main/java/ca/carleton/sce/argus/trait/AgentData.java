@@ -10,6 +10,16 @@ public class AgentData implements ConfigurationSerializable {
     public String aslFile;
     public int score;
 
+    public String weapon;
+
+    public int woodsChopped;
+
+    public int numHouses;
+
+    public int woodsDonated;
+
+    public int numHitsOnZombies;
+
     @Override
     public String toString(){
         return "{name: " + agentName + ", aslFile: " + aslFile + ", score: " + score + "}";
@@ -21,6 +31,11 @@ public class AgentData implements ConfigurationSerializable {
         data.put("agentName", agentName);
         data.put("aslFile", aslFile);
         data.put("score", score);
+        data.put("weapon", weapon);
+        data.put("woodsChopped", woodsChopped);
+        data.put("numHouses", numHouses);
+        data.put("woodsDonated", woodsDonated);
+        data.put("numHitsOnZombies", numHitsOnZombies);
         return data;
     }
 
@@ -29,6 +44,11 @@ public class AgentData implements ConfigurationSerializable {
         agentData.agentName = (String) data.get("agentName");
         agentData.aslFile = (String) data.get("aslFile");
         agentData.score = (int) data.get("score");
+        agentData.weapon = (String) data.get("weapon");
+        agentData.woodsChopped = (int) data.get("woodsChopped");
+        agentData.numHouses = (int) data.get("numHouses");
+        agentData.woodsDonated = (int) data.get("woodsDonated");
+        agentData.numHitsOnZombies = (int) data.get("numHitsOnZombies");
         return agentData;
     }
 }

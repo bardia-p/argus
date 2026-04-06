@@ -68,7 +68,6 @@ buildRequirement(donation,1).
     !loop.
 
 // Attacking/Defending against players/zombies
-
 +!loop: health(Health) & ((damagedBy(zombie) & not(needsRecovery(Health))) |
 (near(zombie,NumZombies) & canSurviveZombies(Health, NumZombies))) <-
     +attempted_attack;
@@ -105,13 +104,13 @@ not(getEnemyPlayers(NearbyPlayers,[])) & getEnemyPlayers(NearbyPlayers, [EnemyPl
     !loop.
 
 // Building houses/weapons
-+!loop: houseCount(_) & woodsChopped(Woods) & hasEnoughWoodFor(Woods, trident) & not(hasWeapon(trident)) <-
++!loop: houseCount(_) & woodsChopped(Woods) & hasEnoughWoodFor(Woods, trident) & hasWeapon(axe) <-
     say("Building a trident...");
-    build(sword);
+    build(trident);
     !loop.
-+!loop: houseCount(_) & woodsChopped(Woods) & hasEnoughWoodFor(Woods, axe) & not(hasWeapon(axe)) & not(hasWeapon(trident)) <-
++!loop: houseCount(_) & woodsChopped(Woods) & hasEnoughWoodFor(Woods, axe) & hasWeapon(sword) <-
     say("Building an axe...");
-    build(sword);
+    build(axe);
     !loop.
 +!loop: woodsChopped(Woods) & hasEnoughWoodFor(Woods, sword) & not(hasWeapon(_)) <-
     say("Building a sword...");

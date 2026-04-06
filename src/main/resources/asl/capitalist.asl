@@ -68,7 +68,6 @@ buildRequirement(donation,1).
     !loop.
 
 // Attacking/Defending against players/zombies
-
 +!loop: health(Health) & ((damagedBy(zombie) & not(needsRecovery(Health))) |
 (near(zombie,NumZombies) & canSurviveZombies(Health, NumZombies))) <-
     +attempted_attack;
