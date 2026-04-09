@@ -1,5 +1,6 @@
 import yaml
 import pandas as pd
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from scipy import stats
@@ -22,9 +23,18 @@ METRIC_LABELS = {
     "woodsDonated": "Woods Donated",
     "numHouses": "Number of Houses",
     "numHitsOnZombies": "Hits on Zombies",
-    "weapon_level": "Weapon Level (0=None, 1=Sword, 2=Axe, 3=Trident)"
+    "weapon_level": "Weapon (0=None, 1=Sword, 2=Axe, 3=Trident)"
 }
 
+mpl.rcParams.update({
+    "font.size": 11,
+    "axes.titlesize": 12,
+    "axes.labelsize": 11,
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
+    "legend.fontsize": 10,
+    "figure.dpi": 300,
+})
 def parse_yaml(file_path):
     with open(file_path, "r") as f:
         data = yaml.safe_load(f)
@@ -71,7 +81,7 @@ def performance_plot(df, alliance_size):
         .reset_index()
     )
 
-    fig, ax = plt.subplots(figsize=(7, 6))
+    fig, ax = plt.subplots(figsize=(4.5, 4))
 
     X_RANGE = 1.0
     Y_RANGE = per_run["score"].max() - per_run["score"].min()
@@ -116,6 +126,7 @@ def performance_plot(df, alliance_size):
                 color=color, lw=lw + 1, zorder=4)
 
     ax.set_xlim(0, 1)
+    ax.set_ylim(bottom=0)
     ax.set_xlabel("Survival Rate")
     ax.set_ylabel("Avg Score per Agent")
     ax.set_title(f"Performance Trade-off - Alliance {alliance_size}")
@@ -131,8 +142,9 @@ def performance_plot(df, alliance_size):
     )
     ax.legend(handles=legend_handles)
 
-    plt.tight_layout()
-    plt.savefig(f"plots/performance_plot_alliance_{alliance_size}.png", dpi=300)
+    plt.tight_layout(pad=0.5)
+    plt.savefig(f"plots/performance_plot_alliance_{alliance_size}.png", dpi=300, 
+                bbox_inches="tight", pad_inches=0.05)
 
 def behaviour_plot(df, alliance_size):
     metrics = [
@@ -148,7 +160,7 @@ def behaviour_plot(df, alliance_size):
     n_cols = 2
     n_rows = (len(metrics) + n_cols - 1) // n_cols
 
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(4*n_cols, 3*n_rows))
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(3.2*n_cols, 2.8*n_rows))
     axes = axes.flatten()
 
     for i, metric in enumerate(metrics):
@@ -165,7 +177,7 @@ def behaviour_plot(df, alliance_size):
         for patch, t in zip(box["boxes"], teams):
             patch.set_facecolor(TEAM_COLORS[t])
 
-        ax.set_title(METRIC_LABELS[metric], fontsize=9)
+        ax.set_title(METRIC_LABELS[metric], fontsize=10)
         ax.tick_params(axis='x', labelrotation=25)
         ax.set_ylim(bottom=0)
 
@@ -173,10 +185,11 @@ def behaviour_plot(df, alliance_size):
     for j in range(len(metrics), len(axes)):
         fig.delaxes(axes[j])
 
-    fig.suptitle(f"Behaviour Distributions per Team - Alliance {alliance_size}", fontsize=11)
-    plt.tight_layout(pad=1.0)
-    plt.subplots_adjust(top=0.85)
-    plt.savefig(f"plots/behaviour_plot_alliance_{alliance_size}.png", dpi=300)
+    fig.suptitle(f"Behaviour Distributions - Alliance {alliance_size}", fontsize=12)
+    plt.tight_layout(pad=0.4)
+    plt.subplots_adjust(top=0.92, hspace=0.5, wspace=0.38)
+    plt.savefig(f"plots/behaviour_plot_alliance_{alliance_size}.png", dpi=300, 
+                bbox_inches="tight", pad_inches=0.05)
 
 def run(alliance_size):
     df = parse_yaml(f"data/game_data_alliance_size_{alliance_size}.yml")
