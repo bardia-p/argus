@@ -19,8 +19,8 @@ WEAPON_LEVEL = {
 }
 
 METRIC_LABELS = {
-    "woodsChopped": "Woods Chopped",
-    "woodsDonated": "Woods Donated",
+    "woodsChopped": "Wood Chopped",
+    "woodsDonated": "Wood Donated",
     "numHouses": "Number of Houses",
     "numHitsOnZombies": "Hits on Zombies",
     "weapon_level": "Weapon (0=None, 1=Sword, 2=Axe, 3=Trident)"
