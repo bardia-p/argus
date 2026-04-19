@@ -72,6 +72,12 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 
 You can find demos of Argus [here](https://youtube.com/playlist?list=PLOsC27zWBS6fVtT3lOkh32wWJWRePIk7G&si=SXSP9Szyow69gYZC)!
 
+## Design
+Here is an overview of the overall design of Argus:
+<p align="center">
+    <img src="images/schematic.png" alt="argus_schematic" width="300">
+</p>
+
 ## Installation
 1. Get [Minecraft Java Edition](https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc?tabs=%7B%22details%22%3A0%7D)
 2. Install [IntelliJ IDEA](https://www.jetbrains.com/idea/) (recommended!)
@@ -121,14 +127,13 @@ gradle runServer
 - To navigate the level use `WASD`. Use `space` to move the camera up and `shift` to move the camera down.
 - If you want to stop the game simply type `/stop` in the Minecraft chat window (you can launch the window by pressing `T` or `/`).
 
-## Running Experiments
+### Running Experiments
 - Modify the `main.ms` script under `run/plugins/CommandHelper` with the appropriate setup (alliances of size 1, 2, and 4).
 - Run the experiment:
 ```
 ./run_experiment.sh
 ```
-
-For existing experiment results and data please navigate to the [data_analysis](data_analysis) folder
+**NOTE:** For existing experiment results and data please navigate to the [data_analysis](data_analysis) folder
 
 ## Notes
 The name Argus is a nod to the previous major AgentSpeak projects namely, Jason and Peleus. The name Argus  was chosen since this environment allows BDI agents to build weapons and houses!
