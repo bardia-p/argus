@@ -140,4 +140,10 @@ gradle runServer
 **NOTE:** For existing experiment results and data please navigate to the [data_analysis](data_analysis) folder
 
 ## Notes
-The name Argus is a nod to the previous major AgentSpeak projects namely, Jason and Peleus. The name Argus  was chosen since this environment allows BDI agents to build weapons and houses!
+- The name Argus is a nod to the previous major AgentSpeak projects namely, [Jason](https://github.com/jason-lang/jason) and [Peleus](https://github.com/meneguzzi/Peleus). i chose the name Argus since this environment allows BDI agents to build weapons and houses!
+
+## Acknowledgements
+- [jason](https://github.com/jason-lang/jason) an AgentSpeak interpreter for the agent definitions.
+- [Paper](https://github.com/PaperMC/Paper) a Minecraft server that allows for modifications.
+- [Citizens](https://github.com/CitizensDev/Citizens2/) a Minecraft plugin for managing NPCs.
+- [CommandHelper](https://github.com/EngineHub/CommandHelper) a Minecraft plugin for automated scripts.
