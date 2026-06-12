@@ -5,6 +5,18 @@
     <em>Logo designed by Charissa Pacada</em>
 </p>
 
+## Citation
+
+```
+@inproceedings{bdiminecraft,
+  author    = {Bardia Parmoun and Babak Esfandiari},
+  title     = {Jason Plays Minecraft},
+  booktitle = {Proceedings of the Engineering Multi-Agent Systems (EMAS 2026) Workshop},
+  year      = {2026},
+  url       = {https://emas-workshop.github.io/2026/papers/011_Jason_Plays_Minecraft.pdf}
+}
+```
+
 ## Description
 
 Argus is a custom Minecraft mod for BDI agents to interact with each other in a multi-agent environment. In this environment, the agents act as NPCs with the goal of surviving the zombie attack and collecting as many points as possible. The agents can work together to fight the zombies and/or build houses to hide from them. 
@@ -70,7 +82,7 @@ Argus is a custom Minecraft mod for BDI agents to interact with each other in a 
 
 ## Demos!
 
-You can find demos of Argus [here](https://youtube.com/playlist?list=PLOsC27zWBS6fVtT3lOkh32wWJWRePIk7G&si=SXSP9Szyow69gYZC)!
+You can find demos of Argus [here](https://youtube.com/playlist?list=PL5eOO0o-XDN0E4PsrYV26QpL0eGOk5jG7&si=dbScW6zTz16cD2nK)!
 
 ## Design
 Here is an overview of the overall design of Argus:
